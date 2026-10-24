@@ -70,7 +70,9 @@ function glassMaterial(tint: number): MeshPhysicalMaterial {
 	return new MeshPhysicalMaterial({
 		color: 0xffffff,
 		metalness: 0,
-		roughness: 0.04,
+		// Not a perfect mirror: a hint of roughness spreads the reflection of
+		// the studio lights instead of letting it bloom into a white blot.
+		roughness: 0.14,
 		transmission: 1,
 		thickness: 0.9,
 		ior: 1.5,
@@ -78,12 +80,12 @@ function glassMaterial(tint: number): MeshPhysicalMaterial {
 		attenuationColor: new Color(tint),
 		attenuationDistance: 1.4,
 		clearcoat: 1,
-		clearcoatRoughness: 0.04,
+		clearcoatRoughness: 0.18,
 		iridescence: 0.4,
 		iridescenceIOR: 1.3,
 		iridescenceThicknessRange: [120, 480],
-		specularIntensity: 1,
-		envMapIntensity: 1.35,
+		specularIntensity: 0.6,
+		envMapIntensity: 0.9,
 	});
 }
 

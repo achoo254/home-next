@@ -1,0 +1,227 @@
+/* Cockpit HUD: the frame of the view, the route map and the guide bot's
+   speech bubble. Values come from tokens.css. */
+
+.cockpit {
+	position: fixed;
+	inset: calc(var(--header-h) + var(--space-3)) var(--space-4) var(--space-4);
+	z-index: 2;
+	pointer-events: none;
+}
+
+.cockpit-corner {
+	position: absolute;
+	width: var(--space-6);
+	height: var(--space-6);
+	border: 0 solid var(--line-strong);
+}
+
+.cockpit-corner.is-tl {
+	top: 0;
+	left: 0;
+	border-top-width: var(--border);
+	border-left-width: var(--border);
+}
+
+.cockpit-corner.is-tr {
+	top: 0;
+	right: 0;
+	border-top-width: var(--border);
+	border-right-width: var(--border);
+}
+
+.cockpit-corner.is-bl {
+	bottom: 0;
+	left: 0;
+	border-bottom-width: var(--border);
+	border-left-width: var(--border);
+}
+
+.cockpit-corner.is-br {
+	right: 0;
+	bottom: 0;
+	border-right-width: var(--border);
+	border-bottom-width: var(--border);
+}
+
+.route {
+	position: fixed;
+	top: calc(var(--header-h) + var(--space-7));
+	right: var(--space-6);
+	z-index: 15;
+}
+
+.route ol {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* The line the stops sit on. */
+.route ol::before {
+	content: "";
+	position: absolute;
+	top: var(--space-4);
+	right: calc(var(--space-2) - 0.5px);
+	bottom: var(--space-4);
+	width: var(--border);
+	background: var(--line);
+}
+
+.route-stop {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--space-3);
+	min-height: var(--space-6);
+	color: var(--ink-3);
+	font-size: var(--step--1);
+	text-decoration: none;
+}
+
+.route-name {
+	position: absolute;
+	right: calc(100% + var(--space-3));
+	white-space: nowrap;
+	opacity: 0;
+	transform: translateX(var(--space-2));
+	transition:
+		opacity var(--dur-state) var(--ease-out),
+		transform var(--dur-state) var(--ease-out),
+		color var(--dur-state) var(--ease-out);
+}
+
+.route-dot {
+	width: var(--space-4);
+	height: var(--space-4);
+	border: var(--border) solid var(--ink-3);
+	border-radius: var(--radius-pill);
+	background: var(--bg);
+	transition:
+		background-color var(--dur-state) var(--ease-out),
+		border-color var(--dur-state) var(--ease-out),
+		transform var(--dur-state) var(--ease-out);
+}
+
+/* A stop still being built: a dashed ring. */
+.route-stop.is-planned .route-dot {
+	border-style: dashed;
+}
+
+.route-stop:hover .route-name,
+.route-stop:focus-visible .route-name,
+.route-stop[aria-current] .route-name {
+	opacity: 1;
+	transform: none;
+}
+
+.route-stop:hover .route-dot {
+	border-color: var(--ink);
+}
+
+.route-stop[aria-current] {
+	color: var(--ink);
+}
+
+.route-stop[aria-current] .route-dot {
+	border-color: var(--accent);
+	background: var(--accent);
+	transform: scale(1.15);
+}
+
+.guide {
+	position: fixed;
+	right: var(--space-5);
+	bottom: var(--space-5);
+	z-index: 15;
+	width: min(320px, calc(100vw - 2 * var(--space-5)));
+	padding: var(--space-3) var(--space-4);
+	background: var(--surface-veil);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius);
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* Shown once the script fills it; without JS there is nothing to say. */
+.guide.is-ready {
+	visibility: visible;
+	transition: opacity var(--dur-state) var(--ease-out);
+}
+
+.guide.is-resting {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.guide-name {
+	color: var(--violet-soft);
+	font-size: var(--step--1);
+	font-weight: 600;
+}
+
+.guide-line {
+	min-height: calc(3 * 1.5em);
+	margin-top: var(--space-1);
+	font-size: var(--step--1);
+	line-height: 1.5;
+}
+
+.guide-caret {
+	display: inline-block;
+	width: 2px;
+	height: 1em;
+	margin-left: 2px;
+	vertical-align: -0.15em;
+	background: var(--accent);
+	opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.guide.is-talking .guide-caret {
+		opacity: 1;
+		animation: caret 0.8s steps(1) infinite;
+	}
+}
+
+@keyframes caret {
+	50% {
+		opacity: 0;
+	}
+}
+
+/* Narrow screens: no route map, the bubble sits under the header. */
+@media (max-width: 900px), (max-aspect-ratio: 9/10) {
+	.route {
+		display: none;
+	}
+}
+
+@media (max-aspect-ratio: 9/10) {
+	.cockpit {
+		inset: calc(var(--header-h) + var(--space-2)) var(--space-2) var(--space-2);
+	}
+
+	.cockpit-corner {
+		width: var(--space-5);
+		height: var(--space-5);
+	}
+
+	.guide {
+		top: calc(var(--header-h) + var(--space-2));
+		right: auto;
+		bottom: auto;
+		left: var(--space-3);
+		width: calc(100vw - 2 * var(--space-3) - 112px);
+		padding: var(--space-2) var(--space-3);
+	}
+
+	.guide-line {
+		min-height: calc(3 * 1.45em);
+		line-height: 1.45;
+	}
+}

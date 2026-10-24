@@ -9,9 +9,9 @@ export const LOCALES = ["en", "vi"] as const;
 export type Locale = (typeof LOCALES)[number];
 
 const en = {
-	"meta.title": "hoandat · One key, four apps",
+	"meta.title": "hoandat · One account, a universe of apps",
 	"meta.description":
-		"Chat, Scribe, Localman and Tunelo share one hoandat account. Sign in once with Google, GitHub or Apple and move between them.",
+		"hoandat is a growing family of apps that share one account. Sign in once with Google, GitHub or Apple, and every new app opens with the same key.",
 
 	"nav.skip": "Skip to the apps",
 	"nav.main": "Main",
@@ -22,12 +22,35 @@ const en = {
 	"lang.switch": "Tiếng Việt",
 	"lang.switch.label": "Đọc trang bằng tiếng Việt",
 
-	"hero.title": "One key, four doors.",
-	"hero.lede":
-		"Chat, Scribe, Localman and Tunelo share one hoandat account. Sign in once, then walk between them.",
-	"hero.cta.apps": "See the apps",
+	"guide.name": "Nav · your guide bot",
+	"guide.0":
+		"Hi, I'm Nav. Scroll and I'll fly you past the apps live today. The route keeps growing.",
+	"guide.1": "First stop, Chat. Every message stays searchable, bots included.",
+	"guide.2":
+		"Scribe listens and writes it down, in Vietnamese. Talk, then search.",
+	"guide.3":
+		"Localman gives you a working mock API before your backend exists.",
+	"guide.4":
+		"Tunelo puts your localhost on the internet. Three commands, done.",
+	"guide.5":
+		"Here is the key. One sign-in opens every app, including the ones still being built.",
+	"guide.6":
+		"More apps in orbit, and new ones under construction. Same key for all of them.",
+	"route.label": "Route",
+	"route.0": "Launch",
+	"route.1": "Chat",
+	"route.2": "Scribe",
+	"route.3": "Localman",
+	"route.4": "Tunelo",
+	"route.5": "The key",
+	"route.6": "More apps",
 
-	"apps.title": "The four apps",
+	"hero.title": "One account. A universe of apps.",
+	"hero.lede":
+		"Fly with Nav past the apps that are live today. New ones keep launching, and your hoandat account already opens every one of them.",
+	"hero.cta.apps": "Start the tour",
+
+	"apps.title": "Apps live today",
 	"apps.open": "Open",
 
 	"chat.title": "Messages you can find again.",
@@ -46,10 +69,10 @@ const en = {
 
 	"key.title": "One key opens every door.",
 	"key.body":
-		"Sign in with Google, GitHub or Apple. There is no password here to forget or leak. The same account works in every app, and you decide which devices and apps keep access.",
+		"Sign in with Google, GitHub or Apple. There is no password here to forget or leak. The same account works in every app, today's and the ones still being built, and you decide which devices and apps keep access.",
 	"key.cta": "Manage your account",
 
-	"workshop.title": "Also from the workshop",
+	"workshop.title": "More apps in orbit",
 	"miu.tag": "A 3D world where knowledge is how you move forward.",
 	"miu.body":
 		"Explore voxel maps with friends and use math and Vietnamese, starting from the grade 2 curriculum, to get past each challenge. Plays in the browser, for kids and grown-ups.",
@@ -70,6 +93,13 @@ const en = {
 	"made.p3.title": "An account you control",
 	"made.p3.body": "Review devices and app access at auth.hoandat.com.",
 
+	"next.title": "Under construction",
+	"next.tag": "New apps are being built in the same workshop.",
+	"next.body":
+		"When they launch they join this route, and the account you use today opens them too. No new sign-up.",
+	"next.follow": "Follow the launches",
+	"made.source": "Open source on GitHub",
+	"close.title": "Board once. Every app opens.",
 	"footer.apps": "Apps",
 	"footer.more": "More",
 	"footer.account": "Your account",
@@ -79,9 +109,9 @@ const en = {
 export type StringKey = keyof typeof en;
 
 const vi: Record<StringKey, string> = {
-	"meta.title": "hoandat · Một chìa khoá, bốn ứng dụng",
+	"meta.title": "hoandat · Một tài khoản, cả vũ trụ app",
 	"meta.description":
-		"Chat, Scribe, Localman và Tunelo dùng chung một tài khoản hoandat. Đăng nhập một lần bằng Google, GitHub hoặc Apple rồi đi lại giữa các app.",
+		"hoandat là một gia đình app không ngừng lớn lên, dùng chung một tài khoản. Đăng nhập một lần bằng Google, GitHub hoặc Apple, app mới nào cũng mở bằng cùng chìa khoá đó.",
 
 	"nav.skip": "Tới phần ứng dụng",
 	"nav.main": "Điều hướng chính",
@@ -92,12 +122,32 @@ const vi: Record<StringKey, string> = {
 	"lang.switch": "English",
 	"lang.switch.label": "Read this page in English",
 
-	"hero.title": "Một chìa khoá, bốn cánh cửa.",
-	"hero.lede":
-		"Chat, Scribe, Localman và Tunelo dùng chung một tài khoản hoandat. Đăng nhập một lần, rồi đi lại giữa các app.",
-	"hero.cta.apps": "Xem các app",
+	"guide.name": "Hoa tiêu · bot dẫn đường",
+	"guide.0":
+		"Chào bạn, mình là Hoa tiêu. Cuộn xuống, mình chở bạn qua các app đang chạy. Lộ trình còn dài thêm mãi.",
+	"guide.1": "Trạm đầu: Chat. Tin nhắn nào cũng tìm lại được, có cả bot.",
+	"guide.2": "Scribe nghe và chép lại bằng tiếng Việt. Cứ nói, rồi tìm.",
+	"guide.3": "Localman cho bạn mock API chạy được trước khi có backend.",
+	"guide.4": "Tunelo đưa localhost của bạn lên internet. Ba lệnh là xong.",
+	"guide.5":
+		"Đây là chìa khoá. Đăng nhập một lần là mở được mọi app, kể cả app đang xây.",
+	"guide.6":
+		"Thêm app trên quỹ đạo, và vài app đang được xây. Tất cả cùng một chìa khoá.",
+	"route.label": "Lộ trình",
+	"route.0": "Khởi hành",
+	"route.1": "Chat",
+	"route.2": "Scribe",
+	"route.3": "Localman",
+	"route.4": "Tunelo",
+	"route.5": "Chìa khoá",
+	"route.6": "Thêm app",
 
-	"apps.title": "Bốn ứng dụng",
+	"hero.title": "Một tài khoản. Cả vũ trụ app.",
+	"hero.lede":
+		"Bay cùng Hoa tiêu qua những app đang chạy hôm nay. App mới vẫn liên tục ra đời, và tài khoản hoandat của bạn đã mở được tất cả.",
+	"hero.cta.apps": "Bắt đầu chuyến bay",
+
+	"apps.title": "Các app đang chạy",
 	"apps.open": "Mở",
 
 	"chat.title": "Tin nhắn tìm lại được.",
@@ -116,10 +166,10 @@ const vi: Record<StringKey, string> = {
 
 	"key.title": "Một chìa khoá mở mọi cửa.",
 	"key.body":
-		"Đăng nhập bằng Google, GitHub hoặc Apple. Ở đây không có mật khẩu để quên hay bị lộ. Cùng một tài khoản dùng được ở mọi app, và bạn quyết định thiết bị, ứng dụng nào được giữ quyền.",
+		"Đăng nhập bằng Google, GitHub hoặc Apple. Ở đây không có mật khẩu để quên hay bị lộ. Cùng một tài khoản dùng được ở mọi app, cả app hôm nay lẫn app đang xây, và bạn quyết định thiết bị, ứng dụng nào được giữ quyền.",
 	"key.cta": "Quản lý tài khoản",
 
-	"workshop.title": "Cũng từ xưởng này",
+	"workshop.title": "Thêm app trên quỹ đạo",
 	"miu.tag": "Thế giới 3D nơi kiến thức là công cụ để tiến lên.",
 	"miu.body":
 		"Khám phá các bản đồ voxel cùng bạn bè, dùng Toán và Tiếng Việt, bắt đầu từ SGK lớp 2, để vượt từng thử thách. Chơi ngay trên trình duyệt, hợp cả bé lẫn người lớn.",
@@ -141,6 +191,13 @@ const vi: Record<StringKey, string> = {
 	"made.p3.title": "Tài khoản do bạn làm chủ",
 	"made.p3.body": "Xem thiết bị và quyền của ứng dụng tại auth.hoandat.com.",
 
+	"next.title": "Đang xây",
+	"next.tag": "App mới đang được làm trong cùng xưởng.",
+	"next.body":
+		"Khi ra mắt, chúng nhập vào lộ trình này, và tài khoản bạn đang dùng mở được luôn. Không cần đăng ký lại.",
+	"next.follow": "Theo dõi các lần ra mắt",
+	"made.source": "Mã nguồn mở trên GitHub",
+	"close.title": "Lên tàu một lần, app nào cũng mở.",
 	"footer.apps": "Ứng dụng",
 	"footer.more": "Thêm nữa",
 	"footer.account": "Tài khoản của bạn",

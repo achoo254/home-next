@@ -12,6 +12,7 @@ import {
 	ShaderMaterial,
 } from "three";
 import { SCENE_PALETTE } from "./scene-palette";
+import { scatterAroundRoute, seededRandom } from "./warp-stars";
 
 const vertexShader = /* glsl */ `
 	uniform float uTime;
@@ -26,10 +27,12 @@ const vertexShader = /* glsl */ `
 		p.y += cos(uTime * 0.17 + aSeed * 4.1) * 0.3;
 		vec4 view = modelViewMatrix * vec4(p, 1.0);
 		gl_Position = projectionMatrix * view;
-		gl_PointSize = aSize * uPixelRatio * (22.0 / -view.z);
+		// Capped: a speck that drifts right past the lens would otherwise
+		// grow to hundreds of pixels and bloom into a white cloud.
+		gl_PointSize = min(aSize * uPixelRatio * (22.0 / -view.z), 14.0 * uPixelRatio);
 		vSeed = aSeed;
-		// Fade the dust that drifts too far away.
-		vFade = smoothstep(-34.0, -18.0, view.z);
+		// Fade the dust far ahead, and the dust about to pass the lens.
+		vFade = smoothstep(-90.0, -40.0, view.z) * (1.0 - smoothstep(-8.0, -2.0, view.z));
 	}
 `;
 
@@ -60,24 +63,16 @@ export interface StarDust {
 	dispose(): void;
 }
 
-/** Deterministic pseudo-random numbers so every visit gets the same sky. */
-function seededRandom(seed: number): () => number {
-	let state = seed >>> 0;
-	return () => {
-		state = (state * 1664525 + 1013904223) >>> 0;
-		return state / 4294967296;
-	};
-}
-
 export function createStarDust(count: number): StarDust {
 	const random = seededRandom(20261025);
-	const positions = new Float32Array(count * 3);
+	const positions = scatterAroundRoute(
+		count,
+		random,
+		new Float32Array(count * 3),
+	);
 	const seeds = new Float32Array(count);
 	const sizes = new Float32Array(count);
 	for (let index = 0; index < count; index++) {
-		positions[index * 3] = (random() - 0.5) * 26;
-		positions[index * 3 + 1] = (random() - 0.5) * 18;
-		positions[index * 3 + 2] = -20 + random() * 24;
 		seeds[index] = random();
 		sizes[index] = 0.6 + random() ** 3 * 3.2;
 	}
@@ -101,6 +96,8 @@ export function createStarDust(count: number): StarDust {
 		blending: AdditiveBlending,
 	});
 	const points = new Points(geometry, material);
+	// The dust spans the whole route; never cull it as one small box.
+	points.frustumCulled = false;
 
 	return {
 		points,

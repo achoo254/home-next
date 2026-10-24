@@ -30,7 +30,7 @@ export interface TileGlyph {
 
 /** Brightness above 1 is what the bloom pass picks up. */
 const REST_BRIGHTNESS = 0.55;
-const FULL_BRIGHTNESS = 1.75;
+const FULL_BRIGHTNESS = 1.45;
 
 function glowMaterial(hex: number): {
 	material: MeshBasicMaterial;

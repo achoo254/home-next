@@ -142,12 +142,25 @@ main,
 	opacity: 0;
 }
 
-.poster-tile {
+/* The orbit mark: the core is the one account, the tiles are apps. */
+.mark-core {
+	fill: var(--accent);
+}
+
+.mark-tile {
 	fill: var(--tile);
 }
 
-.poster-accent {
-	fill: var(--accent);
+.mark-orbit,
+.mark-orbit-back {
+	fill: none;
+	stroke: var(--tile);
+	stroke-width: 56;
+	stroke-linecap: round;
+}
+
+.mark-orbit-back {
+	opacity: 0.6;
 }
 
 /* ---------- Header ---------- */
@@ -189,15 +202,7 @@ main,
 }
 
 .brand-mark-bg {
-	color: var(--violet);
-}
-
-.brand-mark-tile {
-	fill: var(--tile);
-}
-
-.brand-mark-accent {
-	fill: var(--accent);
+	fill: var(--violet);
 }
 
 .brand-name {
@@ -534,8 +539,8 @@ main,
 
 .workshop-grid {
 	display: grid;
-	grid-template-columns: 7fr 5fr;
-	gap: var(--space-9);
+	grid-template-columns: 5fr 4fr 4fr;
+	gap: var(--space-8);
 	margin-top: var(--space-8);
 }
 
@@ -544,8 +549,40 @@ main,
 	border-top: var(--border) solid var(--line-strong);
 }
 
+/* A staggered row, like bodies at different points of one orbit. */
 .workshop-tieude {
+	margin-top: var(--space-8);
+}
+
+.workshop-next {
 	margin-top: var(--space-10);
+}
+
+/* A planned station: a dashed ring with nothing in it yet. */
+.next-mark {
+	display: grid;
+	place-items: center;
+	width: 112px;
+	height: 112px;
+}
+
+.next-ring {
+	width: 88px;
+	height: 88px;
+	border: 2px dashed var(--line-strong);
+	border-radius: var(--radius-pill);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.next-ring {
+		animation: orbit-turn 24s linear infinite;
+	}
+}
+
+@keyframes orbit-turn {
+	to {
+		transform: rotate(1turn);
+	}
 }
 
 .workshop-art {
@@ -617,6 +654,41 @@ main,
 	font-size: var(--step-0);
 	font-weight: 600;
 	letter-spacing: 0;
+}
+
+.made-source {
+	margin-top: var(--space-6);
+}
+
+/* The closing invitation: one action, at the peak of the story's end. */
+.boarding {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-5);
+	margin-top: var(--space-9);
+	padding: var(--space-7);
+	background: var(--surface);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius);
+}
+
+.boarding-title {
+	font-size: var(--step-3);
+}
+
+.follow {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0 var(--space-4);
+	margin-top: var(--space-3);
+}
+
+.follow-label {
+	color: var(--ink-3);
+	font-size: var(--step--1);
 }
 
 .promise-body {
@@ -732,7 +804,8 @@ main,
 		gap: var(--space-8);
 	}
 
-	.workshop-tieude {
+	.workshop-tieude,
+	.workshop-next {
 		margin-top: 0;
 	}
 

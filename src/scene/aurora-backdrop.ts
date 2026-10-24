@@ -107,7 +107,9 @@ const fragmentShader = /* glsl */ `
 		float calm = 1.0;
 		calm *= mix(1.0, 0.16 + 0.84 * smoothstep(0.12, 0.7, screen.x), uCalmLeft);
 		calm *= mix(1.0, 0.2 + 0.8 * smoothstep(0.05, 0.62, screen.y), uCalmBottom);
-		colour *= calm;
+		colour *= calm * 0.78;
+		// Stay under the bloom threshold: only glyphs, rings and stars glow.
+		colour = min(colour, vec3(0.7));
 
 		vec2 centre = screen - 0.5;
 		colour *= 1.0 - 0.6 * dot(centre, centre) * 2.0;

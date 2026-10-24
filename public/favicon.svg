@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <!-- Hoandat Apps: the shared mark of the *-next ecosystem (social avatars, directory listings).
-       Four app tiles in a 2x2 grid, one in the accent colour: one account, several apps.
-       Colours come from the products' shared palette: violet gradient of Chat's icon
-       (#8874d8 -> #5a47aa, primary #6e56cf) and Scribe's plum accent (#e796f3).
-       Full-bleed square because Facebook and YouTube crop avatars to a circle; the tiles stay
-       inside the central circle (radius ~330 of 512) so nothing is cut off. -->
+  <!-- hoandat orbit mark (landing page): the pink core is the one account,
+       the orbit is the route, the tiles riding it are apps. Any number of
+       apps can ride the orbit, so the mark does not promise a fixed set.
+       Colours: the ecosystem's violet gradient (#8874d8 -> #5a47aa) and the
+       accent pink (#e796f3). The ring passes behind the core at the top and
+       in front of it at the bottom. -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#8874d8"/>
@@ -12,10 +12,12 @@
     </linearGradient>
   </defs>
   <rect width="1024" height="1024" fill="url(#bg)"/>
-  <g>
-    <rect x="292" y="292" width="200" height="200" rx="56" fill="#fff"/>
-    <rect x="532" y="292" width="200" height="200" rx="100" fill="#e796f3"/>
-    <rect x="292" y="532" width="200" height="200" rx="56" fill="#fff"/>
-    <rect x="532" y="532" width="200" height="200" rx="56" fill="#fff"/>
+  <g transform="translate(512 512) rotate(-22)">
+    <path d="M -380 0 A 380 170 0 0 1 380 0" fill="none" stroke="#fff" stroke-width="56" stroke-linecap="round" opacity="0.6"/>
+    <circle r="158" fill="#e796f3"/>
+    <path d="M 380 0 A 380 170 0 0 1 -380 0" fill="none" stroke="#fff" stroke-width="56" stroke-linecap="round"/>
+    <rect x="-66" y="-66" width="132" height="132" rx="38" fill="#fff" transform="translate(-357 -58) rotate(22)"/>
+    <rect x="-66" y="-66" width="132" height="132" rx="38" fill="#fff" transform="translate(326 87) rotate(22)"/>
+    <rect x="-52" y="-52" width="104" height="104" rx="30" fill="#fff" transform="translate(-130 160) rotate(22)"/>
   </g>
 </svg>

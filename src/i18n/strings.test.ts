@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { LAST_STAGE } from "../scene/tile-poses";
+import { LAST_STAGE } from "../scene/flight-path";
 import { pickInitialLocale } from "./apply-locale";
 import { LOCALES, STRINGS, isStringKey } from "./strings";
 

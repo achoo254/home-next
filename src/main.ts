@@ -1,6 +1,8 @@
 import "./styles/fonts.css";
 import "./styles/tokens.css";
 import "./styles/main.css";
+import "./styles/cockpit-hud.css";
+import { type GuideDialog, mountGuideDialog } from "./guide/guide-dialog";
 import {
 	applyLocale,
 	otherLocale,
@@ -21,6 +23,7 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
 		locale = otherLocale(locale);
 		saveLocale(locale);
 		applyLocale(document, locale);
+		guide?.setLocale(locale);
 	});
 }
 
@@ -37,15 +40,21 @@ const reducedMotion = window.matchMedia(
 	"(prefers-reduced-motion: reduce)",
 ).matches;
 
+const stageSections = [
+	...document.querySelectorAll<HTMLElement>("[data-stage]"),
+];
+const guide: GuideDialog | null = mountGuideDialog({
+	stageSections,
+	locale,
+	reducedMotion,
+});
+
 async function startScene(): Promise<void> {
 	const canvas = document.querySelector<HTMLCanvasElement>("#stage");
-	const stageSections = [
-		...document.querySelectorAll<HTMLElement>("[data-stage]"),
-	];
 	if (!canvas || stageSections.length === 0) return;
 	try {
-		const { mountTilesScene } = await import("./scene/tiles-scene");
-		mountTilesScene({
+		const { mountFlightScene } = await import("./scene/flight-scene");
+		mountFlightScene({
 			canvas,
 			stageSections,
 			reducedMotion,
