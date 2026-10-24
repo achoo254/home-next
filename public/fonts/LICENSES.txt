@@ -1,0 +1,11 @@
+Fonts in this folder are self-hosted copies of Google Fonts, all under the
+SIL Open Font License 1.1 (https://openfontlicense.org):
+
+- Be Vietnam Pro, copyright The Be Vietnam Pro Project Authors
+  (https://github.com/bettergui/BeVietnamPro)
+- Bricolage Grotesque, copyright The Bricolage Grotesque Project Authors
+  (https://github.com/ateliertriay/bricolage)
+- JetBrains Mono, copyright The JetBrains Mono Project Authors
+  (https://github.com/JetBrains/JetBrainsMono)
+
+Subsets: latin, latin-ext and vietnamese (JetBrains Mono: latin only).

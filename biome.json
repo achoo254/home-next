@@ -1,0 +1,22 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"files": {
+		"ignore": ["dist", "node_modules", "render-check", "**/*.css", "**/*.html"]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 80
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": { "noExplicitAny": "error" },
+			"style": { "noNonNullAssertion": "error" }
+		}
+	},
+	"javascript": {
+		"formatter": { "quoteStyle": "double" }
+	}
+}

@@ -1,0 +1,94 @@
+/*
+ * Design tokens of hoandat.com. Every colour, size, space, radius and
+ * duration in main.css comes from here. Hues follow the logo:
+ * violet 285-288 (#6e56cf, #8874d8 -> #5a47aa) and the round accent tile
+ * at 322 (#e796f3). One dark theme on purpose: the logo's light tiles
+ * read best on the violet night of its own background.
+ */
+:root {
+	color-scheme: dark;
+
+	--hue: 285;
+	--accent-hue: 322;
+
+	/* Surfaces: violet-tinted near-black, raised by lightening. */
+	--bg: oklch(13% 0.025 var(--hue));
+	--bg-raise: oklch(17% 0.032 var(--hue));
+	--surface: oklch(19% 0.036 var(--hue));
+	--surface-veil: oklch(15% 0.03 var(--hue) / 0.86);
+	--header-veil: oklch(13% 0.025 var(--hue) / 0.9);
+	--hero-fade: oklch(13% 0.025 var(--hue) / 0.92);
+	--line: oklch(31% 0.035 var(--hue));
+	--line-strong: oklch(42% 0.05 var(--hue));
+
+	/* Text */
+	--ink: oklch(96.5% 0.01 var(--hue));
+	--ink-2: oklch(84% 0.02 var(--hue));
+	--ink-3: oklch(72% 0.03 var(--hue));
+
+	/* Brand */
+	--violet: oklch(62% 0.16 288);
+	--violet-soft: oklch(78% 0.09 288);
+	--tile: oklch(96% 0.02 var(--hue));
+	--accent: oklch(79% 0.14 var(--accent-hue));
+	--accent-hover: oklch(85% 0.11 var(--accent-hue));
+	--accent-ink: oklch(20% 0.06 var(--accent-hue));
+	--focus: oklch(85% 0.11 var(--accent-hue));
+
+	/* Type */
+	--font-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+	--font-body: "Be Vietnam Pro", system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+	--step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+	--step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+	--step-1: clamp(1.2rem, 1.1rem + 0.45vw, 1.45rem);
+	--step-2: clamp(1.5rem, 1.32rem + 0.9vw, 1.95rem);
+	--step-3: clamp(1.85rem, 1.5rem + 1.7vw, 2.7rem);
+	--step-4: clamp(2.3rem, 1.7rem + 3vw, 3.9rem);
+	--step-5: clamp(2.75rem, 1.6rem + 5.6vw, 6rem);
+
+	--tracking-display: -0.03em;
+	--leading-display: 1.02;
+	--leading-title: 1.1;
+	--leading-body: 1.65;
+	--measure: 62ch;
+
+	/* Space: 4pt scale */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
+	--space-8: 64px;
+	--space-9: 96px;
+	--space-10: 128px;
+	--section-y: clamp(96px, 8vw + 32px, 160px);
+	--gutter: clamp(16px, 4vw, 48px);
+	--container: 1240px;
+	--header-h: 68px;
+	--target: 44px;
+
+	/* Shape: one soft system, cards top out at 12px. */
+	--radius: 12px;
+	--radius-sm: 8px;
+	--radius-pill: 999px;
+	--border: 1px;
+
+	/* Motion */
+	--dur-press: 120ms;
+	--dur-state: 240ms;
+	--dur-enter: 700ms;
+	--ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+	--ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--dur-press: 0ms;
+		--dur-state: 0ms;
+		--dur-enter: 0ms;
+	}
+}

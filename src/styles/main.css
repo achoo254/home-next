@@ -1,0 +1,746 @@
+/* Layout and components of hoandat.com. Values come from tokens.css. */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-padding-top: var(--header-h);
+	-webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	margin: 0;
+	min-height: 100svh;
+	background: var(--bg);
+	color: var(--ink);
+	font: 400 var(--step-0) / var(--leading-body) var(--font-body);
+	-webkit-font-smoothing: antialiased;
+	overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure,
+pre {
+	margin: 0;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 600;
+	line-height: var(--leading-title);
+	letter-spacing: var(--tracking-display);
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+img,
+svg {
+	display: block;
+}
+
+a {
+	color: inherit;
+}
+
+:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 3px;
+	border-radius: var(--radius-sm);
+}
+
+.container {
+	width: 100%;
+	max-width: var(--container);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.skip-link {
+	position: absolute;
+	top: var(--space-2);
+	left: var(--space-2);
+	z-index: 30;
+	padding: var(--space-3) var(--space-4);
+	background: var(--accent);
+	color: var(--accent-ink);
+	border-radius: var(--radius-sm);
+	transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+	transform: none;
+}
+
+/* ---------- 3D layer ---------- */
+
+/* Sized to the large viewport so the canvas does not resize while the iOS
+   toolbar slides in and out. */
+.stage-layer {
+	position: fixed;
+	inset: 0 0 auto;
+	height: 100lvh;
+	z-index: 0;
+	pointer-events: none;
+}
+
+#stage {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity var(--dur-enter) var(--ease-out);
+}
+
+.scene-ready #stage {
+	opacity: 1;
+}
+
+main,
+.site-footer {
+	position: relative;
+	z-index: 1;
+}
+
+/* Static stand-in for the 3D tiles: shown without JS, without WebGL and
+   until the scene has drawn its first frame. */
+.stage-poster {
+	position: absolute;
+	top: 50%;
+	right: 6%;
+	width: min(42vw, 540px);
+	transform: translateY(-50%);
+	transition: opacity var(--dur-enter) var(--ease-out);
+}
+
+.scene-ready .stage-poster {
+	opacity: 0;
+}
+
+.poster-tile {
+	fill: var(--tile);
+}
+
+.poster-accent {
+	fill: var(--accent);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+	position: fixed;
+	inset: 0 0 auto;
+	z-index: 20;
+	height: var(--header-h);
+	border-bottom: var(--border) solid transparent;
+	transition:
+		background-color var(--dur-state) var(--ease-out),
+		border-color var(--dur-state) var(--ease-out);
+}
+
+.site-header.is-scrolled {
+	background: var(--header-veil);
+	border-bottom-color: var(--line);
+}
+
+.header-row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-6);
+	height: 100%;
+}
+
+.brand {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	min-height: var(--target);
+	text-decoration: none;
+}
+
+.brand-mark {
+	width: 32px;
+	height: 32px;
+}
+
+.brand-mark-bg {
+	color: var(--violet);
+}
+
+.brand-mark-tile {
+	fill: var(--tile);
+}
+
+.brand-mark-accent {
+	fill: var(--accent);
+}
+
+.brand-name {
+	font-family: var(--font-display);
+	font-size: var(--step-1);
+	font-weight: 600;
+	letter-spacing: var(--tracking-display);
+}
+
+.header-nav {
+	display: flex;
+	gap: var(--space-2);
+}
+
+.nav-link {
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--target);
+	padding-inline: var(--space-3);
+	color: var(--ink-2);
+	text-decoration: none;
+	transition: color var(--dur-state) var(--ease-out);
+}
+
+.nav-link:hover {
+	color: var(--ink);
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	margin-left: auto;
+}
+
+.lang-switch {
+	min-height: var(--target);
+	padding-inline: var(--space-3);
+	border: 0;
+	background: none;
+	color: var(--ink-2);
+	font: inherit;
+	font-size: var(--step--1);
+	text-decoration: underline;
+	text-decoration-color: var(--line-strong);
+	text-underline-offset: 0.3em;
+	cursor: pointer;
+	transition:
+		color var(--dur-state) var(--ease-out),
+		text-decoration-color var(--dur-state) var(--ease-out);
+}
+
+.lang-switch:hover {
+	color: var(--ink);
+	text-decoration-color: var(--accent);
+}
+
+/* ---------- Buttons and links ---------- */
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	min-height: var(--target);
+	padding: 0 var(--space-5);
+	border: var(--border) solid transparent;
+	border-radius: var(--radius-sm);
+	font: 500 var(--step-0) / 1 var(--font-body);
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition:
+		transform var(--dur-state) var(--ease-out),
+		background-color var(--dur-state) var(--ease-out),
+		border-color var(--dur-state) var(--ease-out),
+		color var(--dur-state) var(--ease-out);
+}
+
+.button:hover {
+	transform: translateY(-2px);
+}
+
+.button:active {
+	transform: translateY(1px);
+	transition-duration: var(--dur-press);
+}
+
+.button-primary {
+	background: var(--accent);
+	color: var(--accent-ink);
+}
+
+.button-primary:hover {
+	background: var(--accent-hover);
+}
+
+.button-quiet,
+.button-line {
+	border-color: var(--line-strong);
+	color: var(--ink);
+}
+
+.button-quiet:hover,
+.button-line:hover {
+	border-color: var(--violet-soft);
+}
+
+.icon-arrow {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.75;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	transition: transform var(--dur-state) var(--ease-out);
+}
+
+.button:hover .icon-arrow,
+.text-link:hover .icon-arrow {
+	transform: translateX(3px);
+}
+
+.text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	min-height: var(--target);
+	color: var(--accent);
+	font-weight: 500;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	text-underline-offset: 0.3em;
+	transition: text-decoration-color var(--dur-state) var(--ease-out);
+}
+
+.text-link:hover {
+	text-decoration-color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+	position: relative;
+	display: grid;
+	align-items: center;
+	min-height: 100svh;
+	padding-block: calc(var(--header-h) + var(--space-7)) var(--space-9);
+}
+
+.hero-inner {
+	position: relative;
+}
+
+.hero-copy {
+	max-width: 36rem;
+}
+
+.hero-title {
+	font-size: var(--step-5);
+	line-height: var(--leading-display);
+	font-weight: 700;
+}
+
+/* Vietnamese stacks two marks on some vowels (ộ, ố): give them room. */
+:lang(vi) .hero-title {
+	line-height: var(--leading-title);
+}
+
+.hero-lede {
+	margin-top: var(--space-5);
+	max-width: 30rem;
+	color: var(--ink-2);
+	font-size: var(--step-1);
+	line-height: 1.5;
+}
+
+.hero-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	margin-top: var(--space-7);
+}
+
+/* One orchestrated entrance, hero only. Content is visible without it. */
+@media (prefers-reduced-motion: no-preference) {
+	.hero-copy > * {
+		animation: rise var(--dur-enter) var(--ease-expo) both;
+	}
+
+	.hero-copy > :nth-child(2) {
+		animation-delay: 80ms;
+	}
+
+	.hero-copy > :nth-child(3) {
+		animation-delay: 160ms;
+	}
+}
+
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+}
+
+/* ---------- App chapters ---------- */
+
+.chapter {
+	display: grid;
+	align-items: center;
+	min-height: 100svh;
+	padding-block: var(--space-9);
+}
+
+.chapter-card {
+	max-width: 30rem;
+	padding: var(--space-7);
+	background: var(--surface-veil);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius);
+}
+
+.app-id {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2) var(--space-3);
+}
+
+.tile-glyph {
+	width: 24px;
+	height: 24px;
+}
+
+.tile-glyph rect,
+.tile-glyph circle {
+	fill: none;
+	stroke: var(--ink-3);
+	stroke-width: 1.5;
+}
+
+.tile-glyph .is-on {
+	fill: var(--tile);
+	stroke: var(--tile);
+}
+
+.tile-glyph .is-accent {
+	fill: var(--accent);
+	stroke: var(--accent);
+}
+
+.app-name {
+	font-family: var(--font-display);
+	font-size: var(--step-1);
+	font-weight: 600;
+	letter-spacing: var(--tracking-display);
+}
+
+.app-host {
+	color: var(--ink-3);
+	font-family: var(--font-mono);
+	font-size: var(--step--1);
+}
+
+.chapter-title {
+	margin-top: var(--space-5);
+	font-size: var(--step-3);
+}
+
+.chapter-body {
+	margin-top: var(--space-4);
+	color: var(--ink-2);
+}
+
+.chapter-card .button {
+	margin-top: var(--space-6);
+}
+
+.terminal {
+	margin-top: var(--space-5);
+	padding: var(--space-4);
+	background: var(--bg);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius-sm);
+	overflow-x: auto;
+}
+
+.terminal pre {
+	font-family: var(--font-mono);
+	font-size: var(--step--1);
+	line-height: 1.8;
+	color: var(--ink);
+}
+
+.prompt {
+	color: var(--violet-soft);
+	user-select: none;
+}
+
+/* ---------- Account ---------- */
+
+.key {
+	display: grid;
+	align-items: center;
+	min-height: 100svh;
+	padding-block: var(--space-9);
+}
+
+.key-copy {
+	max-width: 32rem;
+}
+
+.section-title {
+	font-size: var(--step-4);
+}
+
+.section-body {
+	margin-top: var(--space-5);
+	max-width: var(--measure);
+	color: var(--ink-2);
+}
+
+.key-copy .button {
+	margin-top: var(--space-6);
+}
+
+/* ---------- Workshop ---------- */
+
+.workshop {
+	padding-block: var(--section-y);
+}
+
+.workshop-grid {
+	display: grid;
+	grid-template-columns: 7fr 5fr;
+	gap: var(--space-9);
+	margin-top: var(--space-8);
+}
+
+.workshop-item {
+	padding-top: var(--space-6);
+	border-top: var(--border) solid var(--line-strong);
+}
+
+.workshop-tieude {
+	margin-top: var(--space-10);
+}
+
+.workshop-art {
+	width: 112px;
+	height: 112px;
+	border-radius: var(--radius);
+}
+
+.wallet {
+	color: var(--accent);
+	font-family: var(--font-display);
+	font-size: var(--step-4);
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+	letter-spacing: var(--tracking-display);
+	line-height: 1;
+}
+
+.workshop-name {
+	margin-top: var(--space-5);
+	font-size: var(--step-3);
+}
+
+.workshop-tag {
+	margin-top: var(--space-3);
+	font-size: var(--step-1);
+	line-height: 1.4;
+}
+
+.workshop-body {
+	margin-top: var(--space-4);
+	max-width: 52ch;
+	color: var(--ink-2);
+}
+
+.workshop-item .text-link {
+	margin-top: var(--space-4);
+}
+
+/* ---------- Made by ---------- */
+
+/* The 3D layer fades out under this section instead of ending on a hard edge. */
+.made {
+	padding-block: var(--section-y);
+	background: linear-gradient(to bottom, transparent, var(--bg) var(--space-10));
+}
+
+.made-title {
+	max-width: 20ch;
+	font-size: var(--step-4);
+}
+
+.promises {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: var(--space-6);
+	margin-top: var(--space-8);
+	padding: 0;
+	list-style: none;
+}
+
+.promise {
+	padding-top: var(--space-4);
+	border-top: var(--border) solid var(--line-strong);
+}
+
+.promise-title {
+	font-family: var(--font-body);
+	font-size: var(--step-0);
+	font-weight: 600;
+	letter-spacing: 0;
+}
+
+.promise-body {
+	margin-top: var(--space-2);
+	color: var(--ink-2);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+	padding-block: var(--space-8) var(--space-7);
+	background: var(--bg);
+	border-top: var(--border) solid var(--line);
+}
+
+.footer-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr auto;
+	gap: var(--space-6);
+}
+
+.footer-small {
+	margin-top: var(--space-2);
+	color: var(--ink-3);
+	font-size: var(--step--1);
+}
+
+.footer-col {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.footer-heading {
+	margin-bottom: var(--space-2);
+	color: var(--ink-3);
+	font-family: var(--font-body);
+	font-size: var(--step--1);
+	font-weight: 500;
+	letter-spacing: 0;
+}
+
+.footer-col a {
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--target);
+	color: var(--ink-2);
+	text-decoration: none;
+	transition: color var(--dur-state) var(--ease-out);
+}
+
+.footer-col a:hover {
+	color: var(--ink);
+}
+
+/* ---------- Narrow screens: the scene sits above the copy ---------- */
+
+@media (max-aspect-ratio: 9/10) {
+	.hero,
+	.chapter,
+	.key {
+		align-items: end;
+		padding-bottom: var(--space-8);
+	}
+
+	.hero::after,
+	.key::after {
+		content: "";
+		position: absolute;
+		inset: 45% 0 0;
+		z-index: -1;
+		background: linear-gradient(to bottom, transparent, var(--hero-fade) 40%);
+		pointer-events: none;
+	}
+
+	.key {
+		position: relative;
+	}
+
+	/* The focused tile peeks out above the card, so the card is solid here. */
+	.chapter-card {
+		background: var(--surface);
+	}
+
+	.stage-poster {
+		top: calc(var(--header-h) + var(--space-4));
+		right: auto;
+		left: 50%;
+		width: min(70vw, 360px);
+		transform: translateX(-50%);
+	}
+}
+
+@media (max-width: 720px) {
+	.header-nav {
+		display: none;
+	}
+
+	.header-row {
+		gap: var(--space-3);
+	}
+
+	.chapter-card {
+		padding: var(--space-5);
+	}
+
+	.workshop-grid,
+	.promises {
+		grid-template-columns: 1fr;
+	}
+
+	.workshop-grid {
+		gap: var(--space-8);
+	}
+
+	.workshop-tieude {
+		margin-top: 0;
+	}
+
+	.footer-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.footer-brand {
+		grid-column: 1 / -1;
+	}
+}
