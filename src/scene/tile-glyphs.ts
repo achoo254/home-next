@@ -1,11 +1,16 @@
 /**
  * The light inside each glass tile: a glyph of the app it stands for.
  * Chat a speech bubble, Scribe a live sound meter, Localman the braces of a
- * JSON body, Tunelo the rings of a tunnel. They are opaque and brighter than
- * white, so the glass refracts them and the bloom pass makes them glow;
- * `energy` (0..1) turns a glyph up while its chapter is on screen.
+ * JSON body, Tunelo the rings of a tunnel. They are brighter than white, so
+ * the bloom pass makes them glow; `energy` (0..1) turns a glyph up while its
+ * chapter is on screen.
+ *
+ * They are drawn in the transparent pass, after the glass, rather than seen
+ * through it: the refraction is sampled from a lower-resolution, roughened
+ * copy of the scene, which left the glyphs soft and colour-split.
  */
 import {
+	AdditiveBlending,
 	CapsuleGeometry,
 	CatmullRomCurve3,
 	Color,
@@ -28,9 +33,12 @@ export interface TileGlyph {
 	dispose(): void;
 }
 
-/** Brightness above 1 is what the bloom pass picks up. */
-const REST_BRIGHTNESS = 0.55;
-const FULL_BRIGHTNESS = 1.45;
+/**
+ * The bloom threshold is 0.88: a lit white glyph, added onto the bright glass,
+ * crosses it for a soft halo; the pink Scribe glyph reads by colour.
+ */
+const REST_BRIGHTNESS = 0.4;
+const FULL_BRIGHTNESS = 0.92;
 
 function glowMaterial(hex: number): {
 	material: MeshBasicMaterial;
@@ -40,6 +48,10 @@ function glowMaterial(hex: number): {
 	const material = new MeshBasicMaterial({
 		color: base.clone(),
 		toneMapped: false,
+		transparent: true,
+		// Added onto the glass rather than painted over it, so the glass's
+		// highlights still run across the glyph and it sits inside the block.
+		blending: AdditiveBlending,
 	});
 	return {
 		material,

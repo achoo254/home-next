@@ -24,11 +24,12 @@ Bản build nằm ở `dist/`: một `index.html`, CSS, JS ban đầu (~4,5 kB g
 | Nội dung tiếng Anh (đọc được khi không có JS) | `index.html` |
 | Chuỗi en/vi (gồm lời thoại của bot), chọn ngôn ngữ | `src/i18n/` |
 | Vị trí cuộn → "stage" liên tục (0 khởi hành, 1-4 từng app, 5 chìa khoá, 6 thêm app) | `src/scroll/stage-progress.ts` |
-| Bong bóng thoại của bot (gõ chữ, có vùng `aria-live`) và bản đồ lộ trình; chạy cả khi không có WebGL | `src/guide/guide-dialog.ts`, `src/styles/cockpit-hud.css` |
+| Bong bóng thoại của bot (gõ chữ; ẩn khỏi trình đọc màn hình vì lặp lại nội dung chương) và bản đồ lộ trình; chạy cả khi không có WebGL | `src/guide/guide-dialog.ts`, `src/styles/cockpit-hud.css` |
 | Quỹ đạo bay: đường cong qua 7 trạm, vị trí trạm cạnh chữ (desktop) hoặc trên chữ (điện thoại); toán thuần, có test | `src/scene/flight-path.ts` |
 | Điều phối cảnh: camera bay theo cuộn, trạm, hub, bot, vòng render, mất/khôi phục WebGL | `src/scene/flight-scene.ts` |
 | Bot dẫn đường 3D (mắt chớp, quay đầu nhìn trạm, ăng-ten nháy khi "nói") | `src/scene/guide-bot.ts` |
-| Trạm: khối kính khúc xạ có tán sắc, chứa biểu tượng app phát sáng | `src/scene/glass-tiles.ts`, `src/scene/tile-glyphs.ts` |
+| Tên lửa của bot: vòi kim loại, tia plasma hai lớp có shock diamond, tia lửa chạy trên GPU, quầng nhiệt; tia dài ra khi tàu bay nhanh | `src/scene/bot-thruster.ts` |
+| Trạm: khối kính khúc xạ có tán sắc; biểu tượng app vẽ sau lớp kính, ở đủ độ phân giải, nên luôn nét | `src/scene/glass-tiles.ts`, `src/scene/tile-glyphs.ts` |
 | Hub "chìa khoá": logo quỹ đạo 3D (lõi hồng = tài khoản, các ô app chạy trên vòng) | `src/scene/flight-scene.ts`, `src/scene/key-ring.ts` |
 | Tinh vân (shader vẽ ở độ phân giải thấp, làm background), đổi tông theo trạm | `src/scene/aurora-backdrop.ts`, `AURORA_MOODS` trong `src/scene/scene-palette.ts` |
 | Sao: bụi sao lấp lánh và vệt sao khi tàu bay nhanh | `src/scene/star-dust.ts`, `src/scene/warp-stars.ts` |

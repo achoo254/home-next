@@ -30,6 +30,8 @@ export function createKeyRing(): KeyRing {
 		side: DoubleSide,
 	});
 	const mesh = new Mesh(geometry, material);
+	// After the glyphs (order 1), so a glyph hides the ring's far side.
+	mesh.renderOrder = 2;
 	return {
 		mesh,
 		setStrength(strength, time) {

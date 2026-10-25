@@ -86,6 +86,10 @@ function glassMaterial(tint: number): MeshPhysicalMaterial {
 		iridescenceThicknessRange: [120, 480],
 		specularIntensity: 0.6,
 		envMapIntensity: 0.9,
+		// The glyph inside is drawn after the glass, at full resolution; if
+		// the glass wrote depth, its front face would hide the glyph. The
+		// glass is one convex block, so it needs no depth sorting of its own.
+		depthWrite: false,
 	});
 }
 
@@ -123,6 +127,11 @@ export function createGlassTiles(): GlassTiles {
 				isAccent ? SCENE_PALETTE.glassTintAccent : SCENE_PALETTE.glassTint,
 			),
 		);
+		// Glyphs before rings: a ring's far arc then hides behind the glyph
+		// and its near arc crosses over it.
+		glyph.object.traverse((part) => {
+			part.renderOrder = 1;
+		});
 		const group = new Group();
 		group.add(glyph.object, glass);
 		return { group, glass, glyph };

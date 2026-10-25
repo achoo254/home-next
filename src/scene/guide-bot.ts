@@ -1,15 +1,13 @@
 /**
  * Nav, the guide bot that rides along: a small pearl robot with a dark
  * visor, two light-bar eyes that blink, an antenna that pulses while it
- * talks, a halo ring and a soft thruster glow. It lives in camera space (a
- * child of the camera), turns its head towards the station ahead, and bobs
- * gently as the ship flies.
+ * talks, a halo ring and a plasma rocket under its body. It lives in camera
+ * space (a child of the camera), turns its head towards the station ahead,
+ * and bobs gently as the ship flies.
  */
 import {
-	AdditiveBlending,
 	CapsuleGeometry,
 	Color,
-	ConeGeometry,
 	CylinderGeometry,
 	Group,
 	Mesh,
@@ -21,22 +19,28 @@ import {
 	type Vector3,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { createBotThruster } from "./bot-thruster";
 import { SCENE_PALETTE } from "./scene-palette";
+
+export interface GuideBotFrame {
+	readonly time: number;
+	readonly dt: number;
+	/** World point the head turns towards. */
+	readonly lookAt: Vector3;
+	/** 0..1, how much it is "speaking" (antenna pulse). */
+	readonly talk: number;
+	/** 0 hovering .. 1 full burn, from how fast the ship flies. */
+	readonly thrust: number;
+	/** Reduced motion: no bobbing, blinking or turning animation. */
+	readonly still: boolean;
+}
 
 export interface GuideBot {
 	/** Add to the camera; position and scale it there. */
 	readonly root: Group;
-	/**
-	 * @param lookAt world point the head turns towards
-	 * @param talk 0..1, how much it is "speaking" (antenna pulse)
-	 */
-	update(
-		time: number,
-		dt: number,
-		lookAt: Vector3,
-		talk: number,
-		still: boolean,
-	): void;
+	update(frame: GuideBotFrame): void;
+	/** Drawing-buffer height in pixels, for the rocket's sparks. */
+	setViewportHeight(pixels: number): void;
 	dispose(): void;
 }
 
@@ -68,14 +72,6 @@ export function createGuideBot(): GuideBot {
 	const eyeMaterial = glow(0xc9b8ff, 2.2);
 	const antennaMaterial = glow(SCENE_PALETTE.accent, 2);
 	const haloMaterial = glow(SCENE_PALETTE.accent, 1.6);
-	const thrusterMaterial = new MeshBasicMaterial({
-		color: new Color(SCENE_PALETTE.violetLight).multiplyScalar(1.8),
-		transparent: true,
-		opacity: 0.55,
-		blending: AdditiveBlending,
-		depthWrite: false,
-		toneMapped: false,
-	});
 
 	const headGeometry = new RoundedBoxGeometry(0.92, 0.66, 0.66, 6, 0.24);
 	const visorGeometry = new RoundedBoxGeometry(0.74, 0.44, 0.12, 4, 0.1);
@@ -84,7 +80,6 @@ export function createGuideBot(): GuideBot {
 	const stalkGeometry = new CylinderGeometry(0.018, 0.018, 0.22, 8);
 	const tipGeometry = new SphereGeometry(0.06, 16, 12);
 	const haloGeometry = new TorusGeometry(0.52, 0.012, 8, 96);
-	const thrusterGeometry = new ConeGeometry(0.2, 0.55, 24, 1, true);
 
 	const root = new Group();
 	const bob = new Group();
@@ -99,10 +94,10 @@ export function createGuideBot(): GuideBot {
 	halo.rotation.x = Math.PI / 2.3;
 	bob.add(halo);
 
-	const thruster = new Mesh(thrusterGeometry, thrusterMaterial);
-	thruster.position.y = -1.08;
-	thruster.rotation.x = Math.PI;
-	bob.add(thruster);
+	// The nozzle tucks into the bottom of the body.
+	const thruster = createBotThruster();
+	thruster.group.position.y = -0.93;
+	bob.add(thruster.group);
 
 	const head = new Group();
 	head.position.y = 0.08;
@@ -130,7 +125,7 @@ export function createGuideBot(): GuideBot {
 
 	return {
 		root,
-		update(time, dt, lookAt, talk, still) {
+		update({ time, dt, lookAt, talk, thrust, still }) {
 			const motion = still ? 0 : 1;
 			bob.position.y = Math.sin(time * 1.6) * 0.06 * motion;
 			bob.rotation.z = Math.sin(time * 1.1) * 0.05 * motion;
@@ -153,9 +148,13 @@ export function createGuideBot(): GuideBot {
 			const pulse = 0.6 + talk * (0.7 + Math.sin(time * 14) * 0.5);
 			antennaMaterial.color.copy(tipBase).multiplyScalar(1 + pulse);
 			halo.rotation.z = time * 0.6 * motion;
-			thruster.scale.y = 0.9 + Math.sin(time * 23) * 0.08 * motion;
+			thruster.update(time, dt, thrust, still);
+		},
+		setViewportHeight(pixels) {
+			thruster.setViewportHeight(pixels);
 		},
 		dispose() {
+			thruster.dispose();
 			for (const geometry of [
 				headGeometry,
 				visorGeometry,
@@ -164,7 +163,6 @@ export function createGuideBot(): GuideBot {
 				stalkGeometry,
 				tipGeometry,
 				haloGeometry,
-				thrusterGeometry,
 			]) {
 				geometry.dispose();
 			}
@@ -174,7 +172,6 @@ export function createGuideBot(): GuideBot {
 				eyeMaterial,
 				antennaMaterial,
 				haloMaterial,
-				thrusterMaterial,
 			]) {
 				material.dispose();
 			}

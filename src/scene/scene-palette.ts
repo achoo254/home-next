@@ -16,6 +16,10 @@ export const SCENE_PALETTE = {
 	glyphAccent: 0xffd1f7,
 	dust: 0xc9b8ff,
 	dustAccent: 0xf3a9f6,
+	// Nav's rocket: a deeper pink and violet than the accent, which turns
+	// almost white once it is bright enough to bloom.
+	flame: 0xff5ad9,
+	flameDeep: 0x7a4cff,
 } as const;
 
 /**

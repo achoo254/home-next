@@ -228,6 +228,8 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 	/** The bot "talks" for a moment after each arrival. */
 	let lastStop = -1;
 	let talkUntil = 0;
+	/** The bot's rocket, smoothed so it swells and dies down gently. */
+	let thrust = 0;
 
 	const shipPosition = new Vector3();
 	const shipLook = new Vector3();
@@ -278,6 +280,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		post.setSize(width, height, pixelRatio);
 		post.setBloomEnabled(quality.bloom);
 		dust.setPixelRatio(pixelRatio);
+		bot.setViewportHeight(height * pixelRatio);
 		aurora.setSize(
 			width * pixelRatio,
 			height * pixelRatio,
@@ -426,7 +429,9 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 			);
 			const station = stations[index];
 			if (station) {
-				station.visible = shown > 0.01;
+				// Hidden until it is well on its way in: a crisp glyph a few
+				// pixels wide would sit on the copy as a stray icon.
+				station.visible = shown > 0.08;
 				station.scale.setScalar((compact ? 1.55 : 2.2) * (0.35 + 0.65 * shown));
 			}
 			tile.group.rotation.set(
@@ -487,13 +492,21 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 			botTarget.copy(
 				stationPositions[Math.min(HUB_STAGE, stop)] ?? camera.position,
 			);
-		bot.update(
-			elapsed,
-			dt,
-			botTarget,
-			elapsed < talkUntil ? 1 : 0,
-			reducedMotion,
+		// The rocket burns harder while the ship flies, and at full power
+		// as the bot leaves past the last stop.
+		const burnTarget = Math.max(
+			clamp01(velocity.length() / 25),
+			clamp01((mood - (LAST_STAGE - 0.6)) / 0.6),
 		);
+		thrust += (burnTarget - thrust) * Math.min(1, dt * 4);
+		bot.update({
+			time: elapsed,
+			dt,
+			lookAt: botTarget,
+			talk: elapsed < talkUntil ? 1 : 0,
+			thrust: reducedMotion ? 0 : thrust,
+			still: reducedMotion,
+		});
 
 		const lightFollow = Math.min(1, dt * 3);
 		pointerLight.position.x +=

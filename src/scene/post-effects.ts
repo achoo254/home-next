@@ -24,7 +24,7 @@ const LensShader = {
 		tDiffuse: { value: null },
 		uTime: { value: 0 },
 		uGrain: { value: 0.022 },
-		uFringe: { value: 0.006 },
+		uFringe: { value: 0.003 },
 	},
 	vertexShader: /* glsl */ `
 		varying vec2 vUv;
@@ -85,7 +85,7 @@ export function createPostEffects(
 	});
 	const composer = new EffectComposer(renderer, target);
 	// The size is set by composer.setSize; the bloom draws at half of it.
-	const bloom = new UnrealBloomPass(new Vector2(1, 1), 0.6, 0.55, 0.88);
+	const bloom = new UnrealBloomPass(new Vector2(1, 1), 0.6, 0.38, 0.88);
 	const output = new OutputPass();
 	const lens = new ShaderPass(LensShader);
 	const scenePass = new RenderPass(scene, camera);
