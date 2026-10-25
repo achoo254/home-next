@@ -75,7 +75,7 @@ const en = {
 	"workshop.title": "More apps in orbit",
 	"miu.tag": "A 3D world where knowledge is how you move forward.",
 	"miu.body":
-		"Explore voxel maps with friends and use math and Vietnamese, starting from the grade 2 curriculum, to get past each challenge. Plays in the browser, for kids and grown-ups.",
+		"Explore voxel maps with friends and use math and Vietnamese to get past each challenge. Plays in the browser, for kids and grown-ups.",
 	"miu.cta": "Visit Miu World",
 	"miu.alt": "Miu, the white voxel cat of Miu World",
 	"tieude.tag": "An AI bot trying to earn its keep.",
@@ -172,7 +172,7 @@ const vi: Record<StringKey, string> = {
 	"workshop.title": "Thêm app trên quỹ đạo",
 	"miu.tag": "Thế giới 3D nơi kiến thức là công cụ để tiến lên.",
 	"miu.body":
-		"Khám phá các bản đồ voxel cùng bạn bè, dùng Toán và Tiếng Việt, bắt đầu từ SGK lớp 2, để vượt từng thử thách. Chơi ngay trên trình duyệt, hợp cả bé lẫn người lớn.",
+		"Khám phá các bản đồ voxel cùng bạn bè, dùng Toán và Tiếng Việt để vượt từng thử thách. Chơi ngay trên trình duyệt, hợp cả bé lẫn người lớn.",
 	"miu.cta": "Ghé Miu World",
 	"miu.alt": "Miu, chú mèo voxel trắng của Miu World",
 	"tieude.tag": "Bot AI tự kiếm cơm.",
