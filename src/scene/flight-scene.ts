@@ -19,6 +19,7 @@ import {
 	MathUtils,
 	Mesh,
 	MeshPhysicalMaterial,
+	type Object3D,
 	PerspectiveCamera,
 	PointLight,
 	Quaternion,
@@ -264,6 +265,33 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 			hub.scale.setScalar(compact ? 1.05 : 1.45);
 			hub.lookAt(hubFrame.position);
 		}
+	}
+
+	/**
+	 * Compiles every shader up front. Stations and the hub are hidden until
+	 * the ship nears them, and three compiles a program on first sight, so
+	 * the first station and the hub each stalled the flight for 100-300 ms.
+	 * One unseen draw with all of them shown warms everything up; `update()`
+	 * sets their visibility again on the next frame.
+	 */
+	function precompile(): void {
+		update(0);
+		const unculled: Object3D[] = [];
+		for (const group of [...stations, hub]) {
+			group.visible = true;
+			// Out of view they would be culled and never drawn. Compiling
+			// alone is not enough: some drivers finish a program, and three
+			// sizes the refraction buffer, only on the first real draw.
+			group.traverse((part) => {
+				if (part.frustumCulled) {
+					part.frustumCulled = false;
+					unculled.push(part);
+				}
+			});
+		}
+		aurora.render(renderer);
+		post.render();
+		for (const part of unculled) part.frustumCulled = true;
 	}
 
 	function measure(): void {
@@ -594,6 +622,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		environment.dispose();
 		environment = createStudioEnvironment(renderer);
 		scene.environment = environment;
+		precompile();
 		draw(0);
 		onShownChange(true);
 		if (!document.hidden) start();
@@ -613,6 +642,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 	canvas.addEventListener("webglcontextrestored", onContextRestored);
 
 	resize();
+	precompile();
 	draw(0);
 	onShownChange(true);
 	start();
