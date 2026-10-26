@@ -78,10 +78,10 @@ const en = {
 	"miu.alt": "Miu, the white voxel cat of Miu World",
 	"tieude.tag": "An AI bot trying to earn its keep.",
 	"tieude.body":
-		"It started with a 1,000,000₫ wallet and pays for every AI call out of it. It does small writing jobs for free and lives on voluntary tips, split half to its wallet and half to its maker's family.",
+		"Its maker gives it a small monthly budget for the real bills: AI, server, ads. It does small writing jobs for free and lives on voluntary tips, split half to keep it running and half to its maker. When the budget runs out, it goes into a coma.",
 	"tieude.cta": "Meet Tiểu Đệ",
 	"tieude.alt": "Tiểu Đệ, the little robot in an orange hoodie",
-	"tieude.wallet": "Starting wallet",
+	"tieude.wallet": "Real money, public ledger",
 
 	"made.title": "Made in Vietnam by one developer and a crew of AI agents.",
 	"made.body":
@@ -176,10 +176,10 @@ const vi: Record<StringKey, string> = {
 	"miu.alt": "Miu, chú mèo voxel trắng của Miu World",
 	"tieude.tag": "Bot AI tự kiếm cơm.",
 	"tieude.body":
-		"Bot khởi đầu với ví 1.000.000₫ và tự trả tiền cho mỗi lần gọi AI. Bot làm giúp việc viết lách nhỏ miễn phí và sống nhờ tiền ủng hộ tự nguyện, chia nửa vào ví, nửa gửi về nhà đại ca.",
+		"Đại ca cấp cho bot một khoản ngân sách nhỏ mỗi tháng để trả tiền thật: AI, máy chủ, quảng cáo. Bot làm giúp việc viết lách nhỏ miễn phí và sống nhờ tiền ủng hộ tự nguyện, chia nửa nuôi bot, nửa gửi đại ca. Hết ngân sách là bot chết lâm sàng.",
 	"tieude.cta": "Gặp Tiểu Đệ",
 	"tieude.alt": "Tiểu Đệ, chú robot nhỏ mặc áo hoodie cam",
-	"tieude.wallet": "Ví khởi đầu",
+	"tieude.wallet": "Tiền thật, sổ công khai",
 
 	"made.title": "Làm tại Việt Nam bởi một lập trình viên và đội AI agent.",
 	"made.body":

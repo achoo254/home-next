@@ -631,7 +631,7 @@ main,
 	border-radius: var(--radius);
 }
 
-/* The wallet it started with: a small detail under the name, not a headline. */
+/* How Tiểu Đệ is funded: a small detail under the name, not a headline. */
 .wallet {
 	display: inline-flex;
 	align-items: baseline;
@@ -642,12 +642,6 @@ main,
 	border-radius: var(--radius-pill);
 	color: var(--ink-2);
 	font-size: var(--step--1);
-}
-
-.wallet b {
-	color: var(--accent);
-	font-weight: 600;
-	font-variant-numeric: tabular-nums;
 }
 
 .workshop-name {
