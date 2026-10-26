@@ -2,19 +2,14 @@
  * The route of the ship: a smooth curve through seven stops, one per stage
  * of the page (0 launch, 1-4 one app each, 5 the key, 6 the workshop). The
  * scroll stage maps straight onto the curve, so stage 2 is exactly the
- * Scribe stop. Stations sit ahead of their stop, to the right of the view on
- * wide screens (the copy is on the left) and above it on phones (the copy is
- * at the bottom).
+ * Scribe stop.
  */
 import { CatmullRomCurve3, Vector3 } from "three";
 
 export const STOP_COUNT = 7;
 export const LAST_STAGE = STOP_COUNT - 1;
-export const HUB_STAGE = 5;
 /** Distance between two stops along the route. */
 export const STOP_SPACING = 34;
-/** How far ahead of its stop a station floats. */
-export const STATION_AHEAD = 9.5;
 
 const UP = new Vector3(0, 1, 0);
 
@@ -61,21 +56,9 @@ export function stopFrame(curve: CatmullRomCurve3, stop: number): StopFrame {
 	return { position, forward, right, up };
 }
 
-/** Where a station (or the key hub) floats relative to its stop. */
-export function stationPosition(
-	frame: StopFrame,
-	compact: boolean,
-	into = new Vector3(),
-): Vector3 {
-	into.copy(frame.position).addScaledVector(frame.forward, STATION_AHEAD);
-	if (compact) into.addScaledVector(frame.up, 1.7);
-	else into.addScaledVector(frame.right, 2.9).addScaledVector(frame.up, 0.2);
-	return into;
-}
-
 /**
  * The point the camera looks at while resting at a stop: ahead, nudged
- * towards the station so it sits beside the copy rather than behind it.
+ * away from the copy, so the nebula's brightest part sits beside it.
  */
 export function stopLookTarget(
 	frame: StopFrame,

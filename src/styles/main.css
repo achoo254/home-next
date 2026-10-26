@@ -127,8 +127,8 @@ main,
 	z-index: 1;
 }
 
-/* Static stand-in for the 3D tiles: shown without JS, without WebGL and
-   until the scene has drawn its first frame. */
+/* Static stand-in for the 3D tiles, shown without JS. With JS, Nav the
+   guide bot takes its place (cockpit-hud.css). */
 .stage-poster {
 	position: absolute;
 	top: 50%;
@@ -199,10 +199,6 @@ main,
 .brand-mark {
 	width: 32px;
 	height: 32px;
-}
-
-.brand-mark-bg {
-	fill: var(--violet);
 }
 
 .brand-name {
@@ -435,25 +431,9 @@ main,
 }
 
 .tile-glyph {
+	flex: none;
 	width: 24px;
 	height: 24px;
-}
-
-.tile-glyph rect,
-.tile-glyph circle {
-	fill: none;
-	stroke: var(--ink-3);
-	stroke-width: 1.5;
-}
-
-.tile-glyph .is-on {
-	fill: var(--tile);
-	stroke: var(--tile);
-}
-
-.tile-glyph .is-accent {
-	fill: var(--accent);
-	stroke: var(--accent);
 }
 
 .app-name {
@@ -502,6 +482,56 @@ main,
 .prompt {
 	color: var(--violet-soft);
 	user-select: none;
+}
+
+/* Each app's 3D art sits beside its copy on wide screens and above it on
+   tall ones. It floats a little, and grows in as it scrolls into view
+   where the browser can tie an animation to scrolling. */
+.chapter-inner,
+.key-inner {
+	display: grid;
+	grid-template-columns: minmax(0, 32rem) minmax(0, 1fr);
+	align-items: center;
+	gap: var(--space-7);
+}
+
+.app-art {
+	justify-self: center;
+	width: min(100%, 34vw, 440px);
+	height: auto;
+	filter: drop-shadow(0 24px 48px oklch(8% 0.05 var(--hue) / 0.55));
+	pointer-events: none;
+	user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.app-art {
+		animation: art-float 6s ease-in-out infinite;
+	}
+
+	@supports (animation-timeline: view()) {
+		.app-art {
+			animation:
+				art-float 6s ease-in-out infinite,
+				art-arrive linear both;
+			animation-timeline: auto, view();
+			animation-range: normal, entry 0% cover 40%;
+		}
+	}
+}
+
+@keyframes art-float {
+	50% {
+		translate: 0 -3%;
+		rotate: 1.5deg;
+	}
+}
+
+@keyframes art-arrive {
+	from {
+		opacity: 0;
+		scale: 0.7;
+	}
 }
 
 /* ---------- Account ---------- */
@@ -754,6 +784,12 @@ main,
 		padding-bottom: var(--space-8);
 	}
 
+	/* Room for Nav riding under the header. */
+	.chapter,
+	.key {
+		padding-top: calc(var(--header-h) + clamp(84px, 11svh, 120px) + var(--space-5));
+	}
+
 	.hero::after,
 	.key::after {
 		content: "";
@@ -768,9 +804,21 @@ main,
 		position: relative;
 	}
 
-	/* The focused tile peeks out above the card, so the card is solid here. */
+	/* The app art sits right above the card, so the card is solid here. */
 	.chapter-card {
 		background: var(--surface);
+	}
+
+	.chapter-inner,
+	.key-inner {
+		grid-template-columns: minmax(0, 1fr);
+		gap: var(--space-5);
+	}
+
+	/* Above the copy, clear of Nav and its bubble under the header. */
+	.app-art {
+		order: -1;
+		width: min(62vw, 26svh, 300px);
 	}
 
 	.stage-poster {

@@ -8,18 +8,16 @@
 export interface QualityLevel {
 	/** Upper bound for the device pixel ratio. */
 	readonly maxPixelRatio: number;
-	/** Share of the canvas resolution the glass refraction is drawn at. */
-	readonly refractionScale: number;
 	/** Share of the canvas resolution the aurora noise is drawn at. */
 	readonly auroraScale: number;
 	readonly bloom: boolean;
 }
 
 export const QUALITY_LEVELS: readonly QualityLevel[] = [
-	{ maxPixelRatio: 2, refractionScale: 0.85, auroraScale: 0.5, bloom: true },
-	{ maxPixelRatio: 1.5, refractionScale: 0.6, auroraScale: 0.4, bloom: true },
-	{ maxPixelRatio: 1, refractionScale: 0.5, auroraScale: 0.33, bloom: true },
-	{ maxPixelRatio: 1, refractionScale: 0.4, auroraScale: 0.25, bloom: false },
+	{ maxPixelRatio: 2, auroraScale: 0.5, bloom: true },
+	{ maxPixelRatio: 1.5, auroraScale: 0.4, bloom: true },
+	{ maxPixelRatio: 1, auroraScale: 0.33, bloom: true },
+	{ maxPixelRatio: 1, auroraScale: 0.25, bloom: false },
 ];
 
 /** Frames per sample window: short, so a slow device recovers in seconds. */

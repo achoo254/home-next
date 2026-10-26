@@ -1,6 +1,6 @@
 /**
- * The finishing pass: bloom on everything brighter than white (glyphs, the
- * key ring, the brightest dust), then the output pass that tone maps and
+ * The finishing pass: bloom on everything brighter than white (the
+ * brightest dust and the streaking stars), then the output pass that tone maps and
  * converts to sRGB, then a lens pass that adds a hint of chromatic fringing
  * towards the edges and fine film grain. Grain comes after tone mapping so
  * it is equally faint in shadows and highlights.

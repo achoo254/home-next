@@ -133,29 +133,101 @@
 	transform: scale(1.15);
 }
 
+/* Nav, the guide bot, and its speech bubble. The bubble always sits
+   beside the bot with its tail pointing at it. Two poses: "hero" (big,
+   beside the title, bubble above) and "ride" (small, in a corner, bubble
+   to the left). The image has its antenna tip and nozzle at fixed spots,
+   given here as fractions of its box. */
 .guide {
+	--bot-h: min(52svh, 480px);
+	--antenna-x: 55.5%;
+	--antenna-y: 5.5%;
+	--nozzle-x: 44.5%;
+	--bubble-w: 300px;
+
 	position: fixed;
-	right: var(--space-5);
-	bottom: var(--space-5);
+	right: max(var(--space-6), 6vw);
+	bottom: max(var(--space-7), 12svh);
 	z-index: 15;
-	width: min(320px, calc(100vw - 2 * var(--space-5)));
-	padding: var(--space-3) var(--space-4);
-	background: var(--surface-veil);
-	border: var(--border) solid var(--line);
-	border-radius: var(--radius);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: var(--space-3);
 	visibility: hidden;
 	pointer-events: none;
+	transition:
+		right var(--dur-enter) var(--ease-expo),
+		bottom var(--dur-enter) var(--ease-expo),
+		opacity var(--dur-enter) var(--ease-out),
+		transform var(--dur-enter) var(--ease-expo);
 }
 
 /* Shown once the script fills it; without JS there is nothing to say. */
 .guide.is-ready {
 	visibility: visible;
-	transition: opacity var(--dur-state) var(--ease-out);
 }
 
+/* The bot stands in for the poster from now on. */
+:root:has(.guide.is-ready) .stage-poster {
+	display: none;
+}
+
+.guide[data-pose="ride"] {
+	--bot-h: clamp(108px, 18svh, 150px);
+
+	right: var(--space-7);
+	bottom: var(--space-6);
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+/* Past the last stop the page is reading matter: Nav flies off. */
 .guide.is-resting {
 	opacity: 0;
-	pointer-events: none;
+	transform: translate(30%, -60svh) rotate(8deg);
+}
+
+.guide-bubble {
+	position: relative;
+	width: min(var(--bubble-w), calc(100vw - 2 * var(--space-4)));
+	margin-right: calc(var(--bot-h) * 0.18);
+	padding: var(--space-3) var(--space-4);
+	background: var(--surface-veil);
+	border: var(--border) solid var(--line-strong);
+	border-radius: var(--radius);
+	box-shadow: 0 12px 32px oklch(5% 0.02 var(--hue) / 0.5);
+	transform-origin: 100% 0;
+	transition:
+		opacity var(--dur-state) var(--ease-out),
+		transform var(--dur-state) var(--ease-out);
+}
+
+/* The tail: a small rotated square on the side facing the bot. */
+.guide-bubble::after {
+	content: "";
+	position: absolute;
+	right: var(--space-6);
+	bottom: calc(-1 * var(--space-2) - 1px);
+	width: var(--space-4);
+	height: var(--space-4);
+	background: inherit;
+	border: inherit;
+	border-width: 0 var(--border) var(--border) 0;
+	border-radius: 0 0 3px;
+	transform: rotate(45deg);
+}
+
+.guide[data-pose="ride"] .guide-bubble {
+	margin-top: calc(var(--bot-h) * 0.12);
+	margin-right: 0;
+}
+
+.guide[data-pose="ride"] .guide-bubble::after {
+	top: var(--space-5);
+	right: calc(-1 * var(--space-2) - 1px);
+	bottom: auto;
+	border-width: var(--border) var(--border) 0 0;
+	border-radius: 0 3px 0 0;
 }
 
 .guide-name {
@@ -181,10 +253,98 @@
 	opacity: 0;
 }
 
+.guide-bot {
+	position: relative;
+	flex: none;
+	height: var(--bot-h);
+	aspect-ratio: 380 / 536;
+	transition: height var(--dur-enter) var(--ease-expo);
+}
+
+.guide-bot-art {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	filter: drop-shadow(0 0 24px oklch(62% 0.16 288 / 0.35));
+}
+
+/* The antenna tip glows brighter while Nav talks. */
+.guide-antenna {
+	position: absolute;
+	left: var(--antenna-x);
+	top: var(--antenna-y);
+	width: 9%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: radial-gradient(closest-side, oklch(92% 0.08 var(--accent-hue) / 0.9), transparent);
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(1.6);
+	transition: opacity var(--dur-state) var(--ease-out);
+	mix-blend-mode: screen;
+}
+
+/* The plasma rocket under the nozzle. */
+.guide-flame {
+	position: absolute;
+	top: 96%;
+	left: var(--nozzle-x);
+	width: 16%;
+	height: 22%;
+	border-radius: 50% 50% 45% 45% / 30% 30% 70% 70%;
+	background: radial-gradient(
+		ellipse 50% 60% at 50% 20%,
+		oklch(97% 0.03 var(--accent-hue)) 0%,
+		oklch(80% 0.15 var(--accent-hue)) 35%,
+		oklch(62% 0.2 var(--accent-hue) / 0.5) 65%,
+		transparent 100%
+	);
+	filter: blur(2px);
+	transform: translateX(-50%) scaleY(0.7);
+	transform-origin: 50% 0;
+	transition: transform var(--dur-state) var(--ease-out);
+}
+
+.guide.is-burning .guide-flame,
+.guide.is-resting .guide-flame {
+	transform: translateX(-50%) scaleY(1.5);
+}
+
 @media (prefers-reduced-motion: no-preference) {
 	.guide.is-talking .guide-caret {
 		opacity: 1;
 		animation: caret 0.8s steps(1) infinite;
+	}
+
+	.guide.is-talking .guide-antenna {
+		opacity: 1;
+		animation: antenna 0.5s ease-in-out infinite alternate;
+	}
+
+	.guide-bot {
+		animation: hover 3.6s ease-in-out infinite;
+	}
+
+	.guide-flame {
+		animation: flicker 0.18s steps(2) infinite;
+	}
+}
+
+@keyframes hover {
+	50% {
+		transform: translateY(-4%) rotate(-1.5deg);
+	}
+}
+
+@keyframes flicker {
+	50% {
+		opacity: 0.75;
+	}
+}
+
+@keyframes antenna {
+	to {
+		opacity: 0.5;
 	}
 }
 
@@ -194,13 +354,52 @@
 	}
 }
 
-/* Narrow screens: no route map, the bubble sits under the header. */
+/* Narrow screens: no route map. */
 @media (max-width: 900px), (max-aspect-ratio: 9/10) {
 	.route {
 		display: none;
 	}
 }
 
+/* Wide but not wide enough for a big Nav beside the title (small laptops,
+   tablets and phones held sideways): the hero pose keeps the ride layout
+   in the corner, just a little bigger. */
+@media (min-aspect-ratio: 9/10) and (max-width: 1099px) {
+	.guide[data-pose="hero"] {
+		--bot-h: clamp(108px, 22svh, 180px);
+
+		right: var(--space-6);
+		bottom: var(--space-5);
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.guide[data-pose="hero"] .guide-bubble {
+		margin-top: calc(var(--bot-h) * 0.12);
+		margin-right: 0;
+	}
+
+	.guide[data-pose="hero"] .guide-bubble::after {
+		top: var(--space-5);
+		right: calc(-1 * var(--space-2) - 1px);
+		bottom: auto;
+		border-width: var(--border) var(--border) 0 0;
+		border-radius: 0 3px 0 0;
+	}
+}
+
+/* Phones held sideways: a narrower bubble, lower down. */
+@media (min-aspect-ratio: 9/10) and (max-height: 560px) {
+	.guide,
+	.guide[data-pose] {
+		--bubble-w: 230px;
+
+		bottom: var(--space-3);
+	}
+}
+
+/* Tall screens (phones, tablets upright): the scene sits above the copy,
+   so Nav and its bubble share one row under the header in both poses. */
 @media (max-aspect-ratio: 9/10) {
 	.cockpit {
 		inset: calc(var(--header-h) + var(--space-2)) var(--space-2) var(--space-2);
@@ -211,17 +410,58 @@
 		height: var(--space-5);
 	}
 
-	.guide {
-		top: calc(var(--header-h) + var(--space-2));
-		right: auto;
+	.guide,
+	.guide[data-pose="ride"] {
+		top: calc(var(--header-h) + var(--space-3));
+		right: var(--space-4);
 		bottom: auto;
-		left: var(--space-3);
-		width: calc(100vw - 2 * var(--space-3) - 112px);
+		left: var(--space-4);
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: flex-end;
+	}
+
+	.guide {
+		--bot-h: min(24svh, 230px);
+	}
+
+	.guide[data-pose="ride"] {
+		--bot-h: clamp(84px, 11svh, 120px);
+	}
+
+	.guide .guide-bubble {
+		flex: 0 1 auto;
+		width: auto;
+		max-width: 26rem;
+		margin-top: calc(var(--bot-h) * 0.12);
+		margin-right: 0;
 		padding: var(--space-2) var(--space-3);
+	}
+
+	.guide .guide-bubble::after {
+		top: var(--space-5);
+		right: calc(-1 * var(--space-2) - 1px);
+		bottom: auto;
+		border-width: var(--border) var(--border) 0 0;
+		border-radius: 0 3px 0 0;
 	}
 
 	.guide-line {
 		min-height: calc(3 * 1.45em);
 		line-height: 1.45;
+	}
+
+	/* Riding along, the bubble tucks away once its line has been read, so
+	   it does not sit on the copy; the next stop brings it back. */
+	.guide[data-pose="ride"].is-quiet .guide-bubble {
+		opacity: 0;
+		transform: translateX(var(--space-4)) scale(0.92);
+	}
+}
+
+/* Short upright screens: keep the hero pose clear of the title. */
+@media (max-aspect-ratio: 9/10) and (max-height: 720px) {
+	.guide {
+		--bot-h: 19svh;
 	}
 }
