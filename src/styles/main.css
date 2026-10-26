@@ -579,12 +579,12 @@ main,
 	border-top: var(--border) solid var(--line-strong);
 }
 
-/* A staggered row, like bodies at different points of one orbit. */
-.workshop-tieude {
+/* Staggered rows, like bodies at different points of one orbit. */
+.workshop-item:nth-child(3n + 2) {
 	margin-top: var(--space-8);
 }
 
-.workshop-next {
+.workshop-item:nth-child(3n) {
 	margin-top: var(--space-10);
 }
 
@@ -877,8 +877,7 @@ main,
 		gap: var(--space-8);
 	}
 
-	.workshop-tieude,
-	.workshop-next {
+	.workshop-item:nth-child(n) {
 		margin-top: 0;
 	}
 
