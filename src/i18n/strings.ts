@@ -34,8 +34,6 @@ const en = {
 		"Tunelo puts your localhost on the internet. Three commands, done.",
 	"guide.5":
 		"Here is the key. One sign-in opens every app, including the ones still being built.",
-	"guide.6":
-		"More apps in orbit, and new ones under construction. Same key for all of them.",
 	"route.label": "Route",
 	"route.0": "Launch",
 	"route.1": "Chat",
@@ -82,6 +80,8 @@ const en = {
 	"tieude.body":
 		"It started with a 1,000,000₫ wallet and pays for every AI call out of it. It does small writing jobs for free and lives on voluntary tips, split half to its wallet and half to its maker's family.",
 	"tieude.cta": "Meet Tiểu Đệ",
+	"tieude.alt": "Tiểu Đệ, the little robot in an orange hoodie",
+	"tieude.wallet": "Starting wallet",
 
 	"made.title": "Made in Vietnam by one developer and a crew of AI agents.",
 	"made.body":
@@ -104,6 +104,7 @@ const en = {
 	"footer.more": "More",
 	"footer.account": "Your account",
 	"footer.rights": "© 2026 hoandat.com",
+	"footer.privacy": "Privacy",
 } as const;
 
 export type StringKey = keyof typeof en;
@@ -131,8 +132,6 @@ const vi: Record<StringKey, string> = {
 	"guide.4": "Tunelo đưa localhost của bạn lên internet. Ba lệnh là xong.",
 	"guide.5":
 		"Đây là chìa khoá. Đăng nhập một lần là mở được mọi app, kể cả app đang xây.",
-	"guide.6":
-		"Thêm app trên quỹ đạo, và vài app đang được xây. Tất cả cùng một chìa khoá.",
 	"route.label": "Lộ trình",
 	"route.0": "Khởi hành",
 	"route.1": "Chat",
@@ -179,6 +178,8 @@ const vi: Record<StringKey, string> = {
 	"tieude.body":
 		"Bot khởi đầu với ví 1.000.000₫ và tự trả tiền cho mỗi lần gọi AI. Bot làm giúp việc viết lách nhỏ miễn phí và sống nhờ tiền ủng hộ tự nguyện, chia nửa vào ví, nửa gửi về nhà đại ca.",
 	"tieude.cta": "Gặp Tiểu Đệ",
+	"tieude.alt": "Tiểu Đệ, chú robot nhỏ mặc áo hoodie cam",
+	"tieude.wallet": "Ví khởi đầu",
 
 	"made.title": "Làm tại Việt Nam bởi một lập trình viên và đội AI agent.",
 	"made.body":
@@ -202,6 +203,7 @@ const vi: Record<StringKey, string> = {
 	"footer.more": "Thêm nữa",
 	"footer.account": "Tài khoản của bạn",
 	"footer.rights": "© 2026 hoandat.com",
+	"footer.privacy": "Quyền riêng tư",
 };
 
 export const STRINGS: Readonly<Record<Locale, Record<StringKey, string>>> = {

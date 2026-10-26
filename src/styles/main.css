@@ -588,12 +588,22 @@ main,
 	margin-top: var(--space-10);
 }
 
-/* A planned station: a dashed ring with nothing in it yet. */
+/* A planned station: the hoandat logo inside a turning dashed ring. */
 .next-mark {
 	display: grid;
 	place-items: center;
 	width: 112px;
 	height: 112px;
+}
+
+.next-ring,
+.next-logo {
+	grid-area: 1 / 1;
+}
+
+.next-logo {
+	width: 56px;
+	height: 56px;
 }
 
 .next-ring {
@@ -621,14 +631,23 @@ main,
 	border-radius: var(--radius);
 }
 
+/* The wallet it started with: a small detail under the name, not a headline. */
 .wallet {
+	display: inline-flex;
+	align-items: baseline;
+	gap: var(--space-2);
+	margin-top: var(--space-3);
+	padding: var(--space-1) var(--space-3);
+	border: var(--border) solid var(--line-strong);
+	border-radius: var(--radius-pill);
+	color: var(--ink-2);
+	font-size: var(--step--1);
+}
+
+.wallet b {
 	color: var(--accent);
-	font-family: var(--font-display);
-	font-size: var(--step-4);
 	font-weight: 600;
 	font-variant-numeric: tabular-nums;
-	letter-spacing: var(--tracking-display);
-	line-height: 1;
 }
 
 .workshop-name {
@@ -744,6 +763,18 @@ main,
 	margin-top: var(--space-2);
 	color: var(--ink-3);
 	font-size: var(--step--1);
+}
+
+.footer-legal {
+	display: inline-flex;
+	align-items: center;
+	min-height: var(--target);
+	color: var(--ink-2);
+	font-size: var(--step--1);
+}
+
+.footer-legal:hover {
+	color: var(--ink);
 }
 
 .footer-col {

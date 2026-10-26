@@ -14,11 +14,10 @@ import { measureAnchors, stageAt } from "../scroll/stage-progress";
 
 /** Milliseconds per character while typing. */
 const TYPE_SPEED = 22;
-/** Last stop of the route: after its line Nav flies off, so it does not
- * cover the reading matter below. */
+/** Last stop of the route ("More apps in orbit"). Its cards fill the whole
+ * width, so wherever Nav rode it would cover copy: it flies off on arrival
+ * and stays away for the reading matter below. */
 const LAST_STOP = 6;
-/** How long the last line stays before Nav flies off. */
-const REST_AFTER_MS = 3500;
 /** How long a line stays after it is typed before the bubble tucks away on
  * small screens, where it would sit on the copy. */
 const QUIET_AFTER_MS = 4000;
@@ -49,7 +48,6 @@ export function mountGuideDialog(options: {
 	let anchors = measureAnchors(stageSections);
 	let current = -1;
 	let typingTimer = 0;
-	let restTimer = 0;
 	let burnTimer = 0;
 	let quietTimer = 0;
 	let scheduled = false;
@@ -59,13 +57,12 @@ export function mountGuideDialog(options: {
 		return isStringKey(key) ? STRINGS[locale][key] : "";
 	}
 
-	function restLater(stop: number): void {
-		window.clearTimeout(restTimer);
-		guide.classList.remove("is-resting");
-		if (stop < LAST_STOP) return;
-		restTimer = window.setTimeout(() => {
-			guide.classList.add("is-resting");
-		}, REST_AFTER_MS);
+	/** Nav flies off and stops talking. */
+	function rest(): void {
+		window.clearInterval(typingTimer);
+		window.clearTimeout(quietTimer);
+		guide.classList.remove("is-talking");
+		guide.classList.add("is-resting");
 	}
 
 	function quietLater(): void {
@@ -77,7 +74,7 @@ export function mountGuideDialog(options: {
 
 	function say(stop: number): void {
 		const line = lineFor(stop);
-		restLater(stop);
+		guide.classList.remove("is-resting");
 		window.clearTimeout(quietTimer);
 		guide.classList.remove("is-quiet");
 		window.clearInterval(typingTimer);
@@ -118,7 +115,8 @@ export function mountGuideDialog(options: {
 		guide.dataset.stop = String(stop);
 		guide.dataset.pose = stop === 0 ? "hero" : "ride";
 		markRoute(stop);
-		say(stop);
+		if (stop >= LAST_STOP) rest();
+		else say(stop);
 	}
 
 	function schedule(): void {
@@ -149,7 +147,7 @@ export function mountGuideDialog(options: {
 	return {
 		setLocale(next) {
 			locale = next;
-			if (current >= 0) say(current);
+			if (current >= 0 && current < LAST_STOP) say(current);
 		},
 	};
 }
