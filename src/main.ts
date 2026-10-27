@@ -5,7 +5,9 @@ import "./styles/cockpit-hud.css";
 import { type GuideDialog, mountGuideDialog } from "./guide/guide-dialog";
 import {
 	applyLocale,
+	localeFromPath,
 	otherLocale,
+	pathOfLocale,
 	pickInitialLocale,
 	readSavedLocale,
 	saveLocale,
@@ -13,8 +15,22 @@ import {
 
 const root = document.documentElement;
 
-let locale = pickInitialLocale(readSavedLocale(), navigator.languages);
-if (locale !== "en") applyLocale(document, locale);
+// /vi/ is always Vietnamese (search engines index it as such); on / the saved
+// choice or the browser decides. The address then follows the language shown.
+const shipped = localeFromPath(location.pathname);
+let locale =
+	shipped === "vi"
+		? "vi"
+		: pickInitialLocale(readSavedLocale(), navigator.languages);
+if (locale !== shipped) applyLocale(document, locale);
+showLocaleInAddress(locale);
+
+function showLocaleInAddress(shown: typeof locale): void {
+	const path = pathOfLocale(shown);
+	if (location.pathname !== path) {
+		history.replaceState(null, "", `${path}${location.search}${location.hash}`);
+	}
+}
 
 for (const button of document.querySelectorAll<HTMLButtonElement>(
 	"[data-locale-switch]",
@@ -23,6 +39,7 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(
 		locale = otherLocale(locale);
 		saveLocale(locale);
 		applyLocale(document, locale);
+		showLocaleInAddress(locale);
 		guide?.setLocale(locale);
 	});
 }

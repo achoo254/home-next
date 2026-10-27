@@ -48,7 +48,8 @@ export function applyLocale(root: Document, locale: Locale): void {
 	root.documentElement.lang = locale;
 
 	for (const element of root.querySelectorAll<HTMLElement>("[data-i18n]")) {
-		const key = element.dataset.i18n ?? "";
+		// getAttribute rather than dataset: the build runs this on linkedom too (vietnamese-page.ts).
+		const key = element.getAttribute("data-i18n") ?? "";
 		if (isStringKey(key)) element.textContent = strings[key];
 	}
 
@@ -68,6 +69,16 @@ export function applyLocale(root: Document, locale: Locale): void {
 	}
 
 	root.title = strings["meta.title"];
+}
+
+/** The language of the page at `pathname`: /vi/ is the Vietnamese page, everything else the English one. */
+export function localeFromPath(pathname: string): Locale {
+	return pathname === "/vi" || pathname.startsWith("/vi/") ? "vi" : "en";
+}
+
+/** Where each language's page lives. */
+export function pathOfLocale(locale: Locale): string {
+	return locale === "vi" ? "/vi/" : "/";
 }
 
 export function otherLocale(locale: Locale): Locale {
