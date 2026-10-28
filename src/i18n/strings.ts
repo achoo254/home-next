@@ -92,7 +92,8 @@ const en = {
 	"tuvi.body":
 		"Enter a birth date and hour to cast a twelve-palace chart, read what each star means and share it as an image. Charts follow the Vietnamese lunar calendar. For fun only.",
 	"tuvi.cta": "Cast a chart",
-	"tuvi.alt": "The Tử Vi icon: a little owl astrologer in a starry hat holding a golden zodiac wheel",
+	"tuvi.alt":
+		"The Tử Vi icon: a little owl astrologer in a starry hat holding a golden zodiac wheel",
 	"clip.tag": "Short vertical videos from a template.",
 	"clip.body":
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
@@ -206,7 +207,8 @@ const vi: Record<StringKey, string> = {
 	"tuvi.body":
 		"Nhập ngày giờ sinh để lập lá số mười hai cung, xem nghĩa từng sao và chia sẻ thành ảnh. Lá số theo âm lịch Việt Nam. Chỉ để giải trí, tham khảo.",
 	"tuvi.cta": "Lập lá số",
-	"tuvi.alt": "Biểu tượng Tử Vi: chú cú thầy tử vi đội mũ sao, ôm vòng hoàng đạo vàng",
+	"tuvi.alt":
+		"Biểu tượng Tử Vi: chú cú thầy tử vi đội mũ sao, ôm vòng hoàng đạo vàng",
 	"clip.tag": "Video dọc ngắn từ mẫu có sẵn.",
 	"clip.body":
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
