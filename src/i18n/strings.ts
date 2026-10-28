@@ -92,6 +92,12 @@ const en = {
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
 	"clip.cta": "Make a clip",
 	"clip.alt": "The Clip icon: a clapperboard with a pink play button",
+	"webnhanh.tag": "A website from a template, live in minutes.",
+	"webnhanh.body":
+		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. Developers can deploy from a public git link or a zip.",
+	"webnhanh.cta": "Make a website",
+	"webnhanh.alt":
+		"The Web Nhanh icon: a browser window with a pink lightning bolt",
 
 	"made.title": "Made in Vietnam by one developer and a crew of AI agents.",
 	"made.body":
@@ -200,6 +206,12 @@ const vi: Record<StringKey, string> = {
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
 	"clip.cta": "Làm video",
 	"clip.alt": "Biểu tượng Clip: bảng clapper với nút phát màu hồng",
+	"webnhanh.tag": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
+	"webnhanh.body":
+		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Lập trình viên gắn link git công khai hoặc tải file zip lên là có website.",
+	"webnhanh.cta": "Làm website",
+	"webnhanh.alt":
+		"Biểu tượng Web Nhanh: cửa sổ trình duyệt với tia sét màu hồng",
 
 	"made.title": "Làm tại Việt Nam bởi một lập trình viên và đội AI agent.",
 	"made.body":
