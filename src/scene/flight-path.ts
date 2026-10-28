@@ -1,12 +1,12 @@
 /**
- * The route of the ship: a smooth curve through seven stops, one per stage
- * of the page (0 launch, 1-4 one app each, 5 the key, 6 the workshop). The
+ * The route of the ship: a smooth curve through eight stops, one per stage
+ * of the page (0 launch, 1-5 one app each, 6 the key, 7 the workshop). The
  * scroll stage maps straight onto the curve, so stage 2 is exactly the
  * Scribe stop.
  */
 import { CatmullRomCurve3, Vector3 } from "three";
 
-export const STOP_COUNT = 7;
+export const STOP_COUNT = 8;
 export const LAST_STAGE = STOP_COUNT - 1;
 /** Distance between two stops along the route. */
 export const STOP_SPACING = 34;

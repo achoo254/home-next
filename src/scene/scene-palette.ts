@@ -21,13 +21,14 @@ export interface AuroraMood {
 	readonly accent: number;
 }
 
-/** One mood per stage: hero, Chat, Scribe, Localman, Tunelo, account, workshop. */
+/** One mood per stage: hero, Chat, Scribe, Localman, Tunelo, Web Nhanh, account, workshop. */
 export const AURORA_MOODS: readonly AuroraMood[] = [
 	{ deep: 0x07051a, mid: 0x1d1550, glow: 0x6e56cf, accent: 0xe796f3 },
 	{ deep: 0x060619, mid: 0x1a1b5c, glow: 0x5b6cff, accent: 0x8874d8 },
 	{ deep: 0x12061a, mid: 0x3a1250, glow: 0xc56be0, accent: 0xffb3f2 },
 	{ deep: 0x050a1c, mid: 0x0d1b48, glow: 0x3352b8, accent: 0x6079cc },
 	{ deep: 0x0b061c, mid: 0x2a1060, glow: 0x8a4dff, accent: 0xe796f3 },
+	{ deep: 0x10051a, mid: 0x34104e, glow: 0xb15ad8, accent: 0xf3a9f6 },
 	{ deep: 0x0a0620, mid: 0x2b1a6e, glow: 0x8874d8, accent: 0xffc6f5 },
 	{ deep: 0x06040f, mid: 0x120c30, glow: 0x3a2c80, accent: 0x6e56cf },
 ];
