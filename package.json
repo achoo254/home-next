@@ -16,6 +16,8 @@
 		"test": "vitest run"
 	},
 	"dependencies": {
+		"@achoo254/app-shell": "github:achoo254/shared-next#v0.9.1&path:/packages/app-shell",
+		"@achoo254/brand": "github:achoo254/shared-next#v0.8.0&path:/packages/brand",
 		"three": "^0.186.1"
 	},
 	"devDependencies": {

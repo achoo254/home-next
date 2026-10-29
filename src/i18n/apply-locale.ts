@@ -1,6 +1,19 @@
+import {
+	type PreferenceOptions,
+	readPreferences,
+	writePreference,
+} from "@achoo254/app-shell/preferences";
 import { LOCALES, type Locale, STRINGS, isStringKey } from "./strings";
 
-const STORAGE_KEY = "hoandat-home-locale";
+/**
+ * The language is the `hd_lang` cookie every hoandat.com app shares, so a
+ * choice made here or in another app holds everywhere. The page's own older
+ * key is still read until the visitor picks again.
+ */
+const PREFERENCE_OPTIONS: PreferenceOptions = {
+	domain: "hoandat.com",
+	legacyLangKey: "hoandat-home-locale",
+};
 
 function isLocale(value: string | null): value is Locale {
 	return value !== null && (LOCALES as readonly string[]).includes(value);
@@ -24,19 +37,11 @@ export function pickInitialLocale(
 }
 
 export function readSavedLocale(): string | null {
-	try {
-		return localStorage.getItem(STORAGE_KEY);
-	} catch {
-		return null;
-	}
+	return readPreferences(PREFERENCE_OPTIONS).lang ?? null;
 }
 
 export function saveLocale(locale: Locale): void {
-	try {
-		localStorage.setItem(STORAGE_KEY, locale);
-	} catch {
-		// Private mode or blocked storage: the choice lasts for this visit only.
-	}
+	writePreference("lang", locale, PREFERENCE_OPTIONS);
 }
 
 /**
