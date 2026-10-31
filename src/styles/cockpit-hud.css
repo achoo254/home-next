@@ -461,3 +461,13 @@
 		transform: translateX(var(--space-4)) scale(0.92);
 	}
 }
+
+/* Touch screens: no filters on the bot. Repainting a drop shadow and a blur
+   on an image half the screen tall while the page scrolls made phones
+   stutter. */
+@media (pointer: coarse) {
+	.guide-bot-art,
+	.guide-flame {
+		filter: none;
+	}
+}

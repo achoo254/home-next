@@ -56,6 +56,7 @@ if (header && topSentinel) {
 const reducedMotion = window.matchMedia(
 	"(prefers-reduced-motion: reduce)",
 ).matches;
+const touchFirst = window.matchMedia("(pointer: coarse)").matches;
 
 const stageSections = [
 	...document.querySelectorAll<HTMLElement>("[data-stage]"),
@@ -74,7 +75,11 @@ async function startScene(): Promise<void> {
 		mountFlightScene({
 			canvas,
 			stageSections,
-			reducedMotion,
+			// Phones and tablets get the still scene of reduced motion: a
+			// full-screen WebGL loop at 60 fps fought the page's own scrolling
+			// there (stutter, scrolls that would not start). It redraws only
+			// when the stage changes.
+			reducedMotion: reducedMotion || touchFirst,
 			onShownChange: (shown) => root.classList.toggle("scene-ready", shown),
 		});
 	} catch (error) {
