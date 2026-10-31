@@ -42,6 +42,24 @@ describe("page structure", () => {
 		const stages = html.match(/\sdata-stage="/g) ?? [];
 		expect(stages).toHaveLength(LAST_STAGE + 1);
 	});
+
+	it("opens on the three apps to start with and the sign-up button", () => {
+		const hero = html.slice(
+			html.indexOf('<section id="launch"'),
+			html.indexOf('<section id="apps"'),
+		);
+		const apps = [...hero.matchAll(/class="hero-app" href="([^"]+)"/g)].map(
+			(match) => new URL((match[1] ?? "").replaceAll("&amp;", "&")).host,
+		);
+		expect(apps).toEqual([
+			"tuvi.hoandat.com",
+			"miu.hoandat.com",
+			"webnhanh.hoandat.com",
+		]);
+		expect(hero).toMatch(
+			/href="https:\/\/auth\.hoandat\.com\/account" data-i18n="hero\.cta\.signup"/,
+		);
+	});
 });
 
 describe("pickInitialLocale", () => {

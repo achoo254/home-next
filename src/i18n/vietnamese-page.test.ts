@@ -18,6 +18,7 @@ describe("Vietnamese page", () => {
 		expect(page).toContain(`<title>${STRINGS.vi["meta.title"]}</title>`);
 		expect(page).toContain(`>${STRINGS.vi["hero.title"]}<`);
 		expect(page).not.toContain(`>${STRINGS.en["hero.title"]}<`);
+		expect(page).toContain(`>${STRINGS.vi["hero.cta.signup"]}<`);
 	});
 
 	it("has its own address, and both pages point at each other", () => {

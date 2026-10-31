@@ -399,7 +399,7 @@
 }
 
 /* Tall screens (phones, tablets upright): the scene sits above the copy,
-   so Nav and its bubble share one row under the header in both poses. */
+   so Nav, small, and its bubble share one row under the header. */
 @media (max-aspect-ratio: 9/10) {
 	.cockpit {
 		inset: calc(var(--header-h) + var(--space-2)) var(--space-2) var(--space-2);
@@ -421,12 +421,15 @@
 		justify-content: flex-end;
 	}
 
-	.guide {
-		--bot-h: min(24svh, 230px);
+	.guide[data-pose] {
+		--bot-h: clamp(84px, 11svh, 120px);
 	}
 
-	.guide[data-pose="ride"] {
-		--bot-h: clamp(84px, 11svh, 120px);
+	/* The launch screen belongs to the apps and the sign-up button: Nav
+	   joins from the first stop on. */
+	.guide.is-ready[data-pose="hero"] {
+		visibility: hidden;
+		opacity: 0;
 	}
 
 	.guide .guide-bubble {
@@ -456,12 +459,5 @@
 	.guide[data-pose="ride"].is-quiet .guide-bubble {
 		opacity: 0;
 		transform: translateX(var(--space-4)) scale(0.92);
-	}
-}
-
-/* Short upright screens: keep the hero pose clear of the title. */
-@media (max-aspect-ratio: 9/10) and (max-height: 720px) {
-	.guide {
-		--bot-h: 19svh;
 	}
 }

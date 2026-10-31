@@ -347,7 +347,7 @@ main,
 	display: grid;
 	align-items: center;
 	min-height: 100svh;
-	padding-block: calc(var(--header-h) + var(--space-7)) var(--space-9);
+	padding-block: calc(var(--header-h) + var(--space-7)) var(--space-8);
 }
 
 .hero-inner {
@@ -359,7 +359,7 @@ main,
 }
 
 .hero-title {
-	font-size: var(--step-5);
+	font-size: var(--step-4);
 	line-height: var(--leading-display);
 	font-weight: 700;
 }
@@ -369,19 +369,100 @@ main,
 	line-height: var(--leading-title);
 }
 
-.hero-lede {
-	margin-top: var(--space-5);
-	max-width: 30rem;
-	color: var(--ink-2);
-	font-size: var(--step-1);
-	line-height: 1.5;
+/* The apps to start with: one tappable card each, readable over the scene. */
+.hero-apps {
+	display: grid;
+	gap: var(--space-3);
+	margin-top: var(--space-6);
+	padding: 0;
+	list-style: none;
 }
 
-.hero-actions {
+.hero-app {
 	display: flex;
-	flex-wrap: wrap;
+	align-items: center;
 	gap: var(--space-3);
-	margin-top: var(--space-7);
+	min-height: var(--target);
+	padding: var(--space-3) var(--space-4);
+	background: var(--surface-veil);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius);
+	color: var(--ink);
+	text-decoration: none;
+	transition:
+		transform var(--dur-state) var(--ease-out),
+		border-color var(--dur-state) var(--ease-out);
+}
+
+.hero-app:hover {
+	border-color: var(--violet-soft);
+	transform: translateY(-2px);
+}
+
+.hero-app:active {
+	transform: translateY(1px);
+	transition-duration: var(--dur-press);
+}
+
+.hero-app-art {
+	flex: none;
+	width: 44px;
+	height: 44px;
+	object-fit: contain;
+}
+
+.hero-app-text {
+	display: grid;
+	flex: 1;
+	gap: var(--space-1);
+	min-width: 0;
+}
+
+.hero-app-name {
+	font-family: var(--font-display);
+	font-size: var(--step-0);
+	font-weight: 600;
+	line-height: var(--leading-title);
+}
+
+.hero-app-line {
+	color: var(--ink-2);
+	font-size: var(--step--1);
+	line-height: 1.4;
+}
+
+.hero-app .icon-arrow {
+	flex: none;
+	color: var(--accent);
+}
+
+.hero-app:hover .icon-arrow {
+	transform: translateX(3px);
+}
+
+.hero-signup {
+	display: grid;
+	justify-items: start;
+	gap: var(--space-2);
+	margin-top: var(--space-6);
+}
+
+/* Long in Vietnamese: wrap rather than push past a phone's width. */
+.hero-signup .button {
+	max-width: 100%;
+	padding-block: var(--space-2);
+	line-height: 1.3;
+	text-align: center;
+	white-space: normal;
+}
+
+.hero-signup-note {
+	color: var(--ink-2);
+	font-size: var(--step--1);
+}
+
+.hero-tour {
+	margin-top: var(--space-3);
 }
 
 /* One orchestrated entrance, hero only. Content is visible without it. */
@@ -394,7 +475,7 @@ main,
 		animation-delay: 80ms;
 	}
 
-	.hero-copy > :nth-child(3) {
+	.hero-copy > :nth-child(n + 3) {
 		animation-delay: 160ms;
 	}
 }
@@ -815,6 +896,26 @@ main,
 		padding-top: calc(var(--header-h) + clamp(84px, 11svh, 120px) + var(--space-5));
 	}
 
+	/* Nav sits out the launch on upright screens (cockpit-hud.css), so the
+	   apps and the sign-up button fit the first screen of a phone. */
+	.hero {
+		padding-top: calc(var(--header-h) + var(--space-4));
+		padding-bottom: var(--space-7);
+	}
+
+	.hero-apps,
+	.hero-signup {
+		margin-top: var(--space-4);
+	}
+
+	.hero-signup {
+		justify-items: stretch;
+	}
+
+	.hero-app {
+		padding-block: var(--space-2);
+	}
+
 	.hero::after,
 	.key::after {
 		content: "";
@@ -846,12 +947,9 @@ main,
 		width: min(62vw, 26svh, 300px);
 	}
 
+	/* No room beside the apps on the launch screen: the poster stays out. */
 	.stage-poster {
-		top: calc(var(--header-h) + var(--space-4));
-		right: auto;
-		left: 50%;
-		width: min(70vw, 360px);
-		transform: translateX(-50%);
+		display: none;
 	}
 }
 

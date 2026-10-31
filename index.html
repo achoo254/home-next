@@ -85,13 +85,46 @@
 				<div class="container hero-inner">
 					<div class="hero-copy">
 						<h1 id="hero-title" class="hero-title" data-i18n="hero.title">One account. A universe of apps.</h1>
-						<p class="hero-lede" data-i18n="hero.lede">
-							Fly with Nav past the apps that are live today. New ones keep launching, and your hoandat account already opens every one of them.
-						</p>
-						<div class="hero-actions">
-							<a class="button button-primary" href="#apps" data-i18n="hero.cta.apps">Start the tour</a>
-							<a class="button button-quiet" href="https://auth.hoandat.com/account" data-i18n="nav.signin">Sign in</a>
+						<ul class="hero-apps" role="list" aria-label="Apps to start with" data-i18n-aria-label="hero.apps.label">
+							<li>
+								<a class="hero-app" href="https://tuvi.hoandat.com/?utm_source=home&amp;utm_medium=hero&amp;utm_content=tuvi">
+									<img class="hero-app-art" src="/tuvi.webp" width="48" height="48" alt="" />
+									<span class="hero-app-text">
+										<span class="hero-app-name" lang="vi">Tử Vi</span>
+										<span class="hero-app-line" data-i18n="tuvi.tag">A Vietnamese tử vi chart in a minute.</span>
+									</span>
+									<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+								</a>
+							</li>
+							<li>
+								<a class="hero-app" href="https://miu.hoandat.com/?utm_source=home&amp;utm_medium=hero&amp;utm_content=miu">
+									<img class="hero-app-art" src="/miu-world.webp" width="48" height="48" alt="" />
+									<span class="hero-app-text">
+										<span class="hero-app-name">Miu World</span>
+										<span class="hero-app-line" data-i18n="hero.miu.line">Play a 3D world with friends and beat math and Vietnamese challenges.</span>
+									</span>
+									<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+								</a>
+							</li>
+							<li>
+								<a class="hero-app" href="https://webnhanh.hoandat.com/?utm_source=home&amp;utm_medium=hero&amp;utm_content=webnhanh">
+									<img class="hero-app-art" src="/mark-webnhanh-64.webp" width="48" height="48" alt="" />
+									<span class="hero-app-text">
+										<span class="hero-app-name" lang="vi">Web Nhanh</span>
+										<span class="hero-app-line" data-i18n="webnhanh.title">A website from a template, live in minutes.</span>
+									</span>
+									<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+								</a>
+							</li>
+						</ul>
+						<div class="hero-signup">
+							<a class="button button-primary" href="https://auth.hoandat.com/account" data-i18n="hero.cta.signup">Create a free Hoandat account</a>
+							<p class="hero-signup-note" data-i18n="hero.signup.note">One account works in every app. Sign in with Google, GitHub or Apple.</p>
 						</div>
+						<a class="text-link hero-tour" href="#apps">
+							<span data-i18n="hero.cta.apps">Start the tour</span>
+							<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+						</a>
 					</div>
 				</div>
 			</section>

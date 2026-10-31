@@ -47,8 +47,12 @@ const en = {
 	"route.7": "More apps",
 
 	"hero.title": "One account. A universe of apps.",
-	"hero.lede":
-		"Fly with Nav past the apps that are live today. New ones keep launching, and your hoandat account already opens every one of them.",
+	"hero.apps.label": "Apps to start with",
+	"hero.miu.line":
+		"Play a 3D world with friends and beat math and Vietnamese challenges.",
+	"hero.cta.signup": "Create a free Hoandat account",
+	"hero.signup.note":
+		"One account works in every app. Sign in with Google, GitHub or Apple.",
 	"hero.cta.apps": "Start the tour",
 
 	"apps.title": "Apps live today",
@@ -162,8 +166,12 @@ const vi: Record<StringKey, string> = {
 	"route.7": "Thêm app",
 
 	"hero.title": "Một tài khoản. Cả vũ trụ app.",
-	"hero.lede":
-		"Bay cùng Hoa tiêu qua những app đang chạy hôm nay. App mới vẫn liên tục ra đời, và tài khoản hoandat của bạn đã mở được tất cả.",
+	"hero.apps.label": "Các app để bắt đầu",
+	"hero.miu.line":
+		"Chơi thế giới 3D cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
+	"hero.cta.signup": "Tạo tài khoản Hoandat miễn phí",
+	"hero.signup.note":
+		"Một tài khoản dùng được ở mọi app. Đăng nhập bằng Google, GitHub hoặc Apple.",
 	"hero.cta.apps": "Bắt đầu chuyến bay",
 
 	"apps.title": "Các app đang chạy",
