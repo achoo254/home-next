@@ -14,10 +14,6 @@ import { measureAnchors, stageAt } from "../scroll/stage-progress";
 
 /** Milliseconds per character while typing. */
 const TYPE_SPEED = 22;
-/** Last stop of the route ("More apps in orbit"). Its cards fill the whole
- * width, so wherever Nav rode it would cover copy: it flies off on arrival
- * and stays away for the reading matter below. */
-const LAST_STOP = 6;
 /** How long a line stays after it is typed before the bubble tucks away on
  * small screens, where it would sit on the copy. */
 const QUIET_AFTER_MS = 4000;
@@ -44,6 +40,11 @@ export function mountGuideDialog(options: {
 	guide.classList.add("is-ready");
 
 	const { stageSections, reducedMotion } = options;
+	/** Last stop of the route ("More apps in orbit"). Its cards fill the whole
+	 * width, so wherever Nav rode it would cover copy: it flies off on arrival
+	 * and stays away for the reading matter below. Counted from the page, so
+	 * adding or removing a chapter cannot leave it pointing at another stop. */
+	const lastStop = stageSections.length - 1;
 	let locale = options.locale;
 	let anchors = measureAnchors(stageSections);
 	let current = -1;
@@ -115,7 +116,7 @@ export function mountGuideDialog(options: {
 		guide.dataset.stop = String(stop);
 		guide.dataset.pose = stop === 0 ? "hero" : "ride";
 		markRoute(stop);
-		if (stop >= LAST_STOP) rest();
+		if (stop >= lastStop) rest();
 		else say(stop);
 	}
 
@@ -147,7 +148,7 @@ export function mountGuideDialog(options: {
 	return {
 		setLocale(next) {
 			locale = next;
-			if (current >= 0 && current < LAST_STOP) say(current);
+			if (current >= 0 && current < lastStop) say(current);
 		},
 	};
 }

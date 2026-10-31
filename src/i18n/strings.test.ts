@@ -43,6 +43,18 @@ describe("page structure", () => {
 		expect(stages).toHaveLength(LAST_STAGE + 1);
 	});
 
+	it("has one route stop and, before the last stop, one guide line per stage", () => {
+		const stops = html.match(/\sdata-route="/g) ?? [];
+		expect(stops).toHaveLength(LAST_STAGE + 1);
+		for (let stop = 0; stop <= LAST_STAGE; stop++) {
+			expect(isStringKey(`route.${stop}`), `route.${stop}`).toBe(true);
+		}
+		for (let stop = 0; stop < LAST_STAGE; stop++) {
+			expect(isStringKey(`guide.${stop}`), `guide.${stop}`).toBe(true);
+		}
+		expect(isStringKey(`route.${LAST_STAGE + 1}`)).toBe(false);
+	});
+
 	it("opens on the three apps to start with and the sign-up button", () => {
 		const hero = html.slice(
 			html.indexOf('<section id="launch"'),
@@ -59,6 +71,48 @@ describe("page structure", () => {
 		expect(hero).toMatch(
 			/href="https:\/\/auth\.hoandat\.com\/account" data-i18n="hero\.cta\.signup"/,
 		);
+	});
+});
+
+describe("developer tools", () => {
+	const section = html.slice(
+		html.indexOf('<section id="developers"'),
+		html.indexOf('<section class="made"'),
+	);
+	const hostsIn = (part: string): string[] =>
+		[...part.matchAll(/href="(https:\/\/[^"]+)"/g)].map(
+			(match) => new URL((match[1] ?? "").replaceAll("&amp;", "&")).host,
+		);
+
+	it("lists Scribe, Localman and Tunelo in their own section", () => {
+		expect(section).toContain('data-i18n="dev.title"');
+		expect(hostsIn(section)).toEqual([
+			"scribe.hoandat.com",
+			"localman.hoandat.com",
+			"tunnel.hoandat.com",
+		]);
+	});
+
+	it("keeps them out of the hero, the app stops and the route", () => {
+		const main = html.slice(
+			html.indexOf('<section id="launch"'),
+			html.indexOf('<section id="developers"'),
+		);
+		const route = html.slice(html.indexOf('<nav class="route"'));
+		for (const host of [
+			"scribe.hoandat.com",
+			"localman.hoandat.com",
+			"tunnel.hoandat.com",
+		]) {
+			expect(hostsIn(main), host).not.toContain(host);
+		}
+		expect(route).not.toMatch(/Scribe|Localman|Tunelo/);
+		expect(section).not.toContain("data-stage=");
+	});
+
+	it("names the section for each language", () => {
+		expect(STRINGS.en["dev.title"]).toBe("For developers");
+		expect(STRINGS.vi["dev.title"]).toBe("Công cụ cho lập trình viên");
 	});
 });
 

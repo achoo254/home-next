@@ -544,27 +544,6 @@ main,
 	margin-top: var(--space-6);
 }
 
-.terminal {
-	margin-top: var(--space-5);
-	padding: var(--space-4);
-	background: var(--bg);
-	border: var(--border) solid var(--line);
-	border-radius: var(--radius-sm);
-	overflow-x: auto;
-}
-
-.terminal pre {
-	font-family: var(--font-mono);
-	font-size: var(--step--1);
-	line-height: 1.8;
-	color: var(--ink);
-}
-
-.prompt {
-	color: var(--violet-soft);
-	user-select: none;
-}
-
 /* Each app's 3D art sits beside its copy on wide screens and above it on
    tall ones. It floats a little, and grows in as it scrolls into view
    where the browser can tie an animation to scrolling. */
@@ -746,6 +725,50 @@ main,
 	margin-top: var(--space-4);
 }
 
+/* ---------- For developers ---------- */
+
+/* A short list after the main apps: no art, one line each, so it reads as
+   a side door for people who build software rather than another stop. */
+.devtools {
+	padding-block: var(--space-9);
+}
+
+.devtools-title {
+	font-size: var(--step-3);
+}
+
+.devtools-intro {
+	margin-top: var(--space-3);
+	max-width: var(--measure);
+	color: var(--ink-2);
+}
+
+.devtools-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+	gap: var(--space-6);
+	margin-top: var(--space-7);
+	padding: 0;
+	list-style: none;
+}
+
+.devtool {
+	padding: var(--space-5);
+	background: var(--surface-veil);
+	border: var(--border) solid var(--line);
+	border-radius: var(--radius);
+}
+
+.devtool-body {
+	margin-top: var(--space-3);
+	color: var(--ink-2);
+	font-size: var(--step--1);
+}
+
+.devtool .text-link {
+	margin-top: var(--space-2);
+}
+
 /* ---------- Made by ---------- */
 
 /* The 3D layer fades out under this section instead of ending on a hard edge. */
@@ -830,7 +853,7 @@ main,
 
 .footer-grid {
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr auto;
+	grid-template-columns: 2fr 1fr 1fr 1fr auto;
 	gap: var(--space-6);
 }
 

@@ -27,24 +27,15 @@ const en = {
 		"Hi, I'm Nav. Scroll and I'll fly you past the apps live today. The route keeps growing.",
 	"guide.1": "First stop, Chat. Every message stays searchable, bots included.",
 	"guide.2":
-		"Scribe listens and writes it down, in Vietnamese. Talk, then search.",
-	"guide.3":
-		"Localman gives you a working mock API before your backend exists.",
-	"guide.4":
-		"Tunelo puts your localhost on the internet. Three commands, done.",
-	"guide.5":
 		"Web Nhanh turns a template into your website, live at yourname.hoandat.io.vn in minutes.",
-	"guide.6":
+	"guide.3":
 		"Here is the key. One sign-in opens every app, including the ones still being built.",
 	"route.label": "Route",
 	"route.0": "Launch",
 	"route.1": "Chat",
-	"route.2": "Scribe",
-	"route.3": "Localman",
-	"route.4": "Tunelo",
-	"route.5": "Web Nhanh",
-	"route.6": "The key",
-	"route.7": "More apps",
+	"route.2": "Web Nhanh",
+	"route.3": "The key",
+	"route.4": "More apps",
 
 	"hero.title": "One account. A universe of apps.",
 	"hero.apps.label": "Apps to start with",
@@ -61,16 +52,6 @@ const en = {
 	"chat.title": "Messages you can find again.",
 	"chat.body":
 		"Fast messaging with searchable history and bots, built for the web first.",
-	"scribe.title": "Speak. Get a transcript.",
-	"scribe.body":
-		"Record audio, trim audio and video files, and get Vietnamese transcripts you can search and edit. On the web and iPhone.",
-	"localman.title": "A working mock API in minutes.",
-	"localman.body":
-		"Declare resources, fill them with Faker data, nest relations and get CRUD endpoints right away. It comes with a browser API client and an MCP server for AI agents.",
-	"tunelo.title": "Put localhost on the internet.",
-	"tunelo.body":
-		"Get an HTTPS address under tunnel.hoandat.com for any local port, then watch your tunnels in the browser.",
-	"tunelo.code.label": "Three commands from install to a public URL",
 	"webnhanh.title": "A website from a template, live in minutes.",
 	"webnhanh.body":
 		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. Developers can deploy from a public git link or a zip.",
@@ -103,6 +84,15 @@ const en = {
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
 	"clip.cta": "Make a clip",
 	"clip.alt": "The Clip icon: a smiling clapperboard character in a red hoodie",
+
+	"dev.title": "For developers",
+	"dev.intro": "Tools for people who build software, on the same account.",
+	"dev.scribe":
+		"Record or upload audio and video, then search and edit the Vietnamese transcript.",
+	"dev.localman":
+		"A working mock API in minutes, with a browser API client and an MCP server for AI agents.",
+	"dev.tunelo":
+		"Put a local port on the internet at an HTTPS address, then watch your tunnels in the browser.",
 
 	"made.title": "Made in Vietnam by one developer and a crew of AI agents.",
 	"made.body":
@@ -148,22 +138,16 @@ const vi: Record<StringKey, string> = {
 	"guide.0":
 		"Chào bạn, mình là Hoa tiêu. Cuộn xuống, mình chở bạn qua các app đang chạy. Lộ trình còn dài thêm mãi.",
 	"guide.1": "Trạm đầu: Chat. Tin nhắn nào cũng tìm lại được, có cả bot.",
-	"guide.2": "Scribe nghe và chép lại bằng tiếng Việt. Cứ nói, rồi tìm.",
-	"guide.3": "Localman cho bạn mock API chạy được trước khi có backend.",
-	"guide.4": "Tunelo đưa localhost của bạn lên internet. Ba lệnh là xong.",
-	"guide.5":
+	"guide.2":
 		"Web Nhanh biến mẫu có sẵn thành website của bạn, lên mạng ở tên-bạn.hoandat.io.vn sau vài phút.",
-	"guide.6":
+	"guide.3":
 		"Đây là chìa khoá. Đăng nhập một lần là mở được mọi app, kể cả app đang xây.",
 	"route.label": "Lộ trình",
 	"route.0": "Khởi hành",
 	"route.1": "Chat",
-	"route.2": "Scribe",
-	"route.3": "Localman",
-	"route.4": "Tunelo",
-	"route.5": "Web Nhanh",
-	"route.6": "Chìa khoá",
-	"route.7": "Thêm app",
+	"route.2": "Web Nhanh",
+	"route.3": "Chìa khoá",
+	"route.4": "Thêm app",
 
 	"hero.title": "Một tài khoản. Cả vũ trụ app.",
 	"hero.apps.label": "Các app để bắt đầu",
@@ -180,16 +164,6 @@ const vi: Record<StringKey, string> = {
 	"chat.title": "Tin nhắn tìm lại được.",
 	"chat.body":
 		"Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot, làm cho web trước tiên.",
-	"scribe.title": "Cứ nói, có ngay bản chép lời.",
-	"scribe.body":
-		"Ghi âm, cắt tệp âm thanh và video, nhận bản chép lời tiếng Việt để tìm kiếm và chỉnh sửa. Có trên web và iPhone.",
-	"localman.title": "Mock API chạy được sau vài phút.",
-	"localman.body":
-		"Khai báo resource, sinh dữ liệu bằng Faker, lồng quan hệ và có ngay endpoint CRUD. Kèm API client trên trình duyệt và MCP server cho AI agent.",
-	"tunelo.title": "Đưa localhost lên internet.",
-	"tunelo.body":
-		"Nhận địa chỉ HTTPS dưới tunnel.hoandat.com cho bất kỳ cổng local nào, rồi xem các tunnel ngay trên trình duyệt.",
-	"tunelo.code.label": "Ba lệnh từ lúc cài tới khi có URL công khai",
 	"webnhanh.title": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
 	"webnhanh.body":
 		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Lập trình viên gắn link git công khai hoặc tải file zip lên là có website.",
@@ -222,6 +196,15 @@ const vi: Record<StringKey, string> = {
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
 	"clip.cta": "Làm video",
 	"clip.alt": "Biểu tượng Clip: chú bảng clapper tươi cười mặc áo hoodie đỏ",
+
+	"dev.title": "Công cụ cho lập trình viên",
+	"dev.intro": "Dành cho người làm phần mềm, dùng chung tài khoản Hoandat.",
+	"dev.scribe":
+		"Ghi âm hoặc tải tệp âm thanh, video lên, rồi tìm và sửa bản chép lời tiếng Việt.",
+	"dev.localman":
+		"Mock API chạy được sau vài phút, kèm API client trên trình duyệt và MCP server cho AI agent.",
+	"dev.tunelo":
+		"Đưa một cổng local lên internet bằng địa chỉ HTTPS, rồi xem các tunnel ngay trên trình duyệt.",
 
 	"made.title": "Làm tại Việt Nam bởi một lập trình viên và đội AI agent.",
 	"made.body":

@@ -1,6 +1,6 @@
 # home-next
 
-Trang landing của tên miền gốc `hoandat.com`. Thông điệp: một tài khoản hoandat, một "vũ trụ" app không ngừng mở rộng. Màn đầu tiên dành cho người mới (phần lớn mở từ điện thoại qua mạng xã hội): ba app nên thử trước (Tử Vi, Miu World, Web Nhanh), mỗi app một thẻ có một dòng lợi ích và link, cùng nút "Tạo tài khoản Hoandat miễn phí" dẫn tới `auth.hoandat.com/account` (chưa đăng nhập thì IdP mở trang đăng nhập; lần đầu đăng nhập bằng Google/GitHub/Apple là có tài khoản). Cuộn xuống là chuyến bay: khách ngồi trên con tàu nhỏ, bot dẫn đường Nav (tiếng Việt: Hoa tiêu) chở đi qua các trạm: từng app đang chạy, trạm chìa khoá (tài khoản chung ở `auth.hoandat.com`) và trạm các app đang xây. Không app nào là "lõi": thêm app thì thêm trạm.
+Trang landing của tên miền gốc `hoandat.com`. Thông điệp: một tài khoản hoandat, một "vũ trụ" app không ngừng mở rộng. Màn đầu tiên dành cho người mới (phần lớn mở từ điện thoại qua mạng xã hội): ba app nên thử trước (Tử Vi, Miu World, Web Nhanh), mỗi app một thẻ có một dòng lợi ích và link, cùng nút "Tạo tài khoản Hoandat miễn phí" dẫn tới `auth.hoandat.com/account` (chưa đăng nhập thì IdP mở trang đăng nhập; lần đầu đăng nhập bằng Google/GitHub/Apple là có tài khoản). Cuộn xuống là chuyến bay: khách ngồi trên con tàu nhỏ, bot dẫn đường Nav (tiếng Việt: Hoa tiêu) chở đi qua các trạm: Chat, Web Nhanh, trạm chìa khoá (tài khoản chung ở `auth.hoandat.com`) và trạm các app khác trên quỹ đạo (Miu World, Tiểu Đệ, Tử Vi, Clip). Không app nào là "lõi": thêm app thì thêm trạm. Công cụ cho người làm phần mềm (Scribe, Localman, Tunelo) không phải trạm: chúng nằm gọn trong mục "Công cụ cho lập trình viên" / "For developers" gần cuối trang (dấu app, một dòng mô tả, link) và cột cùng tên ở footer, để người mới chỉ thấy ít lựa chọn, rõ ràng; cùng thứ tự với app switcher của `shared-next` (`@achoo254/app-switcher` 0.6.0).
 
 Trang tĩnh (Vite + TypeScript). Nền bay vũ trụ (tinh vân, sao) bằng three.js; Nav, hình 3D từng app, logo và favicon là ảnh do AI vẽ, đặt trong HTML. Plan, brief thiết kế và quyết định nằm ở workspace riêng của hệ sinh thái (không thuộc repo này): `plans/dattqh/261025-0113-hoandat-home-landing/plan.md`.
 
@@ -26,7 +26,7 @@ Trang tĩnh (Vite + TypeScript). Nền bay vũ trụ (tinh vân, sao) bằng thr
 | Nav, bong bóng thoại và bản đồ lộ trình (chạy cả khi không WebGL) | `src/guide/guide-dialog.ts`, `src/styles/cockpit-hud.css` |
 | Token thiết kế | `src/styles/tokens.css` |
 
-Thêm một app: thêm chương (kèm ảnh `art-<app>-360/720.webp` và dấu `mark-<app>-64.webp`) và mục lộ trình trong `index.html`, chuỗi `guide.<n>`/`route.<n>`, một tâm trạng trong `AURORA_MOODS`, rồi tăng `STOP_COUNT`. `src/i18n/strings.test.ts` bắt lỗi lệch số chương với số trạm và khoá chuỗi bị thiếu.
+Thêm một công cụ cho lập trình viên: thêm một mục vào `#developers` trong `index.html` (dấu `mark-<app>-64.webp` có sẵn) và chuỗi `dev.<app>`; không đụng trạm. Thêm một app: thêm chương (kèm ảnh `art-<app>-360/720.webp` và dấu `mark-<app>-64.webp`) và mục lộ trình trong `index.html`, chuỗi `guide.<n>`/`route.<n>`, một tâm trạng trong `AURORA_MOODS`, rồi tăng `STOP_COUNT`. `src/i18n/strings.test.ts` bắt lỗi lệch số chương với số trạm và khoá chuỗi bị thiếu.
 
 ## Phát triển
 

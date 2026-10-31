@@ -6,6 +6,7 @@ import {
 	routeCentre,
 	stageToCurve,
 } from "./flight-path";
+import { AURORA_MOODS } from "./scene-palette";
 
 const curve = createRouteCurve();
 
@@ -15,6 +16,10 @@ describe("flight path", () => {
 			const point = curve.getPoint(stageToCurve(stop));
 			expect(point.distanceTo(routeCentre(stop))).toBeLessThan(1e-6);
 		}
+	});
+
+	it("has one aurora mood per stop", () => {
+		expect(AURORA_MOODS).toHaveLength(STOP_COUNT);
 	});
 
 	it("clamps stages outside the route", () => {
