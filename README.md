@@ -36,4 +36,6 @@ Node ≥ 22.12, pnpm. Lệnh và cổng dev/preview: `scripts` trong `package.js
 
 Production: <https://hoandat.com>, Cloudflare đứng trước nginx trên máy chủ chung của hệ sinh thái; `www` và `http` chuyển 301 về `https://hoandat.com/`. Cấu hình nginx gốc: `infra/nginx/hoandat.com.conf`.
 
-Deploy và rollback bằng `infra/deploy.sh`: cách gọi, các bước và lệnh quay lại bản trước ghi ở đầu script. Thông tin truy cập máy chủ không nằm trong repo.
+**Mỗi lần push lên `main` là tự deploy:** `ci` (lint, typecheck, test, build) xanh thì `.github/workflows/deploy.yml` build trong job không có khoá, rồi job deploy tải bản build lên bằng user hạn chế `hoandat-home-deploy` và chạy lệnh sudo duy nhất user đó có, `/usr/local/sbin/hoandat-home-activate-incoming` (bản cài của `infra/activate-incoming.sh`): kiểm bản tải lên, thay `dist/` (giữ `dist.prev`), kiểm trang qua origin, hỏng thì trả bản cũ. Sau đó kiểm `https://hoandat.com/RELEASE` trả đúng mã bản. CI không đổi được nginx hay script root.
+
+Deploy tay (đổi nginx, lần đầu, hoặc khi CI hỏng) bằng `infra/deploy.sh`: cách gọi, các bước và lệnh quay lại bản trước ghi ở đầu script; nó dùng chung bước chuyển bản với CI và làm mới lệnh sudo trên máy chủ. Tạo hay đổi khoá của user CI: `infra/setup-deploy-user.sh` (chạy bằng root trên máy chủ, khoá công khai qua stdin); secret của repo: `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS`, `DEPLOY_HOST`, `DEPLOY_PORT`. Thông tin truy cập máy chủ không nằm trong repo.

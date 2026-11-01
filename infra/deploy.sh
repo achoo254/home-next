@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-# Build home-next and publish it to .65 as the static site of hoandat.com.
+# Build home-next and publish it to .65 as the static site of hoandat.com, by hand
+# (every push to main also deploys through .github/workflows/deploy.yml).
 #
 #   SSH_TARGET=<host alias> [SSH_OPTS="-F ssh_config"] bash infra/deploy.sh
 #
-# Steps: gates + build locally, rsync dist/ and the nginx file to
-# /var/www/hoandat-home, install the nginx file when it changed (nginx -t
-# before reload, the previous file kept as .prev), then check the site through
-# the origin. The previous dist/ is kept as dist.prev for rollback:
+# Steps: gates + build locally; rsync infra/ (nginx file and the root scripts)
+# to /var/www/hoandat-home/infra and the build to ci-incoming/<release-id>;
+# install the nginx file when it changed (nginx -t before reload, the previous
+# file kept as .prev); refresh the root-owned activate command the CI user
+# runs; then switch with infra/activate-incoming.sh, the same switch CI uses
+# (origin check, previous build restored on failure). The previous dist/ is
+# kept as dist.prev for rollback:
 #   ssh <target> 'cd /var/www/hoandat-home && rm -rf dist && mv dist.prev dist'
 set -euo pipefail
 
@@ -22,19 +26,16 @@ pnpm typecheck
 pnpm test
 pnpm build
 
-ssh "${ssh_opts[@]}" "$SSH_TARGET" "mkdir -p $remote_dir/incoming $remote_dir/infra" </dev/null
-rsync -rlz --delete -e "ssh ${ssh_opts[*]}" dist/ "$SSH_TARGET:$remote_dir/incoming/"
-rsync -rlz -e "ssh ${ssh_opts[*]}" infra/nginx/ "$SSH_TARGET:$remote_dir/infra/nginx/"
+release_id="$(date -u +%Y%m%d-%H%M%S)-$(git rev-parse --short=12 HEAD)"
+ssh "${ssh_opts[@]}" "$SSH_TARGET" "mkdir -p $remote_dir/ci-incoming/$release_id $remote_dir/infra" </dev/null
+rsync -rlz --delete -e "ssh ${ssh_opts[*]}" dist/ "$SSH_TARGET:$remote_dir/ci-incoming/$release_id/"
+rsync -rlz -e "ssh ${ssh_opts[*]}" infra/nginx infra/activate-incoming.sh infra/setup-deploy-user.sh "$SSH_TARGET:$remote_dir/infra/"
 
 ssh "${ssh_opts[@]}" "$SSH_TARGET" bash -s <<EOF
 set -euo pipefail
 cd $remote_dir
-chown -R root:root incoming infra
-find incoming -type d -exec chmod 755 {} +
-find incoming -type f -exec chmod 644 {} +
-rm -rf dist.prev
-if [ -d dist ]; then mv dist dist.prev; fi
-mv incoming dist
+chown -R root:root infra
+install -m 755 -o root -g root infra/activate-incoming.sh /usr/local/sbin/hoandat-home-activate-incoming
 
 if ! cmp -s infra/nginx/hoandat.com.conf $conf; then
 	if [ -f $conf ]; then cp $conf $conf.prev; fi
@@ -48,12 +49,5 @@ if ! cmp -s infra/nginx/hoandat.com.conf $conf; then
 	echo "nginx config installed and reloaded"
 fi
 
-# Right after a reload the old workers can still answer (421); give them a moment.
-for attempt in 1 2 3 4 5; do
-	code=\$(curl -sk -o /dev/null -w '%{http_code}' --resolve hoandat.com:443:127.0.0.1 https://hoandat.com/)
-	[ "\$code" = 200 ] && break
-	sleep 1
-done
-echo "origin https://hoandat.com/ -> \$code"
-[ "\$code" = 200 ]
+bash infra/activate-incoming.sh $release_id
 EOF
