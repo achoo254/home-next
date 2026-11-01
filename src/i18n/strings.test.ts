@@ -69,7 +69,7 @@ describe("page structure", () => {
 			"webnhanh.hoandat.com",
 		]);
 		expect(hero).toMatch(
-			/href="https:\/\/auth\.hoandat\.com\/account" data-i18n="hero\.cta\.signup"/,
+			/href="https:\/\/auth\.hoandat\.com\/account\?signup=1" data-i18n="hero\.cta\.signup"/,
 		);
 	});
 });
