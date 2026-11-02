@@ -84,6 +84,12 @@ const en = {
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
 	"clip.cta": "Make a clip",
 	"clip.alt": "The Clip icon: a smiling clapperboard character in a red hoodie",
+	"truyen.tag": "Vietnamese and world folk tales, retold.",
+	"truyen.body":
+		"Nearly a thousand old tales retold in Vietnamese, turned page by page like a real book: a children's shelf with Mèo Miu as the guide, a shelf told in full for adults, and tales from around the world. Lights-off mode and large text, no sign-in needed.",
+	"truyen.cta": "Read a story",
+	"truyen.alt":
+		"The Truyện icon: an open storybook with a golden crescent moon and a curling cloud on a vermilion tile",
 
 	"dev.title": "For developers",
 	"dev.intro": "Tools for people who build software, on the same account.",
@@ -196,6 +202,12 @@ const vi: Record<StringKey, string> = {
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
 	"clip.cta": "Làm video",
 	"clip.alt": "Biểu tượng Clip: chú bảng clapper tươi cười mặc áo hoodie đỏ",
+	"truyen.tag": "Truyện cổ Việt Nam và thế giới, kể lại bằng lời mới.",
+	"truyen.body":
+		"Gần một nghìn truyện cổ kể lại bằng tiếng Việt, lật từng trang như sách thật: kệ Trẻ em có Mèo Miu dẫn chuyện, kệ Người lớn kể đầy đủ, kệ Thế giới có Grimm, Andersen, Aesop. Có chế độ tắt đèn, chữ to, không cần đăng nhập.",
+	"truyen.cta": "Đọc truyện",
+	"truyen.alt":
+		"Biểu tượng Truyện: quyển sách cổ tích mở, trăng khuyết vàng và mây cuộn trên nền đỏ son",
 
 	"dev.title": "Công cụ cho lập trình viên",
 	"dev.intro": "Dành cho người làm phần mềm, dùng chung tài khoản Hoandat.",
