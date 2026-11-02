@@ -90,6 +90,12 @@ const en = {
 	"truyen.cta": "Read a story",
 	"truyen.alt":
 		"The Truyện icon: an open storybook with a golden crescent moon and a curling cloud on a vermilion tile",
+	"lockin.tag": "Lock in plans through one link.",
+	"lockin.body":
+		"Lock in plans with friends or coworkers through one link. Everyone votes on time and place, no account needed.",
+	"lockin.cta": "Make a plan",
+	"lockin.alt":
+		"The Lockin icon: a red padlock with a white check mark, shaped like a map pin, on a lime tile",
 
 	"dev.title": "For developers",
 	"dev.intro": "Tools for people who build software, on the same account.",
@@ -208,6 +214,12 @@ const vi: Record<StringKey, string> = {
 	"truyen.cta": "Đọc truyện",
 	"truyen.alt":
 		"Biểu tượng Truyện: quyển sách cổ tích mở, trăng khuyết vàng và mây cuộn trên nền đỏ son",
+	"lockin.tag": "Chốt kèo bằng một link.",
+	"lockin.body":
+		"Chốt kèo với bạn bè hay đồng nghiệp bằng một link. Mọi người vote giờ và chỗ, không cần tài khoản.",
+	"lockin.cta": "Chốt kèo",
+	"lockin.alt":
+		"Biểu tượng Lockin: ổ khoá đỏ hình ghim bản đồ mang dấu tích trắng trên nền xanh chanh",
 
 	"dev.title": "Công cụ cho lập trình viên",
 	"dev.intro": "Dành cho người làm phần mềm, dùng chung tài khoản Hoandat.",
