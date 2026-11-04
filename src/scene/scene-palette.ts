@@ -21,10 +21,11 @@ export interface AuroraMood {
 	readonly accent: number;
 }
 
-/** One mood per stage: hero, Chat, Web Nhanh, account, workshop. */
+/** One mood per stage: hero, Chat, KnowFlow, Web Nhanh, account, workshop. */
 export const AURORA_MOODS: readonly AuroraMood[] = [
 	{ deep: 0x07051a, mid: 0x1d1550, glow: 0x6e56cf, accent: 0xe796f3 },
 	{ deep: 0x060619, mid: 0x1a1b5c, glow: 0x5b6cff, accent: 0x8874d8 },
+	{ deep: 0x06041a, mid: 0x261060, glow: 0x7c3aed, accent: 0x5ec8f0 },
 	{ deep: 0x10051a, mid: 0x34104e, glow: 0xb15ad8, accent: 0xf3a9f6 },
 	{ deep: 0x0a0620, mid: 0x2b1a6e, glow: 0x8874d8, accent: 0xffc6f5 },
 	{ deep: 0x06040f, mid: 0x120c30, glow: 0x3a2c80, accent: 0x6e56cf },

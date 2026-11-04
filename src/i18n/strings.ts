@@ -27,15 +27,18 @@ const en = {
 		"Hi, I'm Nav. Scroll and I'll fly you past the apps live today. The route keeps growing.",
 	"guide.1": "First stop, Chat. Every message stays searchable, bots included.",
 	"guide.2":
-		"Web Nhanh turns a template into your website, live at yourname.hoandat.io.vn in minutes.",
+		"KnowFlow keeps knowledge in English and Vietnamese, mostly IT. Read it, search it or ask AI.",
 	"guide.3":
+		"Web Nhanh turns a template into your website, live at yourname.hoandat.io.vn in minutes.",
+	"guide.4":
 		"Here is the key. One sign-in opens every app, including the ones still being built.",
 	"route.label": "Route",
 	"route.0": "Launch",
 	"route.1": "Chat",
-	"route.2": "Web Nhanh",
-	"route.3": "The key",
-	"route.4": "More apps",
+	"route.2": "KnowFlow",
+	"route.3": "Web Nhanh",
+	"route.4": "The key",
+	"route.5": "More apps",
 
 	"hero.title": "One account. A universe of apps.",
 	"hero.apps.label": "Apps to start with",
@@ -52,6 +55,9 @@ const en = {
 	"chat.title": "Messages you can find again.",
 	"chat.body":
 		"Fast messaging with searchable history and bots, built for the web first.",
+	"kb.title": "A knowledge base in English and Vietnamese.",
+	"kb.body":
+		"It covers many topics, mostly IT, laid out as one universe you can read, search and ask AI.",
 	"webnhanh.title": "A website from a template, live in minutes.",
 	"webnhanh.body":
 		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. Developers can deploy from a public git link or a zip.",
@@ -151,15 +157,18 @@ const vi: Record<StringKey, string> = {
 		"Chào bạn, mình là Hoa tiêu. Cuộn xuống, mình chở bạn qua các app đang chạy. Lộ trình còn dài thêm mãi.",
 	"guide.1": "Trạm đầu: Chat. Tin nhắn nào cũng tìm lại được, có cả bot.",
 	"guide.2":
-		"Web Nhanh biến mẫu có sẵn thành website của bạn, lên mạng ở tên-bạn.hoandat.io.vn sau vài phút.",
+		"KnowFlow giữ kiến thức song ngữ Anh – Việt, phần lớn về CNTT. Đọc, tìm hay hỏi AI đều được.",
 	"guide.3":
+		"Web Nhanh biến mẫu có sẵn thành website của bạn, lên mạng ở tên-bạn.hoandat.io.vn sau vài phút.",
+	"guide.4":
 		"Đây là chìa khoá. Đăng nhập một lần là mở được mọi app, kể cả app đang xây.",
 	"route.label": "Lộ trình",
 	"route.0": "Khởi hành",
 	"route.1": "Chat",
-	"route.2": "Web Nhanh",
-	"route.3": "Chìa khoá",
-	"route.4": "Thêm app",
+	"route.2": "KnowFlow",
+	"route.3": "Web Nhanh",
+	"route.4": "Chìa khoá",
+	"route.5": "Thêm app",
 
 	"hero.title": "Một tài khoản. Cả vũ trụ app.",
 	"hero.apps.label": "Các app để bắt đầu",
@@ -176,6 +185,9 @@ const vi: Record<StringKey, string> = {
 	"chat.title": "Tin nhắn tìm lại được.",
 	"chat.body":
 		"Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot, làm cho web trước tiên.",
+	"kb.title": "Knowledge base song ngữ Anh – Việt.",
+	"kb.body":
+		"Đủ thể loại nhưng phần lớn về công nghệ thông tin, xếp thành một vũ trụ để bạn đọc, tìm và hỏi AI.",
 	"webnhanh.title": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
 	"webnhanh.body":
 		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Lập trình viên gắn link git công khai hoặc tải file zip lên là có website.",

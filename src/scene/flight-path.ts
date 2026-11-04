@@ -1,12 +1,12 @@
 /**
- * The route of the ship: a smooth curve through five stops, one per stage
- * of the page (0 launch, 1 Chat, 2 Web Nhanh, 3 the key, 4 the workshop). The
- * scroll stage maps straight onto the curve, so stage 2 is exactly the
- * Web Nhanh stop.
+ * The route of the ship: a smooth curve through six stops, one per stage
+ * of the page (0 launch, 1 Chat, 2 KnowFlow, 3 Web Nhanh, 4 the key, 5 the
+ * workshop). The scroll stage maps straight onto the curve, so stage 3 is
+ * exactly the Web Nhanh stop.
  */
 import { CatmullRomCurve3, Vector3 } from "three";
 
-export const STOP_COUNT = 5;
+export const STOP_COUNT = 6;
 export const LAST_STAGE = STOP_COUNT - 1;
 /** Distance between two stops along the route. */
 export const STOP_SPACING = 34;
