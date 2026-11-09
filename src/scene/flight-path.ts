@@ -1,6 +1,6 @@
 /**
  * The route of the ship: a smooth curve through six stops, one per stage
- * of the page (0 launch, 1 Chat, 2 KnowFlow, 3 Web Nhanh, 4 the key, 5 the
+ * of the page (0 launch, 1 Chat, 2 Knowledge Base, 3 Web Nhanh, 4 the key, 5 the
  * workshop). The scroll stage maps straight onto the curve, so stage 3 is
  * exactly the Web Nhanh stop.
  */

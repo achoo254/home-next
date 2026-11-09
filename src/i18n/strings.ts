@@ -27,7 +27,7 @@ const en = {
 		"Hi, I'm Nav. Scroll and I'll fly you past the apps live today. The route keeps growing.",
 	"guide.1": "First stop, Chat. Every message stays searchable, bots included.",
 	"guide.2":
-		"KnowFlow keeps knowledge on all kinds of topics in English and Vietnamese. Read it, search it or ask AI.",
+		"Knowledge Base keeps texts on all kinds of topics in English and Vietnamese. Read it, search it or ask AI.",
 	"guide.3":
 		"Web Nhanh turns a template into your website, live at yourname.hoandat.io.vn in minutes.",
 	"guide.4":
@@ -35,7 +35,7 @@ const en = {
 	"route.label": "Route",
 	"route.0": "Launch",
 	"route.1": "Chat",
-	"route.2": "KnowFlow",
+	"route.2": "Knowledge Base",
 	"route.3": "Web Nhanh",
 	"route.4": "The key",
 	"route.5": "More apps",
@@ -55,7 +55,7 @@ const en = {
 	"chat.title": "Messages you can find again.",
 	"chat.body":
 		"Fast messaging with searchable history and bots, built for the web first.",
-	"kb.title": "A knowledge base in English and Vietnamese.",
+	"kb.title": "Everything worth knowing, in English and Vietnamese.",
 	"kb.body":
 		"It covers all kinds of topics, laid out as one universe you can read, search and ask AI.",
 	"webnhanh.title": "A website from a template, live in minutes.",
@@ -157,7 +157,7 @@ const vi: Record<StringKey, string> = {
 		"Chào bạn, mình là Hoa tiêu. Cuộn xuống, mình chở bạn qua các app đang chạy. Lộ trình còn dài thêm mãi.",
 	"guide.1": "Trạm đầu: Chat. Tin nhắn nào cũng tìm lại được, có cả bot.",
 	"guide.2":
-		"KnowFlow giữ kiến thức song ngữ Anh – Việt về đủ mọi chủ đề. Đọc, tìm hay hỏi AI đều được.",
+		"Knowledge Base giữ kiến thức song ngữ Anh – Việt về đủ mọi chủ đề. Đọc, tìm hay hỏi AI đều được.",
 	"guide.3":
 		"Web Nhanh biến mẫu có sẵn thành website của bạn, lên mạng ở tên-bạn.hoandat.io.vn sau vài phút.",
 	"guide.4":
@@ -165,7 +165,7 @@ const vi: Record<StringKey, string> = {
 	"route.label": "Lộ trình",
 	"route.0": "Khởi hành",
 	"route.1": "Chat",
-	"route.2": "KnowFlow",
+	"route.2": "Knowledge Base",
 	"route.3": "Web Nhanh",
 	"route.4": "Chìa khoá",
 	"route.5": "Thêm app",
@@ -185,7 +185,7 @@ const vi: Record<StringKey, string> = {
 	"chat.title": "Tin nhắn tìm lại được.",
 	"chat.body":
 		"Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot, làm cho web trước tiên.",
-	"kb.title": "Knowledge base song ngữ Anh – Việt.",
+	"kb.title": "Kho tri thức song ngữ Anh – Việt.",
 	"kb.body":
 		"Đủ mọi chủ đề, từ công việc tới đời sống, xếp thành một vũ trụ để bạn đọc, tìm và hỏi AI.",
 	"webnhanh.title": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
