@@ -14,6 +14,10 @@ set -euo pipefail
 ROOT=/var/www/hoandat-home
 ID="${1:?usage: hoandat-home-activate-incoming <release-id>}"
 [[ "$ID" =~ ^[0-9]{8}-[0-9]{6}-[0-9a-f]{12}$ ]] || { echo "bad release id" >&2; exit 2; }
+
+# One activation at a time: a CI deploy and a manual release from a dev machine may meet.
+exec 9>/run/hoandat-home-activate.lock
+flock -w 600 9 || { echo "another activation still holds /run/hoandat-home-activate.lock" >&2; exit 1; }
 SRC="$ROOT/ci-incoming/$ID"
 STAGE="$ROOT/staging"
 [ -d "$SRC" ] && [ ! -L "$SRC" ] || { echo "incoming release $ID missing" >&2; exit 2; }
