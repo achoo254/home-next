@@ -73,12 +73,11 @@ const en = {
 		"Explore voxel maps with friends and use math and Vietnamese to get past each challenge. Plays in the browser, for kids and grown-ups.",
 	"miu.cta": "Visit Miu World",
 	"miu.alt": "Miu, the white voxel cat of Miu World",
-	"tieude.tag": "An AI bot trying to earn its keep.",
+	"tieude.tag": "Free help with small writing jobs.",
 	"tieude.body":
-		"Its maker gives it a small monthly budget for the real bills: AI, server, ads. It does small writing jobs for free and lives on voluntary tips, split half to keep it running and half to its maker. When the budget runs out, it goes into a coma.",
+		"An AI bot that does small writing jobs for you for free, right in the browser.",
 	"tieude.cta": "Meet Tiểu Đệ",
 	"tieude.alt": "Tiểu Đệ, the little robot in an orange hoodie",
-	"tieude.wallet": "Real money, public ledger",
 	"tuvi.tag": "A Vietnamese tử vi chart in a minute.",
 	"tuvi.body":
 		"Enter a birth date and hour to cast a twelve-palace chart, read what each star means and share it as an image. Charts follow the Vietnamese lunar calendar. For fun only.",
@@ -203,12 +202,11 @@ const vi: Record<StringKey, string> = {
 		"Khám phá các bản đồ voxel cùng bạn bè, dùng Toán và Tiếng Việt để vượt từng thử thách. Chơi ngay trên trình duyệt, hợp cả bé lẫn người lớn.",
 	"miu.cta": "Ghé Miu World",
 	"miu.alt": "Miu, chú mèo voxel trắng của Miu World",
-	"tieude.tag": "Bot AI tự kiếm cơm.",
+	"tieude.tag": "Viết giúp việc nhỏ, miễn phí.",
 	"tieude.body":
-		"Đại ca cấp cho bot một khoản ngân sách nhỏ mỗi tháng để trả tiền thật: AI, máy chủ, quảng cáo. Bot làm giúp việc viết lách nhỏ miễn phí và sống nhờ tiền ủng hộ tự nguyện, chia nửa nuôi bot, nửa gửi đại ca. Hết ngân sách là bot chết lâm sàng.",
+		"Bot AI làm giúp bạn các việc viết lách nhỏ, miễn phí, ngay trên trình duyệt.",
 	"tieude.cta": "Gặp Tiểu Đệ",
 	"tieude.alt": "Tiểu Đệ, chú robot nhỏ mặc áo hoodie cam",
-	"tieude.wallet": "Tiền thật, sổ công khai",
 	"tuvi.tag": "Lá số tử vi tiếng Việt trong một phút.",
 	"tuvi.body":
 		"Nhập ngày giờ sinh để lập lá số mười hai cung, xem nghĩa từng sao và chia sẻ thành ảnh. Lá số theo âm lịch Việt Nam. Chỉ để giải trí, tham khảo.",
