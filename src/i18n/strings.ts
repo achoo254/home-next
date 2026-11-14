@@ -60,7 +60,7 @@ const en = {
 		"It covers all kinds of topics, laid out as one universe you can read, search and ask AI.",
 	"webnhanh.title": "A website from a template, live in minutes.",
 	"webnhanh.body":
-		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. Developers can deploy from a public git link or a zip.",
+		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. You can also deploy from a public git link or a zip.",
 
 	"key.title": "One key opens every door.",
 	"key.body":
@@ -102,16 +102,31 @@ const en = {
 	"lockin.alt":
 		"The Lockin icon: a red padlock with a white check mark, shaped like a map pin, on a lime tile",
 
-	"dev.title": "For developers",
-	"dev.intro": "Tools for people who build software, on the same account.",
-	"dev.scribe":
-		"Record or upload audio and video, then search and edit the Vietnamese transcript.",
-	"dev.localman":
-		"A working mock API in minutes, with a browser API client and an MCP server for AI agents.",
-	"dev.tunelo":
-		"Put a local port on the internet at an HTTPS address, then watch your tunnels in the browser.",
+	"group.tools.title": "Tools",
+	"group.tools.intro": "Get things done faster, every day.",
+	"group.fun.title": "Entertainment",
+	"group.fun.intro": "Just for fun.",
+	"group.learn.title": "Learning",
+	"group.learn.intro": "Learn like playing, look things up in seconds.",
+	"group.app.webnhanh":
+		"A website from a template, published at its own address.",
+	"group.app.chat": "Fast messaging with searchable history and bots.",
+	"group.app.tieude": "An AI bot that does small writing jobs for free.",
+	"group.app.scribe":
+		"Record audio and turn it into searchable, editable transcripts.",
+	"group.app.localman": "Mock APIs and an API client in your browser.",
+	"group.app.tunelo": "Your tunnels in the browser.",
+	"group.app.tuvi":
+		"Your 12-palace horoscope chart and a fortune stick every day, just for fun.",
+	"group.app.clip": "Short vertical videos from a template.",
+	"group.app.truyen": "Vietnamese and world folk tales, retold.",
+	"group.app.lockin": "Lock in plans through one link.",
+	"group.app.miu":
+		"A 3D block world to play with friends, with maths and Vietnamese quests.",
+	"group.app.kb":
+		"Bilingual articles on all kinds of topics to read, search and ask AI.",
 
-	"made.title": "Made in Vietnam by one developer and a crew of AI agents.",
+	"made.title": "Made in Vietnam by one person and a crew of AI agents.",
 	"made.body":
 		"Every app here is designed, built and run by one person working with AI agents. That keeps each app small, focused and quick to improve.",
 	"made.p1.title": "No passwords",
@@ -128,8 +143,6 @@ const en = {
 	"next.follow": "Follow the launches",
 	"made.source": "Open source on GitHub",
 	"close.title": "Board once. Every app opens.",
-	"footer.apps": "Apps",
-	"footer.more": "More",
 	"footer.account": "Your account",
 	"footer.rights": "© 2026 hoandat.com",
 	"footer.privacy": "Privacy",
@@ -189,7 +202,7 @@ const vi: Record<StringKey, string> = {
 		"Đủ mọi chủ đề, từ công việc tới đời sống, xếp thành một vũ trụ để bạn đọc, tìm và hỏi AI.",
 	"webnhanh.title": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
 	"webnhanh.body":
-		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Lập trình viên gắn link git công khai hoặc tải file zip lên là có website.",
+		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Bạn cũng có thể gắn link git công khai hoặc tải file zip lên là có website.",
 
 	"key.title": "Một chìa khoá mở mọi cửa.",
 	"key.body":
@@ -231,16 +244,30 @@ const vi: Record<StringKey, string> = {
 	"lockin.alt":
 		"Biểu tượng Lockin: ổ khoá đỏ hình ghim bản đồ mang dấu tích trắng trên nền xanh chanh",
 
-	"dev.title": "Công cụ cho lập trình viên",
-	"dev.intro": "Dành cho người làm phần mềm, dùng chung tài khoản Hoandat.",
-	"dev.scribe":
-		"Ghi âm hoặc tải tệp âm thanh, video lên, rồi tìm và sửa bản chép lời tiếng Việt.",
-	"dev.localman":
-		"Mock API chạy được sau vài phút, kèm API client trên trình duyệt và MCP server cho AI agent.",
-	"dev.tunelo":
-		"Đưa một cổng local lên internet bằng địa chỉ HTTPS, rồi xem các tunnel ngay trên trình duyệt.",
+	"group.tools.title": "Công cụ",
+	"group.tools.intro": "Làm việc nhanh hơn mỗi ngày.",
+	"group.fun.title": "Giải trí",
+	"group.fun.intro": "Chơi cho vui, xem cho đã.",
+	"group.learn.title": "Học tập",
+	"group.learn.intro": "Học mà như chơi, tra cứu là có.",
+	"group.app.webnhanh":
+		"Làm website từ mẫu có sẵn và đăng ngay ở địa chỉ riêng.",
+	"group.app.chat": "Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot.",
+	"group.app.tieude": "Bot AI làm giúp miễn phí các việc viết nhỏ.",
+	"group.app.scribe":
+		"Ghi âm và chuyển thành bản chép lời để tìm kiếm, chỉnh sửa.",
+	"group.app.localman": "Mock API và API client ngay trên trình duyệt.",
+	"group.app.tunelo": "Tunnel của bạn trên trình duyệt.",
+	"group.app.tuvi": "Lập lá số 12 cung và xin quẻ mỗi ngày, xem cho vui.",
+	"group.app.clip": "Video dọc ngắn làm từ mẫu có sẵn.",
+	"group.app.truyen": "Truyện cổ tích Việt Nam và thế giới, kể lại.",
+	"group.app.lockin": "Chốt kèo bằng một link.",
+	"group.app.miu":
+		"Thế giới khối 3D chơi cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
+	"group.app.kb":
+		"Kho tri thức song ngữ về đủ mọi chủ đề để đọc, tìm và hỏi AI.",
 
-	"made.title": "Làm tại Việt Nam bởi một lập trình viên và đội AI agent.",
+	"made.title": "Làm tại Việt Nam bởi một người và đội AI agent.",
 	"made.body":
 		"Mọi app ở đây do một người thiết kế, xây dựng và vận hành cùng các AI agent. Nhờ vậy mỗi app nhỏ gọn, tập trung và cải tiến nhanh.",
 	"made.p1.title": "Không mật khẩu",
@@ -258,8 +285,6 @@ const vi: Record<StringKey, string> = {
 	"next.follow": "Theo dõi các lần ra mắt",
 	"made.source": "Mã nguồn mở trên GitHub",
 	"close.title": "Lên tàu một lần, app nào cũng mở.",
-	"footer.apps": "Ứng dụng",
-	"footer.more": "Thêm nữa",
 	"footer.account": "Tài khoản của bạn",
 	"footer.rights": "© 2026 hoandat.com",
 	"footer.privacy": "Quyền riêng tư",

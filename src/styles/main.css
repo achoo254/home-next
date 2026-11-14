@@ -712,48 +712,55 @@ main,
 	margin-top: var(--space-4);
 }
 
-/* ---------- For developers ---------- */
+/* ---------- Apps by kind ---------- */
 
-/* A short list after the main apps: no art, one line each, so it reads as
-   a side door for people who build software rather than another stop. */
-.devtools {
+/* Three columns after the main apps: Tools, Entertainment, Learning. One line
+   per app, no art, so the list stays a quick index rather than another stop. */
+.groups {
 	padding-block: var(--space-9);
 }
 
-.devtools-title {
-	font-size: var(--step-3);
-}
-
-.devtools-intro {
-	margin-top: var(--space-3);
-	max-width: var(--measure);
-	color: var(--ink-2);
-}
-
-.devtools-list {
+.groups-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
-	gap: var(--space-6);
-	margin-top: var(--space-7);
-	padding: 0;
-	list-style: none;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+	gap: var(--space-7);
 }
 
-.devtool {
+.group {
 	padding: var(--space-5);
 	background: var(--surface-veil);
 	border: var(--border) solid var(--line);
 	border-radius: var(--radius);
 }
 
-.devtool-body {
-	margin-top: var(--space-3);
-	color: var(--ink-2);
-	font-size: var(--step--1);
+.group-title {
+	font-size: var(--step-3);
 }
 
-.devtool .text-link {
+.group-intro {
+	margin-top: var(--space-3);
+	color: var(--ink-2);
+}
+
+.group-list {
+	display: grid;
+	gap: var(--space-5);
+	margin-top: var(--space-6);
+	padding: 0;
+	list-style: none;
+}
+
+.group-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	font-weight: 600;
+}
+
+.group-body {
 	margin-top: var(--space-2);
+	color: var(--ink-2);
+	font-size: var(--step--1);
 }
 
 /* ---------- Made by ---------- */

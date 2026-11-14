@@ -74,45 +74,62 @@ describe("page structure", () => {
 	});
 });
 
-describe("developer tools", () => {
+describe("apps by kind", () => {
 	const section = html.slice(
-		html.indexOf('<section id="developers"'),
+		html.indexOf('<section id="groups"'),
 		html.indexOf('<section class="made"'),
 	);
 	const hostsIn = (part: string): string[] =>
 		[...part.matchAll(/href="(https:\/\/[^"]+)"/g)].map(
 			(match) => new URL((match[1] ?? "").replaceAll("&amp;", "&")).host,
 		);
+	// Each group starts at its own id and ends where the next group starts.
+	const hostsOf = (id: string): string[] => {
+		const start = section.indexOf(`id="group-${id}"`);
+		const next = section.indexOf('class="group"', start);
+		return hostsIn(section.slice(start, next === -1 ? undefined : next));
+	};
 
-	it("lists Scribe, Localman and Tunelo in their own section", () => {
-		expect(section).toContain('data-i18n="dev.title"');
-		expect(hostsIn(section)).toEqual([
+	it("lists every app under Tools, Entertainment or Learning", () => {
+		expect(hostsOf("tools")).toEqual([
+			"webnhanh.hoandat.com",
+			"chat.hoandat.com",
+			"tieude.hoandat.com",
 			"scribe.hoandat.com",
 			"localman.hoandat.com",
 			"tunnel.hoandat.com",
 		]);
+		expect(hostsOf("fun")).toEqual([
+			"tuvi.hoandat.com",
+			"clip.hoandat.com",
+			"truyen.hoandat.com",
+			"lockin.hoandat.com",
+		]);
+		expect(hostsOf("learn")).toEqual(["miu.hoandat.com", "kb.hoandat.com"]);
 	});
 
-	it("keeps them out of the hero, the app stops and the route", () => {
-		const main = html.slice(
-			html.indexOf('<section id="launch"'),
-			html.indexOf('<section id="developers"'),
-		);
+	it("keeps the section out of the app stops and the route", () => {
 		const route = html.slice(html.indexOf('<nav class="route"'));
-		for (const host of [
-			"scribe.hoandat.com",
-			"localman.hoandat.com",
-			"tunnel.hoandat.com",
-		]) {
-			expect(hostsIn(main), host).not.toContain(host);
-		}
 		expect(route).not.toMatch(/Scribe|Localman|Tunelo/);
 		expect(section).not.toContain("data-stage=");
 	});
 
-	it("names the section for each language", () => {
-		expect(STRINGS.en["dev.title"]).toBe("For developers");
-		expect(STRINGS.vi["dev.title"]).toBe("Công cụ cho lập trình viên");
+	it("names the three kinds for each language", () => {
+		expect(STRINGS.en["group.tools.title"]).toBe("Tools");
+		expect(STRINGS.en["group.fun.title"]).toBe("Entertainment");
+		expect(STRINGS.en["group.learn.title"]).toBe("Learning");
+		expect(STRINGS.vi["group.tools.title"]).toBe("Công cụ");
+		expect(STRINGS.vi["group.fun.title"]).toBe("Giải trí");
+		expect(STRINGS.vi["group.learn.title"]).toBe("Học tập");
+	});
+
+	it("never mentions developers on the page", () => {
+		expect(html).not.toMatch(/developer|lập trình viên/i);
+		for (const locale of ["en", "vi"] as const) {
+			for (const text of Object.values(STRINGS[locale])) {
+				expect(text).not.toMatch(/developer|lập trình viên/i);
+			}
+		}
 	});
 });
 

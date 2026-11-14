@@ -199,7 +199,7 @@
 								<span class="app-host">webnhanh.hoandat.com</span>
 							</p>
 							<h3 id="webnhanh-title" class="chapter-title" data-i18n="webnhanh.title">A website from a template, live in minutes.</h3>
-							<p class="chapter-body" data-i18n="webnhanh.body">Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. Developers can deploy from a public git link or a zip.</p>
+							<p class="chapter-body" data-i18n="webnhanh.body">Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. You can also deploy from a public git link or a zip.</p>
 							<a class="button button-line" href="https://webnhanh.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=webnhanh">
 								<span data-i18n="apps.open">Open</span> <span lang="vi">Web Nhanh</span>
 								<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
@@ -373,54 +373,116 @@
 				</div>
 			</section>
 
-			<section id="developers" class="devtools" aria-labelledby="devtools-title">
-				<div class="container">
-					<h2 id="devtools-title" class="devtools-title" data-i18n="dev.title">For developers</h2>
-					<p class="devtools-intro" data-i18n="dev.intro">Tools for people who build software, on the same account.</p>
-					<ul class="devtools-list" role="list">
-						<li class="devtool">
-							<p class="app-id">
-								<img class="tile-glyph" src="/mark-scribe-64.webp" width="24" height="24" alt="" aria-hidden="true" />
-								<span class="app-name">Scribe</span>
-								<span class="app-host">scribe.hoandat.com</span>
-							</p>
-							<p class="devtool-body" data-i18n="dev.scribe">Record or upload audio and video, then search and edit the Vietnamese transcript.</p>
-							<a class="text-link" href="https://scribe.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=scribe">
-								<span data-i18n="apps.open">Open</span> Scribe
-								<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-							</a>
-						</li>
-						<li class="devtool">
-							<p class="app-id">
-								<img class="tile-glyph" src="/mark-localman-64.webp" width="24" height="24" alt="" aria-hidden="true" />
-								<span class="app-name">Localman</span>
-								<span class="app-host">localman.hoandat.com</span>
-							</p>
-							<p class="devtool-body" data-i18n="dev.localman">A working mock API in minutes, with a browser API client and an MCP server for AI agents.</p>
-							<a class="text-link" href="https://localman.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=localman">
-								<span data-i18n="apps.open">Open</span> Localman
-								<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-							</a>
-						</li>
-						<li class="devtool">
-							<p class="app-id">
-								<img class="tile-glyph" src="/mark-tunelo-64.webp" width="24" height="24" alt="" aria-hidden="true" />
-								<span class="app-name">Tunelo</span>
-								<span class="app-host">tunnel.hoandat.com</span>
-							</p>
-							<p class="devtool-body" data-i18n="dev.tunelo">Put a local port on the internet at an HTTPS address, then watch your tunnels in the browser.</p>
-							<a class="text-link" href="https://tunnel.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=tunelo">
-								<span data-i18n="apps.open">Open</span> Tunelo
-								<svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-							</a>
-						</li>
-					</ul>
+			<section id="groups" class="groups" aria-label="Apps by kind">
+				<div class="container groups-grid">
+					<div class="group" id="group-tools">
+						<h2 class="group-title" data-i18n="group.tools.title">Tools</h2>
+						<p class="group-intro" data-i18n="group.tools.intro">Get things done faster, every day.</p>
+						<ul class="group-list" role="list">
+							<li class="group-app">
+								<a class="group-link" href="https://webnhanh.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=webnhanh">
+									<img class="tile-glyph" src="/mark-webnhanh-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name" lang="vi">Web Nhanh</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.webnhanh">A website from a template, published at its own address.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://chat.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=chat">
+									<img class="tile-glyph" src="/mark-chat-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Chat</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.chat">Fast messaging with searchable history and bots.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://tieude.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=tieude">
+									<img class="tile-glyph" src="/tieude.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name" lang="vi">Tiểu Đệ</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.tieude">An AI bot that does small writing jobs for free.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://scribe.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=scribe">
+									<img class="tile-glyph" src="/mark-scribe-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Scribe</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.scribe">Record audio and turn it into searchable, editable transcripts.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://localman.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=localman">
+									<img class="tile-glyph" src="/mark-localman-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Localman</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.localman">Mock APIs and an API client in your browser.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://tunnel.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=tunelo">
+									<img class="tile-glyph" src="/mark-tunelo-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Tunelo</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.tunelo">Your tunnels in the browser.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="group" id="group-fun">
+						<h2 class="group-title" data-i18n="group.fun.title">Entertainment</h2>
+						<p class="group-intro" data-i18n="group.fun.intro">Just for fun.</p>
+						<ul class="group-list" role="list">
+							<li class="group-app">
+								<a class="group-link" href="https://tuvi.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=tuvi">
+									<img class="tile-glyph" src="/tuvi.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name" lang="vi">Tử Vi</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.tuvi">Your 12-palace horoscope chart and a fortune stick every day, just for fun.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://clip.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=clip">
+									<img class="tile-glyph" src="/clip.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Clip</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.clip">Short vertical videos from a template.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://truyen.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=truyen">
+									<img class="tile-glyph" src="/truyen.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name" lang="vi">Truyện</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.truyen">Vietnamese and world folk tales, retold.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://lockin.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=lockin">
+									<img class="tile-glyph" src="/lockin.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Lockin</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.lockin">Lock in plans through one link.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="group" id="group-learn">
+						<h2 class="group-title" data-i18n="group.learn.title">Learning</h2>
+						<p class="group-intro" data-i18n="group.learn.intro">Learn like playing, look things up in seconds.</p>
+						<ul class="group-list" role="list">
+							<li class="group-app">
+								<a class="group-link" href="https://miu.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=miu">
+									<img class="tile-glyph" src="/miu-world.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Miu World</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.miu">A 3D block world to play with friends, with maths and Vietnamese quests.</p>
+							</li>
+							<li class="group-app">
+								<a class="group-link" href="https://kb.hoandat.com/?utm_source=home&amp;utm_medium=landing&amp;utm_content=kb">
+									<img class="tile-glyph" src="/mark-kb-64.webp" width="24" height="24" alt="" aria-hidden="true" loading="lazy" />
+									<span class="group-name">Knowledge Base</span>
+								</a>
+								<p class="group-body" data-i18n="group.app.kb">Bilingual articles on all kinds of topics to read, search and ask AI.</p>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</section>
 
 			<section class="made" aria-labelledby="made-title">
 				<div class="container">
-					<h2 id="made-title" class="made-title" data-i18n="made.title">Made in Vietnam by one developer and a crew of AI agents.</h2>
+					<h2 id="made-title" class="made-title" data-i18n="made.title">Made in Vietnam by one person and a crew of AI agents.</h2>
 					<p class="section-body" data-i18n="made.body">
 						Every app here is designed, built and run by one person working with AI agents. That keeps each app small, focused and quick to improve.
 					</p>
@@ -458,28 +520,28 @@
 					<span class="brand-name">hoandat</span>
 					<p class="footer-small" data-i18n="footer.rights">© 2026 hoandat.com</p>
 					<a class="footer-legal" href="https://auth.hoandat.com/privacy" data-i18n="footer.privacy">Privacy</a>
+					<a class="footer-legal" href="https://auth.hoandat.com/account" data-i18n="footer.account">Your account</a>
 				</div>
-				<nav class="footer-col" aria-labelledby="footer-apps">
-					<h2 id="footer-apps" class="footer-heading" data-i18n="footer.apps">Apps</h2>
-					<a href="https://tuvi.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Tử Vi</a>
-					<a href="https://miu.hoandat.com/?utm_source=home&amp;utm_medium=footer">Miu World</a>
+				<nav class="footer-col" aria-labelledby="footer-tools">
+					<h2 id="footer-tools" class="footer-heading" data-i18n="group.tools.title">Tools</h2>
 					<a href="https://webnhanh.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Web Nhanh</a>
 					<a href="https://chat.hoandat.com/?utm_source=home&amp;utm_medium=footer">Chat</a>
-					<a href="https://kb.hoandat.com/?utm_source=home&amp;utm_medium=footer">Knowledge Base</a>
-				</nav>
-				<nav class="footer-col" aria-labelledby="footer-more">
-					<h2 id="footer-more" class="footer-heading" data-i18n="footer.more">More</h2>
 					<a href="https://tieude.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Tiểu Đệ</a>
-					<a href="https://clip.hoandat.com/?utm_source=home&amp;utm_medium=footer">Clip</a>
-					<a href="https://truyen.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Truyện</a>
-					<a href="https://lockin.hoandat.com/?utm_source=home&amp;utm_medium=footer">Lockin</a>
-					<a href="https://auth.hoandat.com/account" data-i18n="footer.account">Your account</a>
-				</nav>
-				<nav class="footer-col" aria-labelledby="footer-dev">
-					<h2 id="footer-dev" class="footer-heading" data-i18n="dev.title">For developers</h2>
 					<a href="https://scribe.hoandat.com/?utm_source=home&amp;utm_medium=footer">Scribe</a>
 					<a href="https://localman.hoandat.com/?utm_source=home&amp;utm_medium=footer">Localman</a>
 					<a href="https://tunnel.hoandat.com/?utm_source=home&amp;utm_medium=footer">Tunelo</a>
+				</nav>
+				<nav class="footer-col" aria-labelledby="footer-fun">
+					<h2 id="footer-fun" class="footer-heading" data-i18n="group.fun.title">Entertainment</h2>
+					<a href="https://tuvi.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Tử Vi</a>
+					<a href="https://clip.hoandat.com/?utm_source=home&amp;utm_medium=footer">Clip</a>
+					<a href="https://truyen.hoandat.com/?utm_source=home&amp;utm_medium=footer" lang="vi">Truyện</a>
+					<a href="https://lockin.hoandat.com/?utm_source=home&amp;utm_medium=footer">Lockin</a>
+				</nav>
+				<nav class="footer-col" aria-labelledby="footer-learn">
+					<h2 id="footer-learn" class="footer-heading" data-i18n="group.learn.title">Learning</h2>
+					<a href="https://miu.hoandat.com/?utm_source=home&amp;utm_medium=footer">Miu World</a>
+					<a href="https://kb.hoandat.com/?utm_source=home&amp;utm_medium=footer">Knowledge Base</a>
 				</nav>
 				<div class="footer-col">
 					<button
