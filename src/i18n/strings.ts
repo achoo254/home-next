@@ -101,6 +101,12 @@ const en = {
 	"lockin.cta": "Make a plan",
 	"lockin.alt":
 		"The Lockin icon: a red padlock with a white check mark, shaped like a map pin, on a lime tile",
+	"chuanho.tag": "Tap the wooden bell, light incense, ease up on harsh words.",
+	"chuanho.body":
+		"Tap the wooden bell to the beat, light incense, check in on your harsh words for the day and listen to Lofi Chùa Nhỏ. A few calm minutes a day, just for fun.",
+	"chuanho.cta": "Tap the bell",
+	"chuanho.alt":
+		"The Chùa Nhỏ icon: a round cream wooden bell with a mallet on a deep purple tile",
 
 	"group.tools.title": "Tools",
 	"group.tools.intro": "Get things done faster, every day.",
@@ -121,6 +127,8 @@ const en = {
 	"group.app.clip": "Short vertical videos from a template.",
 	"group.app.truyen": "Vietnamese and world folk tales, retold.",
 	"group.app.lockin": "Lock in plans through one link.",
+	"group.app.chuanho":
+		"Tap the wooden bell, light incense, ease up on harsh words. A calmer head, just for fun.",
 	"group.app.miu":
 		"A 3D block world to play with friends, with maths and Vietnamese quests.",
 	"group.app.kb":
@@ -243,6 +251,12 @@ const vi: Record<StringKey, string> = {
 	"lockin.cta": "Chốt kèo",
 	"lockin.alt":
 		"Biểu tượng Lockin: ổ khoá đỏ hình ghim bản đồ mang dấu tích trắng trên nền xanh chanh",
+	"chuanho.tag": "Gõ mõ, thắp hương, bớt khẩu nghiệp.",
+	"chuanho.body":
+		"Gõ mõ theo nhịp, thắp hương, check-in khẩu nghiệp và nghe Lofi Chùa Nhỏ. Vài phút mỗi ngày cho tâm bớt lag, chơi cho vui.",
+	"chuanho.cta": "Gõ mõ",
+	"chuanho.alt":
+		"Biểu tượng Chùa Nhỏ: chiếc mõ tròn màu kem cùng dùi gõ trên nền tím đậm",
 
 	"group.tools.title": "Công cụ",
 	"group.tools.intro": "Làm việc nhanh hơn mỗi ngày.",
@@ -262,6 +276,8 @@ const vi: Record<StringKey, string> = {
 	"group.app.clip": "Video dọc ngắn làm từ mẫu có sẵn.",
 	"group.app.truyen": "Truyện cổ tích Việt Nam và thế giới, kể lại.",
 	"group.app.lockin": "Chốt kèo bằng một link.",
+	"group.app.chuanho":
+		"Gõ mõ, thắp hương, bớt khẩu nghiệp. Chơi cho tâm bớt lag.",
 	"group.app.miu":
 		"Thế giới khối 3D chơi cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
 	"group.app.kb":

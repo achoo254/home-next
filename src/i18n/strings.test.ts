@@ -104,6 +104,7 @@ describe("apps by kind", () => {
 			"clip.hoandat.com",
 			"truyen.hoandat.com",
 			"lockin.hoandat.com",
+			"chuanho.hoandat.com",
 		]);
 		expect(hostsOf("learn")).toEqual(["miu.hoandat.com", "kb.hoandat.com"]);
 	});
