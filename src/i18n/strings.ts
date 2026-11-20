@@ -89,12 +89,6 @@ const en = {
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
 	"clip.cta": "Make a clip",
 	"clip.alt": "The Clip icon: a smiling clapperboard character in a red hoodie",
-	"truyen.tag": "Vietnamese and world folk tales, retold.",
-	"truyen.body":
-		"Nearly a thousand old tales retold in Vietnamese, turned page by page like a real book: a children's shelf with Mèo Miu as the guide, a shelf told in full for adults, and tales from around the world. Lights-off mode and large text, no sign-in needed.",
-	"truyen.cta": "Read a story",
-	"truyen.alt":
-		"The Truyện icon: an open storybook with a golden crescent moon and a curling cloud on a vermilion tile",
 	"lockin.tag": "Lock in plans through one link.",
 	"lockin.body":
 		"Lock in plans with friends or coworkers through one link. Everyone votes on time and place, no account needed.",
@@ -125,7 +119,6 @@ const en = {
 	"group.app.tuvi":
 		"Your 12-palace horoscope chart and a fortune stick every day, just for fun.",
 	"group.app.clip": "Short vertical videos from a template.",
-	"group.app.truyen": "Vietnamese and world folk tales, retold.",
 	"group.app.lockin": "Lock in plans through one link.",
 	"group.app.chuanho":
 		"Tap the wooden bell, light incense, ease up on harsh words. A calmer head, just for fun.",
@@ -239,12 +232,6 @@ const vi: Record<StringKey, string> = {
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
 	"clip.cta": "Làm video",
 	"clip.alt": "Biểu tượng Clip: chú bảng clapper tươi cười mặc áo hoodie đỏ",
-	"truyen.tag": "Truyện cổ Việt Nam và thế giới, kể lại bằng lời mới.",
-	"truyen.body":
-		"Gần một nghìn truyện cổ kể lại bằng tiếng Việt, lật từng trang như sách thật: kệ Trẻ em có Mèo Miu dẫn chuyện, kệ Người lớn kể đầy đủ, kệ Thế giới có Grimm, Andersen, Aesop. Có chế độ tắt đèn, chữ to, không cần đăng nhập.",
-	"truyen.cta": "Đọc truyện",
-	"truyen.alt":
-		"Biểu tượng Truyện: quyển sách cổ tích mở, trăng khuyết vàng và mây cuộn trên nền đỏ son",
 	"lockin.tag": "Chốt kèo bằng một link.",
 	"lockin.body":
 		"Chốt kèo với bạn bè hay đồng nghiệp bằng một link. Mọi người vote giờ và chỗ, không cần tài khoản.",
@@ -274,7 +261,6 @@ const vi: Record<StringKey, string> = {
 	"group.app.tunelo": "Tunnel của bạn trên trình duyệt.",
 	"group.app.tuvi": "Lập lá số 12 cung và xin quẻ mỗi ngày, xem cho vui.",
 	"group.app.clip": "Video dọc ngắn làm từ mẫu có sẵn.",
-	"group.app.truyen": "Truyện cổ tích Việt Nam và thế giới, kể lại.",
 	"group.app.lockin": "Chốt kèo bằng một link.",
 	"group.app.chuanho":
 		"Gõ mõ, thắp hương, bớt khẩu nghiệp. Chơi cho tâm bớt lag.",

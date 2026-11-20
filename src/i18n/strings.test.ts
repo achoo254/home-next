@@ -102,7 +102,6 @@ describe("apps by kind", () => {
 		expect(hostsOf("fun")).toEqual([
 			"tuvi.hoandat.com",
 			"clip.hoandat.com",
-			"truyen.hoandat.com",
 			"lockin.hoandat.com",
 			"chuanho.hoandat.com",
 		]);
