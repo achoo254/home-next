@@ -27,7 +27,7 @@ const en = {
 		"Hi, I'm Nav. Scroll and I'll fly you past the apps live today. The route keeps growing.",
 	"guide.1": "First stop, Chat. Every message stays searchable, bots included.",
 	"guide.2":
-		"Knowledge Base keeps texts on all kinds of topics in English and Vietnamese. Read it, search it or ask AI.",
+		"Knowledge Base keeps texts on infrastructure and software engineering in English and Vietnamese. Read it, search it or ask AI.",
 	"guide.3":
 		"Web Nhanh turns a template into your website, live at yourname.hoandat.io.vn in minutes.",
 	"guide.4":
@@ -57,7 +57,7 @@ const en = {
 		"Fast messaging with searchable history and bots, built for the web first.",
 	"kb.title": "Everything worth knowing, in English and Vietnamese.",
 	"kb.body":
-		"It covers all kinds of topics, laid out as one universe you can read, search and ask AI.",
+		"It covers infrastructure and software engineering, laid out as one universe you can read, search and ask AI.",
 	"webnhanh.title": "A website from a template, live in minutes.",
 	"webnhanh.body":
 		"Pick a template (shop, wedding invitation, café menu, profile, Tết greeting), edit the text and photos on your phone and publish it at yourname.hoandat.io.vn. Visitors' orders and replies land in the app. You can also deploy from a public git link or a zip.",
@@ -125,7 +125,7 @@ const en = {
 	"group.app.miu":
 		"A 3D block world to play with friends, with maths and Vietnamese quests.",
 	"group.app.kb":
-		"Bilingual articles on all kinds of topics to read, search and ask AI.",
+		"Bilingual articles on infrastructure and software engineering to read, search and ask AI.",
 
 	"made.title": "Made in Vietnam by one person and a crew of AI agents.",
 	"made.body":
@@ -170,7 +170,7 @@ const vi: Record<StringKey, string> = {
 		"Chào bạn, mình là Hoa tiêu. Cuộn xuống, mình chở bạn qua các app đang chạy. Lộ trình còn dài thêm mãi.",
 	"guide.1": "Trạm đầu: Chat. Tin nhắn nào cũng tìm lại được, có cả bot.",
 	"guide.2":
-		"Knowledge Base giữ kiến thức song ngữ Anh – Việt về đủ mọi chủ đề. Đọc, tìm hay hỏi AI đều được.",
+		"Knowledge Base giữ kiến thức song ngữ Anh – Việt về hạ tầng và kỹ thuật phần mềm. Đọc, tìm hay hỏi AI đều được.",
 	"guide.3":
 		"Web Nhanh biến mẫu có sẵn thành website của bạn, lên mạng ở tên-bạn.hoandat.io.vn sau vài phút.",
 	"guide.4":
@@ -200,7 +200,7 @@ const vi: Record<StringKey, string> = {
 		"Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot, làm cho web trước tiên.",
 	"kb.title": "Kho tri thức song ngữ Anh – Việt.",
 	"kb.body":
-		"Đủ mọi chủ đề, từ công việc tới đời sống, xếp thành một vũ trụ để bạn đọc, tìm và hỏi AI.",
+		"Hạ tầng và kỹ thuật phần mềm, xếp thành một vũ trụ để bạn đọc, tìm và hỏi AI.",
 	"webnhanh.title": "Website từ mẫu có sẵn, lên mạng sau vài phút.",
 	"webnhanh.body":
 		"Chọn mẫu (bán hàng, thiệp cưới, thực đơn quán, hồ sơ cá nhân, thiệp Tết), sửa chữ và ảnh ngay trên điện thoại rồi đăng ở tên-bạn.hoandat.io.vn. Đơn hàng và lời nhắn của khách về thẳng app. Bạn cũng có thể gắn link git công khai hoặc tải file zip lên là có website.",
@@ -267,7 +267,7 @@ const vi: Record<StringKey, string> = {
 	"group.app.miu":
 		"Thế giới khối 3D chơi cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
 	"group.app.kb":
-		"Kho tri thức song ngữ về đủ mọi chủ đề để đọc, tìm và hỏi AI.",
+		"Kho tri thức song ngữ về hạ tầng và kỹ thuật phần mềm để đọc, tìm và hỏi AI.",
 
 	"made.title": "Làm tại Việt Nam bởi một người và đội AI agent.",
 	"made.body":
