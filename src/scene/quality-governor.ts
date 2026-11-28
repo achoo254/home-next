@@ -8,16 +8,16 @@
 export interface QualityLevel {
 	/** Upper bound for the device pixel ratio. */
 	readonly maxPixelRatio: number;
-	/** Share of the canvas resolution the aurora noise is drawn at. */
-	readonly auroraScale: number;
+	/** Share of the canvas resolution the galaxy backdrop is drawn at. */
+	readonly backdropScale: number;
 	readonly bloom: boolean;
 }
 
 export const QUALITY_LEVELS: readonly QualityLevel[] = [
-	{ maxPixelRatio: 2, auroraScale: 0.5, bloom: true },
-	{ maxPixelRatio: 1.5, auroraScale: 0.4, bloom: true },
-	{ maxPixelRatio: 1, auroraScale: 0.33, bloom: true },
-	{ maxPixelRatio: 1, auroraScale: 0.25, bloom: false },
+	{ maxPixelRatio: 2, backdropScale: 1, bloom: true },
+	{ maxPixelRatio: 1.5, backdropScale: 1, bloom: true },
+	{ maxPixelRatio: 1, backdropScale: 0.75, bloom: true },
+	{ maxPixelRatio: 1, backdropScale: 0.6, bloom: false },
 ];
 
 /** Frames per sample window: short, so a slow device recovers in seconds. */

@@ -10,11 +10,11 @@ export const SCENE_PALETTE = {
 } as const;
 
 /**
- * The aurora behind the tiles changes mood with each stage of the page, so
- * every app chapter has its own light: four colours from the deepest shadow
- * to the brightest wisp.
+ * The galaxy behind the tiles is colour-graded with each stage of the page,
+ * so every app chapter has its own light: four colours from the deepest
+ * shadow to the brightest star cloud.
  */
-export interface AuroraMood {
+export interface SkyMood {
 	readonly deep: number;
 	readonly mid: number;
 	readonly glow: number;
@@ -22,7 +22,7 @@ export interface AuroraMood {
 }
 
 /** One mood per stage: hero, Chat, Knowledge Base, Web Nhanh, account, workshop. */
-export const AURORA_MOODS: readonly AuroraMood[] = [
+export const SKY_MOODS: readonly SkyMood[] = [
 	{ deep: 0x07051a, mid: 0x1d1550, glow: 0x6e56cf, accent: 0xe796f3 },
 	{ deep: 0x060619, mid: 0x1a1b5c, glow: 0x5b6cff, accent: 0x8874d8 },
 	{ deep: 0x06041a, mid: 0x261060, glow: 0x7c3aed, accent: 0x5ec8f0 },

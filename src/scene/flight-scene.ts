@@ -2,7 +2,8 @@
  * The page's 3D layer: a fixed full-viewport canvas behind the copy, seen
  * from the seat of a small ship. Scrolling flies the ship along a route
  * (`flight-path.ts`), one stop per chapter: stars streak when the ship
- * moves fast, and the nebula changes mood with every stop. The apps' art
+ * moves fast, and the view pans along the Milky Way, changing its colour
+ * grade with every stop. The apps' art
  * and Nav, the guide bot, are images in the HTML over it.
  *
  * Loaded lazily after first paint; the plain background stands in until it
@@ -18,7 +19,6 @@ import {
 	WebGLRenderer,
 } from "three";
 import { measureAnchors, stageAt } from "../scroll/stage-progress";
-import { createAuroraBackdrop } from "./aurora-backdrop";
 import {
 	LAST_STAGE,
 	type StopFrame,
@@ -27,6 +27,7 @@ import {
 	stopFrame,
 	stopLookTarget,
 } from "./flight-path";
+import { createGalaxyBackdrop } from "./galaxy-backdrop";
 import { createPostEffects } from "./post-effects";
 import { QualityGovernor } from "./quality-governor";
 import { SCENE_PALETTE } from "./scene-palette";
@@ -49,10 +50,12 @@ export interface FlightScene {
 const FOV = 38;
 /** How fast the ship follows the scroll (per second). */
 const FLIGHT_RATE = 2.4;
-/** How fast the nebula's colours follow the scroll (per second). */
+/** How fast the sky's pan and colours follow the scroll (per second). */
 const MOOD_RATE = 2.2;
-/** Reduced motion freezes the nebula at a moment that reads well. */
+/** Reduced motion freezes the sway at a moment that reads well. */
 const STILL_TIME = 18;
+/** Pointer parallax on the sky, as a share of the room left to pan. */
+const SKY_PARALLAX = 0.06;
 /**
  * Throws when the browser cannot give us a WebGL context, or only a slow
  * software one: the poster is the better page then.
@@ -75,9 +78,12 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 	const camera = new PerspectiveCamera(FOV, 1, 0.1, 400);
 	scene.add(camera);
 
-	// Drawn at low resolution into a texture.
-	const aurora = createAuroraBackdrop();
-	scene.background = aurora.texture;
+	// Drawn into a texture, so the glass tiles refract it.
+	const sky = createGalaxyBackdrop({
+		instant: reducedMotion,
+		onLoad: () => requestDraw(true),
+	});
+	scene.background = sky.texture;
 
 	const compactAtStart = window.innerWidth / window.innerHeight < 0.9;
 	// Phones and tablets, in either orientation, start one quality step down.
@@ -145,10 +151,10 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		post.setSize(width, height, pixelRatio);
 		post.setBloomEnabled(quality.bloom);
 		dust.setPixelRatio(pixelRatio);
-		aurora.setSize(
+		sky.setSize(
 			width * pixelRatio,
 			height * pixelRatio,
-			quality.auroraScale,
+			quality.backdropScale,
 			compact,
 		);
 	}
@@ -248,16 +254,22 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		camera.rotateZ(MathUtils.clamp(-sideways * 0.012, -0.12, 0.12) * sway);
 
 		warp.setVelocity(velocity);
-		aurora.setStage(mood);
-		aurora.setTime(elapsed);
-		aurora.setShift(shipLook.x * 0.015, shipLook.y * 0.015 - mood * 0.08);
+		sky.setStage(mood);
+		// From the upper stretch of the band at launch down to the bright core
+		// at the last stop, nudged a little by the pointer.
+		const route = MathUtils.clamp(mood / LAST_STAGE, 0, 1);
+		const parallax = reducedMotion ? 0 : SKY_PARALLAX;
+		sky.setPan(
+			MathUtils.lerp(-0.8, 0.9, route) + pointerX * parallax,
+			MathUtils.lerp(0.85, -0.9, route) + pointerY * parallax,
+		);
 		dust.setTime(elapsed);
 		post.setTime(reducedMotion ? 0 : elapsed);
 	}
 
 	function draw(dt: number): void {
 		update(dt);
-		aurora.render(renderer);
+		sky.render(renderer);
 		post.render();
 	}
 
@@ -358,7 +370,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 			canvas.removeEventListener("webglcontextrestored", onContextRestored);
 			warp.dispose();
 			dust.dispose();
-			aurora.dispose();
+			sky.dispose();
 			post.dispose();
 			renderer.dispose();
 		},

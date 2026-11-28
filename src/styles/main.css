@@ -108,6 +108,17 @@ a {
 	height: 100lvh;
 	z-index: 0;
 	pointer-events: none;
+	/* The same Milky Way the 3D scene pans through (galaxy-backdrop.ts),
+	   standing in until the scene is ready and when WebGL is missing; the
+	   veil keeps the copy on the left readable. */
+	background:
+		linear-gradient(
+			90deg,
+			color-mix(in srgb, var(--bg) 78%, transparent),
+			color-mix(in srgb, var(--bg) 20%, transparent) 65%
+		),
+		url("/galaxy-backdrop.webp") 20% 15% / cover no-repeat,
+		var(--bg);
 }
 
 #stage {
