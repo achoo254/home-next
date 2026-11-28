@@ -1013,14 +1013,6 @@ main,
 	.lang-switch {
 		padding-inline: var(--space-1);
 	}
-}
-
-/* The narrowest phones: the logo alone names the site (the link keeps its
-   aria-label), so the language links and Sign in fit on one row. */
-@media (max-width: 380px) {
-	.site-header .brand-name {
-		display: none;
-	}
 
 	.header-row {
 		gap: var(--space-3);
@@ -1058,5 +1050,13 @@ main,
 
 	.footer-brand {
 		grid-column: 1 / -1;
+	}
+}
+
+/* The narrowest phones: the logo alone names the site (the link keeps its
+   aria-label), so the language links and Sign in fit on one row. */
+@media (max-width: 380px) {
+	.site-header .brand-name {
+		display: none;
 	}
 }
