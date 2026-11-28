@@ -1,6 +1,6 @@
 /**
  * The sky behind the tiles: one AI-painted deep-space panorama per stage
- * (`public/sky-<stage>-<width>.webp`), cross-faded as the ship flies from
+ * (`public/sky-glossy-<stage>-<width>.webp`), cross-faded as the ship flies from
  * stop to stop. Each panorama is framed a little larger than the screen and
  * slides past while the ship travels, so leaving a chapter feels like flying
  * on. A light colour grade from the stage's mood ties the six skies to the
@@ -36,7 +36,7 @@ const LARGE_SKY_QUERY = "(min-width: 1000px), (min-resolution: 2dppx)";
 
 /** The panorama for one stage, sized for this screen. */
 function skyImageUrl(stage: number, large: boolean): string {
-	return `/sky-${stage}-${large ? 2560 : 1440}.webp`;
+	return `/sky-glossy-${stage}-${large ? 2560 : 1440}.webp`;
 }
 
 /** Width over height of every panorama. */

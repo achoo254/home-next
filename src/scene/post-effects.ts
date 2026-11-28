@@ -2,8 +2,8 @@
  * The finishing pass: bloom on everything brighter than white (the
  * brightest dust and the streaking stars), then the output pass that tone maps and
  * converts to sRGB, then a lens pass that adds a hint of chromatic fringing
- * towards the edges and fine film grain. Grain comes after tone mapping so
- * it is equally faint in shadows and highlights.
+ * towards the edges and a faint dither against banding. It comes after tone
+ * mapping so it is equally faint in shadows and highlights.
  */
 import {
 	type Camera,
@@ -23,7 +23,9 @@ const LensShader = {
 	uniforms: {
 		tDiffuse: { value: null },
 		uTime: { value: 0 },
-		uGrain: { value: 0.022 },
+		// Just enough dither to keep the smooth gradients of the skies from
+		// banding; anything more reads as grain against the glossy art.
+		uGrain: { value: 0.006 },
 		uFringe: { value: 0.003 },
 	},
 	vertexShader: /* glsl */ `

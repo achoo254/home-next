@@ -119,7 +119,7 @@ a {
 	);
 	background:
 		var(--sky-veil),
-		url("/sky-0-1440.webp") center / cover no-repeat,
+		url("/sky-glossy-0-1440.webp") center / cover no-repeat,
 		var(--bg);
 }
 
@@ -127,7 +127,7 @@ a {
 	.stage-layer {
 		background:
 			var(--sky-veil),
-			url("/sky-0-2560.webp") center / cover no-repeat,
+			url("/sky-glossy-0-2560.webp") center / cover no-repeat,
 			var(--bg);
 	}
 }

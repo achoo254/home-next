@@ -86,9 +86,11 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 	const compactAtStart = window.innerWidth / window.innerHeight < 0.9;
 	// Phones and tablets, in either orientation, start one quality step down.
 	const touchFirst = window.matchMedia("(pointer: coarse)").matches;
-	const dust = createStarDust(compactAtStart ? 900 : 2200);
-	const warp = createWarpStars(compactAtStart ? 500 : 1300);
-	scene.add(dust.points, warp.lines);
+	// Fewer, larger glints and soft ribbons rather than fine grain: the
+	// glossy style of the skies and of Nav.
+	const dust = createStarDust(compactAtStart ? 420 : 900);
+	const warp = createWarpStars(compactAtStart ? 320 : 700);
+	scene.add(dust.points, warp.mesh);
 
 	const curve = createRouteCurve();
 	const stops: StopFrame[] = [];
@@ -149,6 +151,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		post.setSize(width, height, pixelRatio);
 		post.setBloomEnabled(quality.bloom);
 		dust.setPixelRatio(pixelRatio);
+		warp.setSize(width, height, pixelRatio);
 		sky.setSize(
 			width * pixelRatio,
 			height * pixelRatio,

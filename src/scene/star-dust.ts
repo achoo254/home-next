@@ -1,7 +1,9 @@
 /**
- * Fine light dust drifting through the scene: one draw call of soft round
- * points that twinkle and sway. Brighter specks cross the bloom threshold
- * and sparkle; nearer ones are larger, so the dust gives the scene depth.
+ * Glints of light drifting through the scene, in the glossy style of the
+ * page's art: one draw call of points, each a soft round glow with a halo,
+ * and the larger ones a four-pointed sparkle whose rays pulse slowly, like
+ * the glints painted in the skies. Fewer and larger than film-grain dust,
+ * so the scene reads clean; nearer glints are larger, for depth.
  */
 import {
 	AdditiveBlending,
@@ -21,17 +23,21 @@ const vertexShader = /* glsl */ `
 	attribute float aSize;
 	varying float vSeed;
 	varying float vFade;
+	varying float vSparkle;
 	void main() {
 		vec3 p = position;
 		p.x += sin(uTime * 0.21 + aSeed * 6.2831) * 0.35;
 		p.y += cos(uTime * 0.17 + aSeed * 4.1) * 0.3;
 		vec4 view = modelViewMatrix * vec4(p, 1.0);
 		gl_Position = projectionMatrix * view;
-		// Capped: a speck that drifts right past the lens would otherwise
-		// grow to hundreds of pixels and bloom into a white cloud.
-		gl_PointSize = min(aSize * uPixelRatio * (22.0 / -view.z), 14.0 * uPixelRatio);
+		float size = aSize * uPixelRatio * (26.0 / -view.z);
+		// Never below a few pixels (a single pixel shimmers like grain), and
+		// capped, so a glint right past the lens does not bloom into a cloud.
+		gl_PointSize = clamp(size, 3.0 * uPixelRatio, 30.0 * uPixelRatio);
 		vSeed = aSeed;
-		// Fade the dust far ahead, and the dust about to pass the lens.
+		// Only glints drawn large enough show their rays.
+		vSparkle = smoothstep(9.0, 16.0, size / uPixelRatio);
+		// Fade the glints far ahead, and those about to pass the lens.
 		vFade = smoothstep(-90.0, -40.0, view.z) * (1.0 - smoothstep(-8.0, -2.0, view.z));
 	}
 `;
@@ -42,16 +48,27 @@ const fragmentShader = /* glsl */ `
 	uniform vec3 uAccent;
 	varying float vSeed;
 	varying float vFade;
+	varying float vSparkle;
 	void main() {
-		float d = length(gl_PointCoord - 0.5);
-		float core = 1.0 - smoothstep(0.0, 0.5, d);
-		float twinkle = 0.55 + 0.45 * sin(uTime * (1.2 + vSeed * 1.6) + vSeed * 40.0);
-		vec3 colour = mix(uColour, uAccent, step(0.86, vSeed));
-		float strength = core * core * twinkle * vFade;
-		// A few specks are bright enough to bloom.
-		strength *= mix(0.9, 2.4, step(0.94, fract(vSeed * 7.0)));
+		vec2 c = gl_PointCoord - 0.5;
+		float d2 = dot(c, c);
+		// Round core and a wide soft halo.
+		float core = exp(-d2 * 160.0);
+		float halo = exp(-d2 * 26.0) * 0.35;
+		// Four thin rays that taper to points.
+		vec2 a = abs(c);
+		float rays = exp(-a.x * 90.0) * (1.0 - smoothstep(0.0, 0.5, a.y))
+			+ exp(-a.y * 90.0) * (1.0 - smoothstep(0.0, 0.5, a.x));
+		float pulse = 0.6 + 0.4 * sin(uTime * (0.6 + vSeed * 0.9) + vSeed * 40.0);
+		float shape = core + halo + rays * vSparkle * pulse * 0.8;
+		float twinkle = 0.75 + 0.25 * sin(uTime * (0.9 + vSeed * 1.2) + vSeed * 23.0);
+		vec3 colour = mix(uColour, uAccent, step(0.8, vSeed));
+		colour = mix(colour, vec3(1.0), core * 0.6);
+		float strength = shape * twinkle * vFade;
+		// The largest sparkles are bright enough to bloom.
+		strength *= mix(0.85, 1.8, vSparkle * step(0.7, fract(vSeed * 7.0)));
 		// Additive blending multiplies by alpha once; alpha caps at 1, so the
-		// blooming specks carry their extra brightness in the colour.
+		// blooming glints carry their extra brightness in the colour.
 		gl_FragColor = vec4(colour * max(1.0, strength), min(strength, 1.0));
 	}
 `;
@@ -74,7 +91,8 @@ export function createStarDust(count: number): StarDust {
 	const sizes = new Float32Array(count);
 	for (let index = 0; index < count; index++) {
 		seeds[index] = random();
-		sizes[index] = 0.6 + random() ** 3 * 3.2;
+		// Mostly small glints, a few large sparkles.
+		sizes[index] = 1.4 + random() ** 4 * 7.5;
 	}
 	const geometry = new BufferGeometry();
 	geometry.setAttribute("position", new BufferAttribute(positions, 3));
@@ -96,7 +114,7 @@ export function createStarDust(count: number): StarDust {
 		blending: AdditiveBlending,
 	});
 	const points = new Points(geometry, material);
-	// The dust spans the whole route; never cull it as one small box.
+	// The glints span the whole route; never cull them as one small box.
 	points.frustumCulled = false;
 
 	return {

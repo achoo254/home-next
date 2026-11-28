@@ -7,6 +7,8 @@ export const SCENE_PALETTE = {
 	background: 0x0d0a17,
 	dust: 0xc9b8ff,
 	dustAccent: 0xf3a9f6,
+	/** The hot end of a warp streak, like the neon ring around Nav. */
+	streakHead: 0xffd6fb,
 } as const;
 
 /**
