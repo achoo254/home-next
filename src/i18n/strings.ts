@@ -40,8 +40,6 @@ const en = {
 
 	"hero.title": "One account. A universe of apps.",
 	"hero.apps.label": "Apps to start with",
-	"hero.miu.line":
-		"Play a 3D world with friends and beat math and Vietnamese challenges.",
 	"hero.cta.signup": "Create a free Hoandat account",
 	"hero.signup.note":
 		"One account works in every app. Sign in with Google, GitHub or Apple.",
@@ -66,11 +64,6 @@ const en = {
 	"key.cta": "Manage your account",
 
 	"workshop.title": "More apps in orbit",
-	"miu.tag": "A 3D world where knowledge is how you move forward.",
-	"miu.body":
-		"Explore voxel maps with friends and use math and Vietnamese to get past each challenge. Plays in the browser, for kids and grown-ups.",
-	"miu.cta": "Visit Miu World",
-	"miu.alt": "Miu, the white voxel cat of Miu World",
 	"tieude.tag": "Free help with small writing jobs.",
 	"tieude.body":
 		"An AI bot that does small writing jobs for you for free, right in the browser.",
@@ -105,7 +98,7 @@ const en = {
 	"group.fun.title": "Entertainment",
 	"group.fun.intro": "Just for fun.",
 	"group.learn.title": "Learning",
-	"group.learn.intro": "Learn like playing, look things up in seconds.",
+	"group.learn.intro": "Look things up in seconds.",
 	"group.app.webnhanh":
 		"A website from a template, published at its own address.",
 	"group.app.chat": "Fast messaging with searchable history and bots.",
@@ -120,8 +113,6 @@ const en = {
 	"group.app.lockin": "Lock in plans through one link.",
 	"group.app.chuanho":
 		"Tap the wooden bell, light incense, ease up on harsh words. A calmer head, just for fun.",
-	"group.app.miu":
-		"A 3D block world to play with friends, with maths and Vietnamese quests.",
 	"group.app.kb":
 		"Bilingual articles on infrastructure and software engineering to read, search and ask AI.",
 
@@ -181,8 +172,6 @@ const vi: Record<StringKey, string> = {
 
 	"hero.title": "Một tài khoản. Cả vũ trụ app.",
 	"hero.apps.label": "Các app để bắt đầu",
-	"hero.miu.line":
-		"Chơi thế giới 3D cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
 	"hero.cta.signup": "Tạo tài khoản Hoandat miễn phí",
 	"hero.signup.note":
 		"Một tài khoản dùng được ở mọi app. Đăng nhập bằng Google, GitHub hoặc Apple.",
@@ -207,11 +196,6 @@ const vi: Record<StringKey, string> = {
 	"key.cta": "Quản lý tài khoản",
 
 	"workshop.title": "Thêm app trên quỹ đạo",
-	"miu.tag": "Thế giới 3D nơi kiến thức là công cụ để tiến lên.",
-	"miu.body":
-		"Khám phá các bản đồ voxel cùng bạn bè, dùng Toán và Tiếng Việt để vượt từng thử thách. Chơi ngay trên trình duyệt, hợp cả bé lẫn người lớn.",
-	"miu.cta": "Ghé Miu World",
-	"miu.alt": "Miu, chú mèo voxel trắng của Miu World",
 	"tieude.tag": "Viết giúp việc nhỏ, miễn phí.",
 	"tieude.body":
 		"Bot AI làm giúp bạn các việc viết lách nhỏ, miễn phí, ngay trên trình duyệt.",
@@ -246,7 +230,7 @@ const vi: Record<StringKey, string> = {
 	"group.fun.title": "Giải trí",
 	"group.fun.intro": "Chơi cho vui, xem cho đã.",
 	"group.learn.title": "Học tập",
-	"group.learn.intro": "Học mà như chơi, tra cứu là có.",
+	"group.learn.intro": "Tra cứu là có.",
 	"group.app.webnhanh":
 		"Làm website từ mẫu có sẵn và đăng ngay ở địa chỉ riêng.",
 	"group.app.chat": "Nhắn tin nhanh, tìm lại lịch sử tin nhắn và dùng bot.",
@@ -260,8 +244,6 @@ const vi: Record<StringKey, string> = {
 	"group.app.lockin": "Chốt kèo bằng một link.",
 	"group.app.chuanho":
 		"Gõ mõ, thắp hương, bớt khẩu nghiệp. Chơi cho tâm bớt lag.",
-	"group.app.miu":
-		"Thế giới khối 3D chơi cùng bạn bè, vượt thử thách Toán và Tiếng Việt.",
 	"group.app.kb":
 		"Kho tri thức song ngữ về hạ tầng và kỹ thuật phần mềm để đọc, tìm và hỏi AI.",
 
@@ -320,7 +302,6 @@ const zhCN: Record<StringKey, string> = {
 
 	"hero.title": "一个账号，一整个应用宇宙。",
 	"hero.apps.label": "从这些应用开始",
-	"hero.miu.line": "和朋友一起玩 3D 世界，闯过数学和越南语挑战。",
 	"hero.cta.signup": "免费创建 Hoandat 账号",
 	"hero.signup.note":
 		"一个账号通用于所有应用。用 Google、GitHub 或 Apple 登录。",
@@ -344,11 +325,6 @@ const zhCN: Record<StringKey, string> = {
 	"key.cta": "管理你的账号",
 
 	"workshop.title": "轨道上的更多应用",
-	"miu.tag": "一个靠知识前进的 3D 世界。",
-	"miu.body":
-		"和朋友一起探索体素地图，用数学和越南语闯过每个挑战。在浏览器里就能玩，孩子和大人都适合。",
-	"miu.cta": "访问 Miu World",
-	"miu.alt": "Miu，Miu World 里的白色体素小猫",
 	"tieude.tag": "免费帮你完成小型写作任务。",
 	"tieude.body": "一个 AI 机器人，直接在浏览器里免费帮你完成小型写作任务。",
 	"tieude.cta": "认识 Tiểu Đệ",
@@ -380,7 +356,7 @@ const zhCN: Record<StringKey, string> = {
 	"group.fun.title": "娱乐",
 	"group.fun.intro": "纯粹图个开心。",
 	"group.learn.title": "学习",
-	"group.learn.intro": "像玩一样学习，几秒就能查到。",
+	"group.learn.intro": "几秒就能查到。",
 	"group.app.webnhanh": "用模板做网站，发布在专属地址。",
 	"group.app.chat": "快速聊天，历史消息可搜索，还有机器人。",
 	"group.app.tieude": "免费帮你完成小型写作任务的 AI 机器人。",
@@ -391,7 +367,6 @@ const zhCN: Record<StringKey, string> = {
 	"group.app.clip": "用模板制作竖屏短视频。",
 	"group.app.lockin": "一个链接，敲定计划。",
 	"group.app.chuanho": "敲木鱼、上香，少说狠话。让心静一静，图个开心。",
-	"group.app.miu": "和朋友一起玩的 3D 方块世界，带数学和越南语任务。",
 	"group.app.kb": "基础设施和软件工程的双语文章，可阅读、搜索，也可以问 AI。",
 
 	"made.title": "越南制造，由一个人和一支 AI 智能体团队打造。",

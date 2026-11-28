@@ -55,7 +55,7 @@ describe("page structure", () => {
 		expect(isStringKey(`route.${LAST_STAGE + 1}`)).toBe(false);
 	});
 
-	it("opens on the three apps to start with and the sign-up button", () => {
+	it("opens on the apps to start with and the sign-up button", () => {
 		const hero = html.slice(
 			html.indexOf('<section id="launch"'),
 			html.indexOf('<section id="apps"'),
@@ -63,11 +63,7 @@ describe("page structure", () => {
 		const apps = [...hero.matchAll(/class="hero-app" href="([^"]+)"/g)].map(
 			(match) => new URL((match[1] ?? "").replaceAll("&amp;", "&")).host,
 		);
-		expect(apps).toEqual([
-			"tuvi.hoandat.com",
-			"miu.hoandat.com",
-			"webnhanh.hoandat.com",
-		]);
+		expect(apps).toEqual(["tuvi.hoandat.com", "webnhanh.hoandat.com"]);
 		expect(hero).toMatch(
 			/href="https:\/\/auth\.hoandat\.com\/account\?signup=1" data-i18n="hero\.cta\.signup"/,
 		);
@@ -105,7 +101,7 @@ describe("apps by kind", () => {
 			"lockin.hoandat.com",
 			"chuanho.hoandat.com",
 		]);
-		expect(hostsOf("learn")).toEqual(["miu.hoandat.com", "kb.hoandat.com"]);
+		expect(hostsOf("learn")).toEqual(["kb.hoandat.com"]);
 	});
 
 	it("keeps the section out of the app stops and the route", () => {
