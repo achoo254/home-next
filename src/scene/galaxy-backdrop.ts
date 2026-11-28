@@ -117,6 +117,9 @@ const fragmentShader = /* glsl */ `
 		float calm = 1.0;
 		calm *= mix(1.0, 0.3 + 0.7 * smoothstep(0.12, 0.6, screen.x), uCalmLeft);
 		calm *= mix(1.0, 0.32 + 0.68 * smoothstep(0.05, 0.58, screen.y), uCalmBottom);
+		// On phones the copy spans the full width with no calm side to sit
+		// on, so the whole sky steps back a little.
+		calm *= mix(1.0, 0.62, uCalmBottom);
 		colour *= calm;
 		// Stay under the bloom threshold: only the flying stars glow.
 		colour = min(colour, vec3(0.86));
@@ -174,6 +177,13 @@ const NUDGE = 0.06;
  * screen), so it reads as floating, never as scrolling.
  */
 const DRIFT = 0.4;
+/**
+ * A portrait screen shows only a narrow middle strip of a 16:9 sky, while
+ * every sky keeps its subject in the right half (the copy's side is the
+ * left on wide screens). Phones look this far right, as a share of the
+ * room, so the galaxy sits in view instead of off the edge.
+ */
+const PHONE_FOCUS = 0.65;
 
 export function createGalaxyBackdrop(
 	options: GalaxyBackdropOptions,
@@ -263,6 +273,9 @@ export function createGalaxyBackdrop(
 		into.copy(from.setHex(a[key])).lerp(to.setHex(b[key]), t);
 	}
 
+	/** Where the view rests across the panorama, as a share of its room. */
+	let focusX = 0;
+
 	return {
 		texture: target.texture,
 		render(renderer) {
@@ -285,7 +298,7 @@ export function createGalaxyBackdrop(
 			// The fade happens mid-flight, so each stop shows one clear sky.
 			uniforms.uMix.value = MathUtils.smoothstep(t, 0.25, 0.75);
 			const offset = {
-				x: nudgeX * NUDGE + Math.sin(seconds * 0.021) * DRIFT,
+				x: focusX + nudgeX * NUDGE + Math.sin(seconds * 0.021) * DRIFT,
 				y: nudgeY * NUDGE + Math.cos(seconds * 0.016) * DRIFT * 0.6,
 			};
 			uniforms.uPanA.value.copy(SLIDE).multiplyScalar(t).add(offset);
@@ -309,6 +322,7 @@ export function createGalaxyBackdrop(
 			uniforms.uAspect.value = width / height;
 			uniforms.uCalmLeft.value = compact ? 0 : 1;
 			uniforms.uCalmBottom.value = compact ? 1 : 0;
+			focusX = compact ? PHONE_FOCUS : 0;
 		},
 		dispose() {
 			disposed = true;
