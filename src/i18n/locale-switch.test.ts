@@ -61,6 +61,13 @@ describe("language switch", () => {
 		expect(cookies.join("\n")).toMatch(/hd_lang=zh-CN;.*Domain=hoandat\.com/i);
 	});
 
+	it("reads back 中文 picked here or in another app from the shared cookie", async () => {
+		const cookies = stubBrowser();
+		cookies.push("hd_lang=zh-CN; Domain=hoandat.com; Path=/");
+		const { readSavedLocale } = await import("./apply-locale");
+		expect(readSavedLocale()).toBe("zh-CN");
+	});
+
 	it("ignores a switch to the language already shown", async () => {
 		stubBrowser();
 		const { mountLocaleSwitches } = await import("./apply-locale");

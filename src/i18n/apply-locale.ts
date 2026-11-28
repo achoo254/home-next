@@ -1,5 +1,5 @@
 import {
-	type PreferenceOptions,
+	type LocalePreferenceOptions,
 	readPreferences,
 	writePreference,
 } from "@achoo254/app-shell/preferences";
@@ -10,9 +10,12 @@ import { LOCALES, type Locale, STRINGS, isStringKey } from "./strings";
  * choice made here or in another app holds everywhere. The page's own older
  * key is still read until the visitor picks again.
  */
-const PREFERENCE_OPTIONS: PreferenceOptions = {
+const PREFERENCE_OPTIONS: LocalePreferenceOptions<Locale> = {
 	domain: "hoandat.com",
 	legacyLangKey: "hoandat-home-locale",
+	// Without its locales the shared shell accepts only vi and en, so a
+	// 中文 picked here or in another app would read back as nothing.
+	locales: LOCALES,
 };
 
 export function isLocale(value: string | null): value is Locale {
