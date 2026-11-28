@@ -224,6 +224,8 @@ main,
 	display: inline-flex;
 	align-items: center;
 	gap: var(--space-3);
+	/* Still a full target when narrow phones show the logo alone. */
+	min-width: var(--target);
 	min-height: var(--target);
 	text-decoration: none;
 }
@@ -267,6 +269,7 @@ main,
 }
 
 .lang-switch {
+	min-width: var(--target);
 	min-height: var(--target);
 	padding-inline: var(--space-3);
 	border: 0;
@@ -788,6 +791,8 @@ main,
 	display: inline-flex;
 	align-items: center;
 	gap: var(--space-3);
+	/* A full touch target: these are the only way into most apps on a phone. */
+	min-height: var(--target);
 	font-weight: 600;
 }
 
@@ -921,6 +926,8 @@ main,
 .footer-col a {
 	display: inline-flex;
 	align-items: center;
+	/* Short names ("Clip", "Chat") still get a full-width touch target. */
+	min-width: var(--target);
 	min-height: var(--target);
 	color: var(--ink-2);
 	text-decoration: none;
