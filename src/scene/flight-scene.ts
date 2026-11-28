@@ -2,8 +2,8 @@
  * The page's 3D layer: a fixed full-viewport canvas behind the copy, seen
  * from the seat of a small ship. Scrolling flies the ship along a route
  * (`flight-path.ts`), one stop per chapter: stars streak when the ship
- * moves fast, and the view pans along the Milky Way, changing its colour
- * grade with every stop. The apps' art
+ * moves fast, and every stop has its own AI-painted sky, cross-faded on
+ * the way. The apps' art
  * and Nav, the guide bot, are images in the HTML over it.
  *
  * Loaded lazily after first paint; the plain background stands in until it
@@ -54,8 +54,6 @@ const FLIGHT_RATE = 2.4;
 const MOOD_RATE = 2.2;
 /** Reduced motion freezes the sway at a moment that reads well. */
 const STILL_TIME = 18;
-/** Pointer parallax on the sky, as a share of the room left to pan. */
-const SKY_PARALLAX = 0.06;
 /**
  * Throws when the browser cannot give us a WebGL context, or only a slow
  * software one: the poster is the better page then.
@@ -254,15 +252,7 @@ export function mountFlightScene(options: FlightSceneOptions): FlightScene {
 		camera.rotateZ(MathUtils.clamp(-sideways * 0.012, -0.12, 0.12) * sway);
 
 		warp.setVelocity(velocity);
-		sky.setStage(mood);
-		// From the upper stretch of the band at launch down to the bright core
-		// at the last stop, nudged a little by the pointer.
-		const route = MathUtils.clamp(mood / LAST_STAGE, 0, 1);
-		const parallax = reducedMotion ? 0 : SKY_PARALLAX;
-		sky.setPan(
-			MathUtils.lerp(-0.8, 0.9, route) + pointerX * parallax,
-			MathUtils.lerp(0.85, -0.9, route) + pointerY * parallax,
-		);
+		sky.setStage(mood, pointerX * sway, pointerY * sway, elapsed);
 		dust.setTime(elapsed);
 		post.setTime(reducedMotion ? 0 : elapsed);
 	}

@@ -108,17 +108,28 @@ a {
 	height: 100lvh;
 	z-index: 0;
 	pointer-events: none;
-	/* The same Milky Way the 3D scene pans through (galaxy-backdrop.ts),
-	   standing in until the scene is ready and when WebGL is missing; the
-	   veil keeps the copy on the left readable. */
+	/* The launch sky of the 3D scene (galaxy-backdrop.ts), standing in until
+	   the scene is ready and when WebGL is missing; the veil keeps the copy
+	   on the left readable. Same size query as LARGE_SKY_QUERY there, so the
+	   image downloads once. */
+	--sky-veil: linear-gradient(
+		90deg,
+		color-mix(in srgb, var(--bg) 70%, transparent),
+		color-mix(in srgb, var(--bg) 10%, transparent) 60%
+	);
 	background:
-		linear-gradient(
-			90deg,
-			color-mix(in srgb, var(--bg) 78%, transparent),
-			color-mix(in srgb, var(--bg) 20%, transparent) 65%
-		),
-		url("/galaxy-backdrop.webp") 20% 15% / cover no-repeat,
+		var(--sky-veil),
+		url("/sky-0-1440.webp") center / cover no-repeat,
 		var(--bg);
+}
+
+@media (min-width: 1000px), (min-resolution: 2dppx) {
+	.stage-layer {
+		background:
+			var(--sky-veil),
+			url("/sky-0-2560.webp") center / cover no-repeat,
+			var(--bg);
+	}
 }
 
 #stage {

@@ -16,8 +16,8 @@ export interface QualityLevel {
 export const QUALITY_LEVELS: readonly QualityLevel[] = [
 	{ maxPixelRatio: 2, backdropScale: 1, bloom: true },
 	{ maxPixelRatio: 1.5, backdropScale: 1, bloom: true },
-	{ maxPixelRatio: 1, backdropScale: 0.75, bloom: true },
-	{ maxPixelRatio: 1, backdropScale: 0.6, bloom: false },
+	{ maxPixelRatio: 1, backdropScale: 1, bloom: true },
+	{ maxPixelRatio: 1, backdropScale: 0.75, bloom: false },
 ];
 
 /** Frames per sample window: short, so a slow device recovers in seconds. */
