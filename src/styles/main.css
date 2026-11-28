@@ -1053,9 +1053,10 @@ main,
 	}
 }
 
-/* The narrowest phones: the logo alone names the site (the link keeps its
-   aria-label), so the language links and Sign in fit on one row. */
-@media (max-width: 380px) {
+/* Narrow phones: the logo alone names the site (the link keeps its
+   aria-label), so two language links and the longest sign-in label
+   ("Đăng nhập", about 370px together with the logo and name) fit in one row. */
+@media (max-width: 410px) {
 	.site-header .brand-name {
 		display: none;
 	}
