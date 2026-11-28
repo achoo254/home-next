@@ -80,12 +80,6 @@ const en = {
 		"Pick a template, type a few lines and add up to three photos. Clip renders a vertical video with music, ready to download and share. Five videos a day per account.",
 	"clip.cta": "Make a clip",
 	"clip.alt": "The Clip icon: a smiling clapperboard character in a red hoodie",
-	"lockin.tag": "Lock in plans through one link.",
-	"lockin.body":
-		"Lock in plans with friends or coworkers through one link. Everyone votes on time and place, no account needed.",
-	"lockin.cta": "Make a plan",
-	"lockin.alt":
-		"The Lockin icon: a red padlock with a white check mark, shaped like a map pin, on a lime tile",
 	"chuanho.tag": "Tap the wooden bell, light incense, ease up on harsh words.",
 	"chuanho.body":
 		"Tap the wooden bell to the beat, light incense, check in on your harsh words for the day and listen to Lofi Chùa Nhỏ. A few calm minutes a day, just for fun.",
@@ -110,7 +104,6 @@ const en = {
 	"group.app.tuvi":
 		"Your 12-palace horoscope chart and a fortune stick every day, just for fun.",
 	"group.app.clip": "Short vertical videos from a template.",
-	"group.app.lockin": "Lock in plans through one link.",
 	"group.app.chuanho":
 		"Tap the wooden bell, light incense, ease up on harsh words. A calmer head, just for fun.",
 	"group.app.kb":
@@ -212,12 +205,6 @@ const vi: Record<StringKey, string> = {
 		"Chọn mẫu, gõ vài dòng và thêm tối đa ba ảnh. Clip dựng video dọc có nhạc, tải về và chia sẻ ngay. Mỗi tài khoản năm video một ngày.",
 	"clip.cta": "Làm video",
 	"clip.alt": "Biểu tượng Clip: chú bảng clapper tươi cười mặc áo hoodie đỏ",
-	"lockin.tag": "Chốt kèo bằng một link.",
-	"lockin.body":
-		"Chốt kèo với bạn bè hay đồng nghiệp bằng một link. Mọi người vote giờ và chỗ, không cần tài khoản.",
-	"lockin.cta": "Chốt kèo",
-	"lockin.alt":
-		"Biểu tượng Lockin: ổ khoá đỏ hình ghim bản đồ mang dấu tích trắng trên nền xanh chanh",
 	"chuanho.tag": "Gõ mõ, thắp hương, bớt khẩu nghiệp.",
 	"chuanho.body":
 		"Gõ mõ theo nhịp, thắp hương, check-in khẩu nghiệp và nghe Lofi Chùa Nhỏ. Vài phút mỗi ngày cho tâm bớt lag, chơi cho vui.",
@@ -241,7 +228,6 @@ const vi: Record<StringKey, string> = {
 	"group.app.tunelo": "Tunnel của bạn trên trình duyệt.",
 	"group.app.tuvi": "Lập lá số 12 cung và xin quẻ mỗi ngày, xem cho vui.",
 	"group.app.clip": "Video dọc ngắn làm từ mẫu có sẵn.",
-	"group.app.lockin": "Chốt kèo bằng một link.",
 	"group.app.chuanho":
 		"Gõ mõ, thắp hương, bớt khẩu nghiệp. Chơi cho tâm bớt lag.",
 	"group.app.kb":
@@ -339,12 +325,6 @@ const zhCN: Record<StringKey, string> = {
 		"选一个模板，输入几行字，最多添加三张照片。Clip 会生成带音乐的竖屏视频，可直接下载和分享。每个账号每天五个视频。",
 	"clip.cta": "制作视频",
 	"clip.alt": "Clip 图标：穿红色连帽衫、面带笑容的场记板角色",
-	"lockin.tag": "一个链接，敲定计划。",
-	"lockin.body":
-		"通过一个链接和朋友或同事敲定计划。大家投票选时间和地点，无需账号。",
-	"lockin.cta": "发起计划",
-	"lockin.alt":
-		"Lockin 图标：酸橙绿底上，一把地图图钉形状的红色挂锁，带白色对勾",
 	"chuanho.tag": "敲木鱼、上香，少说狠话。",
 	"chuanho.body":
 		"跟着节拍敲木鱼、上香，记下今天说过的狠话，再听听 Lofi Chùa Nhỏ。每天静几分钟，图个开心。",
@@ -365,7 +345,6 @@ const zhCN: Record<StringKey, string> = {
 	"group.app.tunelo": "在浏览器里管理你的隧道。",
 	"group.app.tuvi": "十二宫命盘，外加每日一签，图个开心。",
 	"group.app.clip": "用模板制作竖屏短视频。",
-	"group.app.lockin": "一个链接，敲定计划。",
 	"group.app.chuanho": "敲木鱼、上香，少说狠话。让心静一静，图个开心。",
 	"group.app.kb": "基础设施和软件工程的双语文章，可阅读、搜索，也可以问 AI。",
 
