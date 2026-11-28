@@ -6,21 +6,21 @@ import { type GuideDialog, mountGuideDialog } from "./guide/guide-dialog";
 import {
 	applyLocale,
 	localeFromPath,
-	otherLocale,
+	mountLocaleSwitches,
 	pathOfLocale,
 	pickInitialLocale,
 	readSavedLocale,
-	saveLocale,
 } from "./i18n/apply-locale";
 
 const root = document.documentElement;
 
-// /vi/ is always Vietnamese (search engines index it as such); on / the saved
-// choice or the browser decides. The address then follows the language shown.
+// /vi/ and /zh-CN/ always show their language (search engines index them as
+// such); on / the saved choice or the browser decides. The address then
+// follows the language shown.
 const shipped = localeFromPath(location.pathname);
 let locale =
-	shipped === "vi"
-		? "vi"
+	shipped !== "en"
+		? shipped
 		: pickInitialLocale(readSavedLocale(), navigator.languages);
 if (locale !== shipped) applyLocale(document, locale);
 showLocaleInAddress(locale);
@@ -32,17 +32,11 @@ function showLocaleInAddress(shown: typeof locale): void {
 	}
 }
 
-for (const button of document.querySelectorAll<HTMLButtonElement>(
-	"[data-locale-switch]",
-)) {
-	button.addEventListener("click", () => {
-		locale = otherLocale(locale);
-		saveLocale(locale);
-		applyLocale(document, locale);
-		showLocaleInAddress(locale);
-		guide?.setLocale(locale);
-	});
-}
+mountLocaleSwitches(document, locale, (picked) => {
+	locale = picked;
+	showLocaleInAddress(picked);
+	guide?.setLocale(picked);
+});
 
 // The header gains a solid backdrop once the hero top leaves the viewport.
 const header = document.querySelector<HTMLElement>(".site-header");

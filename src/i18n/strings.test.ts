@@ -121,11 +121,14 @@ describe("apps by kind", () => {
 		expect(STRINGS.vi["group.tools.title"]).toBe("Công cụ");
 		expect(STRINGS.vi["group.fun.title"]).toBe("Giải trí");
 		expect(STRINGS.vi["group.learn.title"]).toBe("Học tập");
+		expect(STRINGS["zh-CN"]["group.tools.title"]).toBe("工具");
+		expect(STRINGS["zh-CN"]["group.fun.title"]).toBe("娱乐");
+		expect(STRINGS["zh-CN"]["group.learn.title"]).toBe("学习");
 	});
 
 	it("never mentions developers on the page", () => {
 		expect(html).not.toMatch(/developer|lập trình viên/i);
-		for (const locale of ["en", "vi"] as const) {
+		for (const locale of LOCALES) {
 			for (const text of Object.values(STRINGS[locale])) {
 				expect(text).not.toMatch(/developer|lập trình viên/i);
 			}
@@ -137,12 +140,16 @@ describe("pickInitialLocale", () => {
 	it("prefers a saved choice", () => {
 		expect(pickInitialLocale("vi", ["en-US"])).toBe("vi");
 		expect(pickInitialLocale("en", ["vi-VN"])).toBe("en");
+		expect(pickInitialLocale("zh-CN", ["vi-VN"])).toBe("zh-CN");
 	});
 
 	it("follows the first browser language we have", () => {
 		expect(pickInitialLocale(null, ["vi-VN", "en"])).toBe("vi");
 		expect(pickInitialLocale(null, ["fr-FR", "en-GB", "vi"])).toBe("en");
 		expect(pickInitialLocale(null, ["ja"])).toBe("en");
+		expect(pickInitialLocale(null, ["zh-Hans-CN", "en"])).toBe("zh-CN");
+		expect(pickInitialLocale(null, ["zh-TW"])).toBe("zh-CN");
+		expect(pickInitialLocale(null, ["ja", "zh"])).toBe("zh-CN");
 		expect(pickInitialLocale("de", [])).toBe("en");
 	});
 });

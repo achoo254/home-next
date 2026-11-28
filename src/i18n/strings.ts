@@ -5,7 +5,7 @@
  * README of each product repo; keep them in step when a product changes.
  */
 
-export const LOCALES = ["en", "vi"] as const;
+export const LOCALES = ["en", "vi", "zh-CN"] as const;
 export type Locale = (typeof LOCALES)[number];
 
 const en = {
@@ -19,8 +19,6 @@ const en = {
 	"nav.account": "Account",
 	"nav.signin": "Sign in",
 	"nav.home": "hoandat home",
-	"lang.switch": "Tiếng Việt",
-	"lang.switch.label": "Đọc trang bằng tiếng Việt",
 
 	"guide.name": "Nav · your guide bot",
 	"guide.0":
@@ -162,8 +160,6 @@ const vi: Record<StringKey, string> = {
 	"nav.account": "Tài khoản",
 	"nav.signin": "Đăng nhập",
 	"nav.home": "Trang chủ hoandat",
-	"lang.switch": "English",
-	"lang.switch.label": "Read this page in English",
 
 	"guide.name": "Hoa tiêu · bot dẫn đường",
 	"guide.0":
@@ -292,9 +288,138 @@ const vi: Record<StringKey, string> = {
 	"footer.privacy": "Quyền riêng tư",
 };
 
+/** Simplified Chinese. Product names stay as they are written everywhere else. */
+const zhCN: Record<StringKey, string> = {
+	"meta.title": "hoandat · 一个账号，一整个应用宇宙",
+	"meta.description":
+		"hoandat 是一个不断壮大的应用家族，所有应用共用一个账号。用 Google、GitHub 或 Apple 登录一次，之后每个新应用都能用同一把钥匙打开。",
+
+	"nav.skip": "跳到应用",
+	"nav.main": "主导航",
+	"nav.apps": "应用",
+	"nav.account": "账号",
+	"nav.signin": "登录",
+	"nav.home": "hoandat 首页",
+
+	"guide.name": "Nav · 你的向导机器人",
+	"guide.0":
+		"你好，我是 Nav。向下滚动，我带你飞过现在已上线的应用。航线还在不断延长。",
+	"guide.1": "第一站：Chat。每条消息都能再搜到，机器人的也一样。",
+	"guide.2":
+		"Knowledge Base 收录英语和越南语的基础设施与软件工程文章。可以阅读、搜索，也可以问 AI。",
+	"guide.3":
+		"Web Nhanh 把模板变成你的网站，几分钟就能在 yourname.hoandat.io.vn 上线。",
+	"guide.4": "这就是钥匙。登录一次就能打开所有应用，包括还在开发中的。",
+	"route.label": "航线",
+	"route.0": "出发",
+	"route.1": "Chat",
+	"route.2": "Knowledge Base",
+	"route.3": "Web Nhanh",
+	"route.4": "钥匙",
+	"route.5": "更多应用",
+
+	"hero.title": "一个账号，一整个应用宇宙。",
+	"hero.apps.label": "从这些应用开始",
+	"hero.miu.line": "和朋友一起玩 3D 世界，闯过数学和越南语挑战。",
+	"hero.cta.signup": "免费创建 Hoandat 账号",
+	"hero.signup.note":
+		"一个账号通用于所有应用。用 Google、GitHub 或 Apple 登录。",
+	"hero.cta.apps": "开始旅程",
+
+	"apps.title": "已上线的应用",
+	"apps.open": "打开",
+
+	"chat.title": "找得回来的消息。",
+	"chat.body": "快速聊天，历史消息可搜索，还有机器人，为网页优先打造。",
+	"kb.title": "值得了解的知识，英语和越南语双语。",
+	"kb.body":
+		"涵盖基础设施和软件工程，排成一个宇宙，你可以阅读、搜索，也可以问 AI。",
+	"webnhanh.title": "用模板做网站，几分钟上线。",
+	"webnhanh.body":
+		"选一个模板（网店、婚礼请柬、咖啡馆菜单、个人简介、春节贺卡），在手机上修改文字和照片，然后发布到 yourname.hoandat.io.vn。访客的订单和留言直接进入应用。你也可以通过公开的 git 链接或 zip 文件部署。",
+
+	"key.title": "一把钥匙，打开每一扇门。",
+	"key.body":
+		"用 Google、GitHub 或 Apple 登录。这里没有会忘记或泄露的密码。同一个账号适用于所有应用，包括现在的和还在开发中的，由你决定哪些设备和应用保留访问权限。",
+	"key.cta": "管理你的账号",
+
+	"workshop.title": "轨道上的更多应用",
+	"miu.tag": "一个靠知识前进的 3D 世界。",
+	"miu.body":
+		"和朋友一起探索体素地图，用数学和越南语闯过每个挑战。在浏览器里就能玩，孩子和大人都适合。",
+	"miu.cta": "访问 Miu World",
+	"miu.alt": "Miu，Miu World 里的白色体素小猫",
+	"tieude.tag": "免费帮你完成小型写作任务。",
+	"tieude.body": "一个 AI 机器人，直接在浏览器里免费帮你完成小型写作任务。",
+	"tieude.cta": "认识 Tiểu Đệ",
+	"tieude.alt": "Tiểu Đệ，穿橙色连帽衫的小机器人",
+	"tuvi.tag": "一分钟排出越南紫微命盘。",
+	"tuvi.body":
+		"输入出生日期和时辰，排出十二宫命盘，查看每颗星的含义，并分享为图片。命盘按越南农历推算。仅供娱乐。",
+	"tuvi.cta": "排命盘",
+	"tuvi.alt": "Tử Vi 图标：戴星星帽、抱着金色星盘的小猫头鹰占星师",
+	"clip.tag": "用模板制作竖屏短视频。",
+	"clip.body":
+		"选一个模板，输入几行字，最多添加三张照片。Clip 会生成带音乐的竖屏视频，可直接下载和分享。每个账号每天五个视频。",
+	"clip.cta": "制作视频",
+	"clip.alt": "Clip 图标：穿红色连帽衫、面带笑容的场记板角色",
+	"lockin.tag": "一个链接，敲定计划。",
+	"lockin.body":
+		"通过一个链接和朋友或同事敲定计划。大家投票选时间和地点，无需账号。",
+	"lockin.cta": "发起计划",
+	"lockin.alt":
+		"Lockin 图标：酸橙绿底上，一把地图图钉形状的红色挂锁，带白色对勾",
+	"chuanho.tag": "敲木鱼、上香，少说狠话。",
+	"chuanho.body":
+		"跟着节拍敲木鱼、上香，记下今天说过的狠话，再听听 Lofi Chùa Nhỏ。每天静几分钟，图个开心。",
+	"chuanho.cta": "敲木鱼",
+	"chuanho.alt": "Chùa Nhỏ 图标：深紫色底上，一只奶油色圆木鱼和木槌",
+
+	"group.tools.title": "工具",
+	"group.tools.intro": "每天更快把事做完。",
+	"group.fun.title": "娱乐",
+	"group.fun.intro": "纯粹图个开心。",
+	"group.learn.title": "学习",
+	"group.learn.intro": "像玩一样学习，几秒就能查到。",
+	"group.app.webnhanh": "用模板做网站，发布在专属地址。",
+	"group.app.chat": "快速聊天，历史消息可搜索，还有机器人。",
+	"group.app.tieude": "免费帮你完成小型写作任务的 AI 机器人。",
+	"group.app.scribe": "录音并转成可搜索、可编辑的文字稿。",
+	"group.app.localman": "浏览器里的 Mock API 和 API 客户端。",
+	"group.app.tunelo": "在浏览器里管理你的隧道。",
+	"group.app.tuvi": "十二宫命盘，外加每日一签，图个开心。",
+	"group.app.clip": "用模板制作竖屏短视频。",
+	"group.app.lockin": "一个链接，敲定计划。",
+	"group.app.chuanho": "敲木鱼、上香，少说狠话。让心静一静，图个开心。",
+	"group.app.miu": "和朋友一起玩的 3D 方块世界，带数学和越南语任务。",
+	"group.app.kb": "基础设施和软件工程的双语文章，可阅读、搜索，也可以问 AI。",
+
+	"made.title": "越南制造，由一个人和一支 AI 智能体团队打造。",
+	"made.body":
+		"这里的每个应用都由一个人和 AI 智能体一起设计、开发和运营。所以每个应用都小巧、专注，改进得很快。",
+	"made.p1.title": "没有密码",
+	"made.p1.body": "通过 Google、GitHub 或 Apple 登录。",
+	"made.p2.title": "我们不发邮件",
+	"made.p2.body": "新消息只在应用内显示，绝不会进入你的收件箱。",
+	"made.p3.title": "账号由你掌控",
+	"made.p3.body": "在 auth.hoandat.com 查看设备和应用权限。",
+
+	"next.title": "建设中",
+	"next.tag": "新应用正在同一个工坊里打造。",
+	"next.body":
+		"上线后，它们会加入这条航线，你现在用的账号也能直接打开。无需重新注册。",
+	"next.follow": "关注上线动态",
+	"made.source": "在 GitHub 上开源",
+	"close.title": "登船一次，每个应用都能打开。",
+	"footer.account": "你的账号",
+	"footer.rights": "© 2026 hoandat.com",
+	"footer.privacy": "隐私",
+};
+
 export const STRINGS: Readonly<Record<Locale, Record<StringKey, string>>> = {
 	en,
 	vi,
+	"zh-CN": zhCN,
 };
 
 export function isStringKey(key: string): key is StringKey {
